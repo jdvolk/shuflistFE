@@ -1,0 +1,45 @@
+.emoji:after {
+  margin: 0px !important;
+  font-size: 4em;
+  vertical-align: middle;
+  height: 50px;
+  min-width: 50px; 
+}
+
+.emoji-background {
+  background: #333333;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  /* border-radius: 10px; */
+  color: #fdfcfce7;
+  cursor: pointer;
+  font-size: 7.5px;
+  /* min-width: 2em;
+  min-height: 2em; */
+  outline: none;
+  border: solid 1px transparent;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0)
+  ),linear-gradient(63deg, #e309ff, #436bfd);
+  box-shadow: inset 3px 3px 6px 0px #4c4c4c,
+    inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  width: 50px
+}
+  
+.emoji-background:hover {
+  color: white;
+  box-shadow: inset 4px 7px 13px 0px #000000c2,
+    inset -4px -2px 13px 0px #000000c2 ;
+}
+.emoji-background:active {
+  color: white;
+  box-shadow: inset 4px 7px 13px 0px #000000c2,
+    inset -4px -2px 13px 0px #000000c2, inset 0px 0px 13px 0px #000000c2;
+}
+
+.search:after {
+  content: "🔍"
+}

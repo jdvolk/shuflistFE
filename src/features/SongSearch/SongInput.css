@@ -1,0 +1,20 @@
+.song-search-container {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  width: 90vw;
+}
+
+.song-input {
+  padding: .4em;
+  /* margin-bottom: 5px;
+  height: 2.8em; */
+  /* background: #282e33; */
+  border: none;
+  /* color: white; */
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  min-height: 30px;
+  box-shadow: inset 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
+  border-bottom: 1px solid white;
+}
