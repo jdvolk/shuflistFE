@@ -7,6 +7,8 @@ import {
   fetchResults,
   selectSongInput,
   resetInput,
+  selectSearchResults as searchResults
+
 } from './songInputSlice';
 
 // app imports
@@ -19,6 +21,8 @@ function SongSearch() {
   const input = useSelector(selectSongInput);
   const dispatch = useDispatch();
   const [ userInput, setSongInput ] = useState(input);
+
+  // render
 
   return (
     <section className="song-search-container">
@@ -45,7 +49,6 @@ function SongSearch() {
           label='search' 
         />
       </section>
-      
     </section>
   )
 }

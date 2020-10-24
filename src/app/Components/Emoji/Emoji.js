@@ -1,6 +1,7 @@
 import React from 'react';
 import "../Emoji/Emoji.css"
 
+// render
 function Emoji (props) {
   return (
     <section className="emoji-background">
