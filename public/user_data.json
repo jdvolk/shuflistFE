@@ -1,0 +1,17 @@
+{
+  "userId" : 1,
+  "userName" : "Justin Volk",
+  "favorites" : [1],
+  "following": [1],
+  "followers": [1],
+  "posts" : [
+    {
+      "id": 1,
+      "song" : {},
+      "comments" : [
+
+      ]
+    }
+  ],
+  "settings" : [1]
+}
