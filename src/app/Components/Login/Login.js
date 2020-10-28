@@ -52,8 +52,9 @@ function Login() {
         value='login'
         name='login-button'
         label={'Login'}
-        onClick={
-          getUser({'userName': userName, 'password': password})
+        onClick={() => {
+          dispatch(getUser({'userName': userName, 'password': password}))
+          }
         }
       >
         Login

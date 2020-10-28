@@ -8,6 +8,5 @@ export default configureStore({
     counter: counterReducer,
     songSearch: songInputReducer,
     user: userReducer,
-
   },
 });

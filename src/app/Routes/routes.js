@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 
-import SongSearch from '../../features/SongSearch/Song_Input'
-import SearchResults from '../../features/SongResults/SongResultsContainer'
-import Login from '../Components/Login/Login'
+import SongSearch from '../../features/SongSearch/Song_Input';
+import SearchResults from '../../features/SongResults/SongResultsContainer';
+import Login from '../Components/Login/Login';
+import HomePage from '../Components/HomePage/HomePage';
 
 
-function Routes() {
+function Routes(props) {
   return (
     <>
       <Route
@@ -34,8 +35,7 @@ function Routes() {
         exact path='/'
         render={() => {
           return (
-            <Login />
-            // <MainPage />
+            <HomePage isLoggedIn={props.isLoggedIn} />
           )
         }}
       ></Route>

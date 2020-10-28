@@ -13,34 +13,34 @@ export const userSlice = createSlice({
       followers: [],
       posts : [
         {
-          "id": 1,
+          "id": 0,
           "song" : {},
-          "comments" : []
-        }
+          "comments" : [],
+        },
       ],
-      settings : []
-    }
+      settings : [],
+    },
   },
   reducers: {
     login: (state, action) => {
       state.userInfo = action.payload
       state.isLoggedIn = true;
     },
-
+    
     logout: (state) => {
       state.userInfo = ''
       state.isLoggedIn = true;
     },
-
+    
     resetInput: state => {
       state.userInput = ''
     },
-  }
+  },
 });
 
 export const { login, logout, resetInput } = userSlice.actions;
 
-export const getUser = userInput => async dispatch => {
+export const getUser = () => async dispatch => {
   try {
     const response = await fetch("/user_data.json",
       {
@@ -49,7 +49,7 @@ export const getUser = userInput => async dispatch => {
           'Accept': 'application/json'
         }
       }
-    );
+    )
     const parsed = await response.json();
     dispatch(login(parsed));
   } catch (error){
@@ -59,7 +59,8 @@ export const getUser = userInput => async dispatch => {
   }
 }
 export const selectUser = state => state.user;
-export const selectUserInput = state => state.user.userInput;
+export const selectUserInput = state => state.user.userInfo.userInput;
 export const selectIsLoggedIn = state => state.user.isLoggedIn;
+// export const selectUserPosts = state => state.user.userInfo.posts;
 
 export default userSlice.reducer;

@@ -16,6 +16,7 @@ function SongResults() {
         albumCover={song.Album_Cover}
         artist={song.Artist}
         title={song.Song_Name}
+        isSearchResult={true}
       />
     })
   }
