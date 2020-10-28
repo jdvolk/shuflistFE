@@ -21,9 +21,9 @@ function Song(props) {
           <section className="song check" label="check"></section>
         </section>
         <section className="song favorite" label="check"></section>
+        {/* <section className="song favorite" label="check"></section> */}
       </>}
-      {!props.isSearchResult && 
-        {/* comments */},
+      {props.isSearchResult === false && 
         <section className="song favorite" label="check"></section>
       } 
       {props.isFavorite }

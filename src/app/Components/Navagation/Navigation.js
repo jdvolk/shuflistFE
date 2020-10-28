@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { logout } from '../../../features/User/getUserSlice'
+import { resetSearch } from '../../../features/SongSearch/songInputSlice'
 import './Navigation.css';
 
 
@@ -11,14 +12,16 @@ function Navigation (props) {
   console.log(isLoggedIn)
   return (
     <section className="nav-bar">
-      <Link to="/"> Home </Link>
+      <Link to="/Home" onClick={() => {
+        dispatch(resetSearch())
+        }}> Home </Link>
       <Link onClick={() => props.history.goBack()}> Back </Link>
-      {!isLoggedIn ? <Link to="/login"> Login </Link> : <Link to='/' onClick={() => {
+      {!isLoggedIn ? <Link to="/Login"> Login </Link> : <Link to='/' onClick={() => {
         dispatch(logout())
         } 
       }> Logout </Link>}
       {/* <Link to="/login"> Login </Link> */}
-      <Link to="/search"> Search </Link>
+      <Link to="/Search"> Search </Link>
       {/* <Link to="/options">Options</Link> */}
     </section>
   )

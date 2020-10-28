@@ -59,7 +59,7 @@ function Login() {
       >
         Login
       </button>
-      {isLoggedIn && <Redirect to='/Search' />}
+      {isLoggedIn && <Redirect to='/' />}
     </form>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import TimeLine from "../TimeLine/TimeLine";
+import SongSearch from '../../../features/SongSearch/Song_Input'
 
 function HomePage (props) { 
   // const { isLoggedIn } = props
@@ -10,6 +11,7 @@ function HomePage (props) {
       { !isLoggedIn && 
         <h1>Please Log In </h1>
       } 
+      {isLoggedIn && <SongSearch />}
       { <TimeLine />}
     </section>
   )

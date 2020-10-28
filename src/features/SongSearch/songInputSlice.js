@@ -20,12 +20,15 @@ export const songSearchSlice = createSlice({
     // reducer for search results
     searchResults: (state, action) => {
       state.results = action.payload
+    },
+    resetSearch:  (state) => {
+      state.results = ''
     }
   },
 });
 
 // export actions
-export const { songInput, searchResults, resetInput } = songSearchSlice.actions;
+export const { songInput, searchResults, resetInput, resetSearch } = songSearchSlice.actions;
 
 // async function to get search results locally until we have an api set up
 export const fetchResults = input =>  async dispatch => {

@@ -11,19 +11,25 @@ function Routes(props) {
   return (
     <>
       <Route
-        path='/Login'
+        exact path='/Home'
+        render={() => {
+          return (<HomePage isLoggedIn={props.isLoggedIn} />)
+        }}
+      ></Route>
+      <Route
+        exact path='/Login'
         render={() => {
           return (<Login />)
         }}
       ></Route>
       <Route
-        path='/Search'
+        exact path='/Search'
         render={() => {
           return (<SongSearch />)
         }}
       ></Route>
       <Route
-        path='/SearchResults'
+        exact path='/SearchResults'
         render={() => {
           return (<SearchResults />)
         }}
