@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
+import { Switch } from 'react-router-dom'
 
-import SongSearch from './features/SongSearch/Song_Input'
-import SearchResults from './features/SongResults/SongResultsContainer'
-import Login from '../src/app/Components/Login/Login'
+import Navigation from './app/Components/Navagation/Navigation'
+// import SongSearch from './features/SongSearch/Song_Input'
+// import SearchResults from './features/SongResults/SongResultsContainer'
+// import Login from '../src/app/Components/Login/Login'
+import Routes  from '../src/app/Routes/routes'
 
 import { selectSearchResults as searchResults } from './features/SongSearch/songInputSlice'
 import { selectIsLoggedIn as isLoggedIn } from './features/User/getUserSlice'
@@ -19,10 +22,11 @@ function App() {
       <header className="App-header">
         <h1>Song Search</h1>
       </header>
+        <Navigation />
       <section className="App-Body">
-        { !isLoggedIn && <Login />}
-        { isLoggedIn && <SongSearch /> }
-        { searchResults && <SearchResults />}
+      <Switch>
+        <Routes />
+      </Switch>
       </section>
     </section>
     </div>

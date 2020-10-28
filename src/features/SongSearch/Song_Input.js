@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 // action/reducer imports
 import {
@@ -18,7 +19,9 @@ import Emoji from '../../app/Components/Emoji/Emoji';
 function SongSearch() {
 
   // hooks
+
   const input = useSelector(selectSongInput);
+  const results = useSelector(searchResults);
   const dispatch = useDispatch();
   const [ userInput, setSongInput ] = useState(input);
 
@@ -49,6 +52,7 @@ function SongSearch() {
           label='search' 
         />
       </section>
+      {results && <Redirect to='/SearchResults' push/>}
     </section>
   )
 }

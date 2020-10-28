@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './SongResults.css';
 import Song from '../../app/Components/Song/Song'
+import SongSearch from  '../SongSearch/Song_Input'
 
 // console.log(searchResults);
 let resultsList = null;
@@ -19,9 +20,12 @@ function SongResults() {
     })
   }
   return (
-    <section className="search-results">
-      {resultsList ? resultsList : null }
-    </section>
+    <>
+    <SongSearch />
+      <section className="search-results">
+        {resultsList ? resultsList : null }
+      </section>
+    </>
   )
 }
 

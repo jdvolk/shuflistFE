@@ -7,6 +7,7 @@ import {
   selectIsLoggedIn,
 
 }  from '../../../features/User/getUserSlice'
+import { Redirect } from 'react-router-dom';
 
 function Login() {
 
@@ -22,6 +23,7 @@ function Login() {
         e.preventDefault()
         e.stopPropagation()
         dispatch(getUser({'userName': userName, 'password': password}));
+        
       }}
     >
       <h1>Login</h1>
@@ -56,7 +58,7 @@ function Login() {
       >
         Login
       </button>
-
+      {isLoggedIn && <Redirect to='/Search' />}
     </form>
   );
 };
