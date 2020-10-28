@@ -20,11 +20,13 @@ function Song(props) {
           <section className="song x" label="x"></section>
           <section className="song check" label="check"></section>
         </section>
-          <section className="song favorite" label="check"></section>
+        <section className="song favorite" label="check"></section>
       </>}
       {!props.isSearchResult && 
-        {/* <Comments /> */}
-      }
+        {/* comments */},
+        <section className="song favorite" label="check"></section>
+      } 
+      {props.isFavorite }
     </section>
   );
 };

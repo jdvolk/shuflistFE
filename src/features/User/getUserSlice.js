@@ -29,7 +29,7 @@ export const userSlice = createSlice({
     
     logout: (state) => {
       state.userInfo = ''
-      state.isLoggedIn = true;
+      state.isLoggedIn = false;
     },
     
     resetInput: state => {
