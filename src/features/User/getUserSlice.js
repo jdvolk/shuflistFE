@@ -13,13 +13,14 @@ export const userSlice = createSlice({
       favorites: [],
       following: [],
       followers: [],
-      posts: [
-        {
-          id: 0,
-          song: {},
-          comments: [],
-        },
-      ],
+      // posts: [
+      //   {
+      //     id: 0,
+      //     song: {},
+      //     comments: [],
+      //     isFavorite: 'false',
+      //   },
+      // ],
       settings: [],
     },
   },
@@ -35,10 +36,12 @@ export const userSlice = createSlice({
     resetInput: (state) => {
       state.userInput = '';
     },
-
-    addFavorite: (state, action) => {
-      state.favorites.push(action.payload);
-    },
+    // switchFavorite: (state, action) => {
+    //   state.userInfo.posts
+    // },
+    // addFavorite: (state, action) => {
+    //   state.favorites.push(action.payload);
+    // },
   },
 });
 
@@ -46,7 +49,7 @@ export const {
   login,
   logout,
   resetInput,
-  addFavorite,
+  // addFavorite,
 } = userSlice.actions;
 
 export const getUser = () => async (dispatch) => {

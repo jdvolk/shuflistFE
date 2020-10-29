@@ -20,10 +20,10 @@ function SongSearch() {
   const input = useSelector(selectSongInput);
   const results = useSelector(searchResults);
   const dispatch = useDispatch();
+  // const [userInput, setSongInput] = useState(input);
   const [userInput, setSongInput] = useState(input);
 
   // render
-
   return (
     <section className="song-search-container">
       <input

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { getPosts } from '../../../features/User/userPostsSlice';
 import {
   getUser,
   selectIsLoggedIn,
@@ -20,6 +21,7 @@ function Login() {
         e.preventDefault();
         e.stopPropagation();
         dispatch(getUser({ userName, password }));
+        dispatch(getPosts());
       }}
     >
       <h1>Login</h1>
@@ -53,6 +55,7 @@ function Login() {
         label="Login"
         onClick={() => {
           dispatch(getUser({ userName, password }));
+          dispatch(getPosts());
         }}
       >
         Login

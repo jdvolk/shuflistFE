@@ -14,12 +14,16 @@ function SongResults() {
   if (searchResults !== '') {
     resultsList = searchResults.map((song) => {
       return (
-        <Song
-          albumCover={song.Album_Cover}
-          artist={song.Artist}
-          title={song.Song_Name}
-          isSearchResult
-        />
+        <section
+          key={Math.random()}
+        >
+          <Song
+            albumCover={song.Album_Cover}
+            artist={song.Artist}
+            title={song.Song_Name}
+            isSearchResult
+          />
+        </section>
       );
     });
   }

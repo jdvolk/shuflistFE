@@ -50,6 +50,9 @@
 .x:after {
   content: "❌"
 } 
-.favorite:after {
+.true:after {
   content: "⭐"
-} 
+}
+.false:after {
+  content: " "
+}
