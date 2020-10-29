@@ -1,20 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
-import TimeLine from "../TimeLine/TimeLine";
-import SongSearch from '../../../features/SongSearch/Song_Input'
+import { useSelector } from 'react-redux';
+import TimeLine from '../TimeLine/TimeLine';
+import SongSearch from '../../../features/SongSearch/Song_Input';
 
-function HomePage (props) { 
+function HomePage() {
   // const { isLoggedIn } = props
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <section>
-      { !isLoggedIn && 
-        <h1>Please Log In </h1>
-      } 
+      { !isLoggedIn && <h1>Please Log In </h1>}
       {isLoggedIn && <SongSearch />}
-      { <TimeLine />}
+      <TimeLine />
     </section>
-  )
+  );
 }
 
 export default HomePage;

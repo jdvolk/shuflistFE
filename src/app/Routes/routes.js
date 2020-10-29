@@ -1,3 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-max-props-per-line */
+/* eslint-disable arrow-body-style */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { Route } from 'react-router-dom';
 
@@ -6,49 +11,52 @@ import SearchResults from '../../features/SongResults/SongResultsContainer';
 import Login from '../Components/Login/Login';
 import HomePage from '../Components/HomePage/HomePage';
 
-
 function Routes(props) {
+  const { isLoggedIn } = props;
   return (
     <>
       <Route
-        exact path='/Home'
+        exact path="/Home"
         render={() => {
-          return (<HomePage isLoggedIn={props.isLoggedIn} />)
+          return (<HomePage isLoggedIn={isLoggedIn} />);
         }}
-      ></Route>
+      >
+      </Route>
       <Route
-        exact path='/Login'
+        exact path="/Login"
         render={() => {
-          return (<Login />)
+          return (<Login />);
         }}
-      ></Route>
+      >
+      </Route>
       <Route
-        exact path='/Search'
+        exact path="/Search"
         render={() => {
-          return (<SongSearch />)
+          return (<SongSearch />);
         }}
-      ></Route>
+      >
+      </Route>
       <Route
-        exact path='/SearchResults'
+        exact path="/SearchResults"
         render={() => {
-          return (<SearchResults />)
+          return (<SearchResults />);
         }}
-      ></Route>
+      >
+      </Route>
       {/* { !isLoggedIn && <Login />}
       { isLoggedIn && <SongSearch /> }
       { searchResults && <SearchResults />} */}
       <Route
-        exact path='/'
+        exact path="/"
         render={() => {
           return (
-            <HomePage isLoggedIn={props.isLoggedIn} />
-          )
+            <HomePage isLoggedIn={isLoggedIn} />
+          );
         }}
-      ></Route>
+      >
+      </Route>
     </>
-  )
+  );
 }
 
 export default Routes;
-
-
