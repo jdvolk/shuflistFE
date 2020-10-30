@@ -15,13 +15,21 @@ export const userPosts = createSlice({
         isFavorite: 'false',
       },
     ],
+    isloading: false,
   },
   reducers: {
+    startLoading: (state) => {
+      state.isloading = !state.isloading;
+    },
+    stopLoading: (state) => {
+      state.isloading = !state.isloading;
+    },
     addPosts: (state, action) => {
       state.posts = action.payload;
     },
     switchFavorite: (state, action) => {
-      const foundPost = state.posts.find((post) => post.id === action.payload);
+      const foundPost = state.posts
+        .find((post) => post.id === action.payload);
       if (foundPost.isFavorite === 'true') {
         foundPost.isFavorite = 'false';
       } else {
@@ -32,13 +40,15 @@ export const userPosts = createSlice({
 });
 
 export const {
+  startLoading,
+  stopLoading,
   addPosts,
   switchFavorite,
 } = userPosts.actions;
 
 // eslint-disable-next-line no-unused-vars
 export const getPosts = (id) => async (dispatch) => {
-  // eslint-disable-next-line no-unneeded-ternary
+  dispatch(startLoading());
   try {
     const response = await fetch('/user_posts.json',
       {
@@ -53,6 +63,7 @@ export const getPosts = (id) => async (dispatch) => {
     console.error(error);
   } finally {
     // dispatch(resetInput())
+    dispatch(stopLoading());
   }
 };
 

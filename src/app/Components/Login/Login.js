@@ -20,8 +20,8 @@ function Login() {
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        dispatch(getUser({ userName, password }));
-        dispatch(getPosts());
+        getPosts();
+        getUser({ userName, password });
       }}
     >
       <h1>Login</h1>
@@ -54,8 +54,8 @@ function Login() {
         name="login-button"
         label="Login"
         onClick={() => {
-          dispatch(getUser({ userName, password }));
           dispatch(getPosts());
+          dispatch(getUser({ userName, password }));
         }}
       >
         Login

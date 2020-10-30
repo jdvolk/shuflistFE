@@ -13,18 +13,17 @@ export const userSlice = createSlice({
       favorites: [],
       following: [],
       followers: [],
-      // posts: [
-      //   {
-      //     id: 0,
-      //     song: {},
-      //     comments: [],
-      //     isFavorite: 'false',
-      //   },
-      // ],
       settings: [],
+      isLoading: false,
     },
   },
   reducers: {
+    startLoading: (state) => {
+      state.isLoading = !state.isLoading;
+    },
+    stopLoading: (state) => {
+      state.isLoading = !state.isLoading;
+    },
     login: (state, action) => {
       state.userInfo = action.payload;
       state.isLoggedIn = true;
@@ -36,23 +35,19 @@ export const userSlice = createSlice({
     resetInput: (state) => {
       state.userInput = '';
     },
-    // switchFavorite: (state, action) => {
-    //   state.userInfo.posts
-    // },
-    // addFavorite: (state, action) => {
-    //   state.favorites.push(action.payload);
-    // },
   },
 });
 
 export const {
+  startLoading,
+  stopLoading,
   login,
   logout,
   resetInput,
-  // addFavorite,
 } = userSlice.actions;
 
 export const getUser = () => async (dispatch) => {
+  dispatch(startLoading());
   try {
     const response = await fetch('/user_data.json',
       {
@@ -67,6 +62,7 @@ export const getUser = () => async (dispatch) => {
     console.error(error);
   } finally {
     // dispatch(resetInput())
+    dispatch(stopLoading());
   }
 };
 

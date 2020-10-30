@@ -6,26 +6,30 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Song.css';
 
+// eslint-disable-next-line no-unused-vars
 import { switchFavorite } from '../../../features/User/userPostsSlice';
 
 // import Emoji from '../Emoji/Emoji'
 
 function Song(props) {
-  // eslint-disable-next-line max-len
-  const currentSong = useSelector((state) => state.posts.posts.find((song) => song.id === props.id));
-  // const favorites = (isFavorite) => (isFavorite ? 'true' : 'false');
-  // eslint-disable-next-line max-len
   const dispatch = useDispatch();
+
+  const currentSong = useSelector((state) => state.posts.posts
+    .find((song) => song.id === props.id));
+
   const handleFavClick = () => {
     dispatch(switchFavorite(props.id));
+    // dispatch(postFavorites(currentSong));
   };
-  // explicitly stating props
-  // const [ albumCover, artist, title, isSearchResult  ] = props;
-  // render
-  // const switchFavorite = (isFavorite) => favorites(!isFavorite);
+  // const favorite = currentSong.isFavorite;
+
   return (
     <section className="song-container">
-      <img className="album-cover" src={props.albumCover} alt={`album cover for${props.title}by${props.artist}`} />
+      <img
+        className="album-cover"
+        src={props.albumCover}
+        alt={`album cover for${props.title}by${props.artist}`}
+      />
       <section className="song-description">
         <h4>
           Song:
@@ -36,7 +40,7 @@ function Song(props) {
           {props.artist}
         </h4>
       </section>
-      {props.isSearchResult === true && (
+      {props.isSearchResult === 'true' && (
         <>
           <section className="choose-song">
             <section className="song x" label="x" />
@@ -53,7 +57,13 @@ function Song(props) {
           onClick={handleFavClick}
         />
       )}
-      {props.isFavorite }
+      {/* {currentSong.isFavorite && (
+        <section
+          className={`song ${currentSong.isFavorite}`}
+          label="check"
+          onClick={handleFavClick}
+        />
+      )} */}
     </section>
   );
 }

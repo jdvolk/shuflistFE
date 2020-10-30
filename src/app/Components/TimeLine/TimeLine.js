@@ -7,6 +7,7 @@ import Song from '../Song/Song';
 
 function TimeLine() {
   const userTimeLine = useSelector((state) => state.posts.posts);
+
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   let posts;
   if (isLoggedIn && userTimeLine) {

@@ -10,11 +10,19 @@ import SongSearch from '../../features/SongSearch/Song_Input';
 import SearchResults from '../../features/SongResults/SongResultsContainer';
 import Login from '../Components/Login/Login';
 import HomePage from '../Components/HomePage/HomePage';
+import PostSong from '../../features/PostSong/PostSong';
 
 function Routes(props) {
   const { isLoggedIn } = props;
   return (
     <>
+      <Route
+        exact path="/PostSong"
+        render={() => {
+          return (<PostSong />);
+        }}
+      >
+      </Route>
       <Route
         exact path="/Home"
         render={() => {
