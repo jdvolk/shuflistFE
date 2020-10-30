@@ -3,8 +3,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import './SongResults.css';
-import Song from '../../app/Components/Song/Song';
-import SongSearch from '../SongSearch/Song_Input';
+import Song from '../../Components/Song/Song';
+import SongSearch from '../../../features/SongSearch/Song_Input';
 
 // console.log(searchResults);
 let resultsList = null;

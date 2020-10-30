@@ -7,10 +7,10 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import SongSearch from '../../features/SongSearch/Song_Input';
-import SearchResults from '../../features/SongResults/SongResultsContainer';
-import Login from '../Components/Login/Login';
-import HomePage from '../Components/HomePage/HomePage';
 import PostSong from '../../features/PostSong/PostSong';
+import SearchResults from './SongResults/SongResultsContainer';
+import Login from './Login/Login';
+import HomePage from './HomePage/HomePage';
 
 function Routes(props) {
   const { isLoggedIn } = props;
