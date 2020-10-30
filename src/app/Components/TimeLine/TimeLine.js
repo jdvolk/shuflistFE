@@ -23,7 +23,7 @@ function TimeLine() {
             isSearchResult="false"
             isFavorite={song.song.isFavorite}
             id={song.id}
-            posts={userTimeLine}
+            song={song}
           />
         </section>
       );
