@@ -30,12 +30,14 @@ export const userPosts = createSlice({
     },
     favorite: (state, action) => {
       const foundPost = state.posts
-        .find((post) => post.id === action.payload);
+        .find((post) => post.id === action.payload)
+        || action.payload;
       foundPost.song.isFavorite = 'true';
     },
     unFavorite: (state, action) => {
       const foundPost = state.posts
-        .find((post) => post.id === action.payload);
+        .find((post) => post.id === action.payload)
+        || action.payload;
       foundPost.song.isFavorite = 'false';
     },
     // switchFavorite: (state, action) => {
@@ -82,7 +84,7 @@ export const getPosts = (id) => async (dispatch) => {
 };
 
 export const switchFavorite = (foundPost) => (dispatch) => {
-  // console.log(foundPost);
+  console.log(foundPost);
   if (foundPost.song.isFavorite === 'true') {
     dispatch(unFavorite(foundPost.id));
     dispatch(removeFromFavorites(foundPost.id));

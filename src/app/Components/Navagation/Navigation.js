@@ -37,7 +37,7 @@ function Navigation(props) {
             Logout
           </Link>
         )}
-      {/* <Link to="/login"> Login </Link> */}
+      <Link to="/Favorites"> Favorites </Link>
       <Link
         to="/Search"
       >

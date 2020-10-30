@@ -11,6 +11,7 @@ import PostSong from '../../features/PostSong/PostSong';
 import SearchResults from './SongResults/SongResultsContainer';
 import Login from './Login/Login';
 import HomePage from './HomePage/HomePage';
+import Favorites from './Favorites/Favorites';
 
 function Routes(props) {
   const { isLoggedIn } = props;
@@ -24,9 +25,20 @@ function Routes(props) {
       >
       </Route>
       <Route
+        exact path="/Favorites"
+        render={() => {
+          return (
+            <Favorites
+              location="favorites"
+            />
+          );
+        }}
+      >
+      </Route>
+      <Route
         exact path="/Home"
         render={() => {
-          return (<HomePage isLoggedIn={isLoggedIn} />);
+          return (<HomePage isLoggedIn={isLoggedIn} location="home-page" />);
         }}
       >
       </Route>
@@ -47,7 +59,7 @@ function Routes(props) {
       <Route
         exact path="/SearchResults"
         render={() => {
-          return (<SearchResults />);
+          return (<SearchResults location="search-result" />);
         }}
       >
       </Route>
@@ -58,7 +70,7 @@ function Routes(props) {
         exact path="/"
         render={() => {
           return (
-            <HomePage isLoggedIn={isLoggedIn} />
+            <HomePage isLoggedIn={isLoggedIn} location="home-page" />
           );
         }}
       >

@@ -26,49 +26,63 @@ function Song(props) {
   const handleFavClick = () => {
     dispatch(switchFavorite(passedSong));
   };
-  return (
-    <section className="song-container">
-      <img
-        className="album-cover"
-        src={props.albumCover}
-        alt={`album cover for${props.title}by${props.artist}`}
-      />
-      <section className="song-description">
-        <h4>
-          Song:
-          {props.title}
-        </h4>
-        <h4>
-          Artist:
-          {props.artist}
-        </h4>
-      </section>
-      {props.isSearchResult === 'true' && (
-        <>
-          <section className="choose-song">
+  if (props.song) {
+    return (
+      <section className="song-container">
+        <img
+          className="album-cover"
+          src={props.albumCover}
+          alt={`album cover for${props.title}by${props.artist}`}
+        />
+        <section className="song-description">
+          <h4>
+            Song:
+            {props.title}
+          </h4>
+          <h4>
+            Artist:
+            {props.artist}
+          </h4>
+        </section>
+        {props.location === 'search-result' && (
+          <>
+            <section className="choose-song">
+              <section className="song x" label="x" />
+              <section className="song check" label="check" />
+            </section>
+            <section
+              className={`song ${props.song.isFavorite}`}
+              label="check"
+              onClick={handleFavClick}
+            />
+            {/* <section className="song favorite" label="check" /> */}
+            {/* <section className="song favorite" label="check"></section> */}
+          </>
+        )}
+        {props.location === 'home-page' && (
+          <section
+            className={`song ${currentSong.song.isFavorite || passedSong.song.isFavorite}`}
+            label="check"
+            onClick={handleFavClick}
+          />
+        )}
+        {props.location === 'favorites' && (
+          <section
+            className="song"
+            label="check"
+            onClick={handleFavClick}
+          >
             <section className="song x" label="x" />
-            <section className="song check" label="check" />
           </section>
-          {/* <section className="song favorite" label="check" /> */}
-          {/* <section className="song favorite" label="check"></section> */}
-        </>
-      )}
-      {props.isSearchResult === 'false' && (
-        <section
-          className={`song ${currentSong.song.isFavorite}`}
-          label="check"
-          onClick={handleFavClick}
-        />
-      )}
-      {/* {currentSong.isFavorite && (
-        <section
-          className={`song ${currentSong.isFavorite}`}
-          label="check"
-          onClick={handleFavClick}
-        />
-      )} */}
-    </section>
-  );
+        )}
+      </section>
+    );
+  // eslint-disable-next-line no-else-return
+  } else {
+    return (
+      <section>Loading...</section>
+    );
+  }
 }
 
 export default Song;

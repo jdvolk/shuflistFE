@@ -3,14 +3,16 @@ import { useSelector } from 'react-redux';
 import TimeLine from '../../Components/TimeLine/TimeLine';
 import SongSearch from '../../../features/SongSearch/Song_Input';
 
-function HomePage() {
+function HomePage(props) {
+  // eslint-disable-next-line react/prop-types
+  const { location } = props;
   // const { isLoggedIn } = props
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <section>
       { !isLoggedIn && <h1>Please Log In </h1>}
       {isLoggedIn && <SongSearch />}
-      <TimeLine />
+      <TimeLine location={location} />
     </section>
   );
 }

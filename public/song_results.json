@@ -1,22 +1,38 @@
 [
-  {
-    "Artist": "bty cll, Botanik",
-    "Song_Name": "Like a Drug",
-    "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273377b5deeaf095feaa44339c1"
+  { 
+    "id": 4,
+    "song": {
+      "Artist": "bty cll, Botanik",
+      "Song_Name": "Like a Drug",
+      "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273377b5deeaf095feaa44339c1",
+      "isFavorite": "false"
+    }
   },
   {
-    "Artist": "Louis The Child, Drew Love",
-    "Song_Name": "Free",
-    "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273d0c97444ecc52c4ca601144a"
+    "id": 5,
+    "song" : {
+      "Artist": "Louis The Child, Drew Love",
+      "Song_Name": "Free",
+      "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273d0c97444ecc52c4ca601144a",
+      "isFavorite": "false"
+    }
   },
   {
-    "Artist": "bty cll",
-    "Song_Name": "Here Alone",
-    "Album_Cover": "https://m.media-amazon.com/images/I/71SFywf-m9L._SS500_.jpg"
+    "id": 6,
+    "song": {
+      "Artist": "bty cll",
+      "Song_Name": "Here Alone",
+      "Album_Cover": "https://m.media-amazon.com/images/I/71SFywf-m9L._SS500_.jpg",
+      "isFavorite": "false"
+    }
   },
   {
-    "Artist": "Elohim",
-    "Song_Name": "Sensations - Whethan remix",
-    "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273b708f022a637cf80ec2f7c57"
+    "id": 7,
+    "song": {
+      "Artist": "Elohim",
+      "Song_Name": "Sensations - Whethan remix",
+      "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273b708f022a637cf80ec2f7c57",
+      "isFavorite": "false"
+    }
   }
 ]

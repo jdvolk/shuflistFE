@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import './TimeLine.css';
 import Song from '../Song/Song';
 
-function TimeLine() {
+function TimeLine(props) {
   const userTimeLine = useSelector((state) => state.posts.posts);
 
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -17,6 +17,8 @@ function TimeLine() {
           key={Math.random()}
         >
           <Song
+            // eslint-disable-next-line react/prop-types
+            location={props.location}
             albumCover={song.song.Album_Cover}
             artist={song.song.Artist}
             title={song.song.Song_Name}

@@ -1,7 +1,7 @@
 {
   "userId" : 1,
   "userName" : "Justin Volk",
-  "favorites" : [1],
+  "favorites" : [],
   "following": [1],
   "followers": [1],
   "settings" : [1]
