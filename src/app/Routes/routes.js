@@ -7,7 +7,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import SongSearch from '../../features/SongSearch/Song_Input';
-import PostSong from '../../features/PostSong/PostSong';
+import PostSong from '../Components/PostSong/PostSong';
 import SearchResults from './SongResults/SongResultsContainer';
 import Login from './Login/Login';
 import HomePage from './HomePage/HomePage';
@@ -20,7 +20,9 @@ function Routes(props) {
       <Route
         exact path="/PostSong"
         render={() => {
-          return (<PostSong />);
+          return (
+            <PostSong />
+          );
         }}
       >
       </Route>

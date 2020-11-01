@@ -11,7 +11,6 @@ let resultsList = null;
 
 function SongResults(props) {
   const searchResults = useSelector((state) => state.songSearch.results);
-  console.log(searchResults);
   if (searchResults !== '') {
     resultsList = searchResults.map((song) => {
       // eslint-disable-next-line no-param-reassign
@@ -23,11 +22,8 @@ function SongResults(props) {
           <Song
             // eslint-disable-next-line react/prop-types
             location={props.location}
-            albumCover={song.song.Album_Cover}
-            artist={song.song.Artist}
-            title={song.song.Song_Name}
-            isSearchResult
             song={song}
+            isSearchResult
           />
         </section>
       );

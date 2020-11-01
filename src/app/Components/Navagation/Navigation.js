@@ -14,7 +14,7 @@ function Navigation(props) {
   return (
     <section className="nav-bar">
       <Link
-        to="/Home"
+        to="/"
         onClick={() => {
           dispatch(resetSearch());
         }}

@@ -7,6 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './Song.css';
+import { withRouter, Redirect } from 'react-router-dom';
 
 // import { switchFavorite } from '../../../features/User/userPostsSlice';
 import { addToFavorites, removeFromFavorites } from '../../../features/User/getUserSlice';
@@ -101,11 +102,21 @@ function Song(props) {
             {songDetails.Artist}
           </h4>
         </section>
-        {props.location === 'search-result' && (
+        {props.location.pathname === '/SearchResults' && (
           <>
             <section className="choose-song">
               <section className="song x" label="x" />
-              <section className="song check" label="check" />
+              <section
+                className="song check"
+                label="check"
+                // eslint-disable-next-line arrow-body-style
+                onClick={() => {
+                  props.history.push({
+                    pathname: '/PostSong',
+                    song: passedSong,
+                  });
+                }}
+              />
             </section>
             <section
               className={`song ${songDetails.isFavorite}`}
@@ -116,14 +127,15 @@ function Song(props) {
             {/* <section className="song favorite" label="check"></section> */}
           </>
         )}
-        {props.location === 'home-page' && (
+        {/* eslint-disable-next-line no-mixed-operators */}
+        {props.location.pathname === '/' && (
           <section
             className={`song ${songDetails.isFavorite}`}
             label="check"
             onClick={handleFavClick}
           />
         )}
-        {props.location === 'favorites' && (
+        {props.location.pathname === '/Favorites' && (
           <section
             className="song"
             label="check"
@@ -142,4 +154,4 @@ function Song(props) {
   }
 }
 
-export default Song;
+export default withRouter(Song);

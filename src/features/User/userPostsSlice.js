@@ -31,8 +31,11 @@ export const userPosts = createSlice({
     },
     favoritePosts: (state, action) => {
       const foundPost = state.posts
-        .find((post) => post.id === action.payload);
-      foundPost.song.isFavorite = 'true';
+        .find((post) => post.id === action.payload)
+        || null;
+      if (foundPost !== null) {
+        foundPost.song.isFavorite = 'true';
+      }
     },
     unFavoritePosts: (state, action) => {
       const foundPost = state.posts

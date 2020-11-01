@@ -43,4 +43,7 @@
 .search:after {
   content: "🔍"
 }
+.send-post:after {
+  content: "🚀 "
+}
 
