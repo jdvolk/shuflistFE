@@ -1,6 +1,7 @@
 /* eslint-disable quote-props */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+// eslint-disable-next-line import/no-cycle
 
 export const userSlice = createSlice({
   name: 'User',
@@ -36,16 +37,25 @@ export const userSlice = createSlice({
       state.userInput = '';
     },
     addToFavorites: (state, action) => {
-      // action.payload.isFavorite = 'true';
-      state.userInfo.favorites.push(action.payload);
+      const foundSongIndex = state.userInfo.favorites
+      // eslint-disable-next-line arrow-body-style
+        .findIndex((song) => {
+          return song.id === action.payload.id;
+        });
+      console.log('payload', action.payload);
+      if (foundSongIndex === -1) {
+        state.userInfo.favorites.unshift(action.payload);
+      }
     },
     removeFromFavorites: (state, action) => {
-      // eslint-disable-next-line prefer-destructuring
-      // eslint-disable-next-line no-use-before-define
-      const foundSong = state.userInfo.favorites
-        .findIndex((song) => song.id === action.payload);
-      state.userInfo.favorites.splice(foundSong, 1);
-      console.log(foundSong);
+      const foundSongIndex = state.userInfo.favorites
+        // eslint-disable-next-line arrow-body-style
+        .findIndex((song) => {
+          return song.id === action.payload.id;
+        });
+      if (foundSongIndex > -1) {
+        state.userInfo.favorites.splice(foundSongIndex, 1);
+      }
     },
   },
 });

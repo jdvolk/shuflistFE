@@ -1,9 +1,8 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-import './TimeLine.css';
 import Song from '../Song/Song';
+import './TimeLine.css';
 
 function TimeLine(props) {
   const userTimeLine = useSelector((state) => state.posts.posts);
@@ -19,13 +18,8 @@ function TimeLine(props) {
           <Song
             // eslint-disable-next-line react/prop-types
             location={props.location}
-            albumCover={song.song.Album_Cover}
-            artist={song.song.Artist}
-            title={song.song.Song_Name}
-            isSearchResult="false"
-            isFavorite={song.song.isFavorite}
-            id={song.id}
             song={song}
+            isSearchResult="false"
           />
         </section>
       );

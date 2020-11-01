@@ -16,6 +16,7 @@ import './SongInput.css';
 import Emoji from '../../app/Components/Emoji/Emoji';
 
 function SongSearch() {
+  // eslint-disable-next-line react/prop-types
   // hooks
   const input = useSelector(selectSongInput);
   const results = useSelector(searchResults);
@@ -30,7 +31,7 @@ function SongSearch() {
         type="text"
         name="text-input"
         className="song-input"
-        value={userInput}
+        value={userInput || ''}
         onChange={(e) => setSongInput(e.target.value)}
         onKeyPress={(e) => {
           if (e.key === 'Enter') {

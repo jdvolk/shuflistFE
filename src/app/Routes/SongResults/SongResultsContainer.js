@@ -15,7 +15,7 @@ function SongResults(props) {
   if (searchResults !== '') {
     resultsList = searchResults.map((song) => {
       // eslint-disable-next-line no-param-reassign
-      song = song.song;
+      // song = song.song;
       return (
         <section
           key={Math.random()}
@@ -23,9 +23,9 @@ function SongResults(props) {
           <Song
             // eslint-disable-next-line react/prop-types
             location={props.location}
-            albumCover={song.Album_Cover}
-            artist={song.Artist}
-            title={song.Song_Name}
+            albumCover={song.song.Album_Cover}
+            artist={song.song.Artist}
+            title={song.song.Song_Name}
             isSearchResult
             song={song}
           />

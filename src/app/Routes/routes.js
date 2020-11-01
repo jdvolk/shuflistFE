@@ -38,7 +38,12 @@ function Routes(props) {
       <Route
         exact path="/Home"
         render={() => {
-          return (<HomePage isLoggedIn={isLoggedIn} location="home-page" />);
+          return (
+            <HomePage
+              isLoggedIn={isLoggedIn}
+              location="home-page"
+            />
+          );
         }}
       >
       </Route>
@@ -59,7 +64,11 @@ function Routes(props) {
       <Route
         exact path="/SearchResults"
         render={() => {
-          return (<SearchResults location="search-result" />);
+          return (
+            <SearchResults
+              location="search-result"
+            />
+          );
         }}
       >
       </Route>
@@ -70,7 +79,10 @@ function Routes(props) {
         exact path="/"
         render={() => {
           return (
-            <HomePage isLoggedIn={isLoggedIn} location="home-page" />
+            <HomePage
+              isLoggedIn={isLoggedIn}
+              location="home-page"
+            />
           );
         }}
       >

@@ -8,33 +8,42 @@ function Favorites(props) {
   const { location } = props;
   // const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const favorites = useSelector((state) => state.user.userInfo.favorites);
+  // let resultsList = null;
+  const resultsList = favorites.map((song) => {
+    const songDetails = song.song;
+    return (
+      <section
+        key={Math.random()}
+      >
+        <Song
+          song={{
+            id: song.id,
+            song: {
+              Artist: songDetails.Artist,
+              Song_Name: songDetails.Song_Name,
+              Album_Cover: songDetails.Album_Cover,
+              isFavorite: 'true',
+            },
+            comments: song.comments || [],
+          }}
+          isSearchResult="false"
+          isFavoritesPage="true"
+          location={location}
+        />
+      </section>
+    );
+  });
 
-  let resultsList = null;
-  if (favorites !== '') {
-    resultsList = favorites.map((song) => {
-      const songDetails = song.song;
-      return (
-        <section
-          key={Math.random()}
-        >
-          <Song
-            albumCover={songDetails.Album_Cover}
-            artist={songDetails.Artist}
-            title={songDetails.Song_Name}
-            song={song}
-            isSearchResult="false"
-            isFavoritesPage="true"
-            location={location}
-          />
-        </section>
-      );
-    });
-  }
   return (
     <>
       { favorites.length > 0 && (
         <section className="favorites-page">
           {resultsList || null }
+        </section>
+      )}
+      { favorites.length === 0 && (
+        <section className="favorites-page">
+          Favorite Some Songs
         </section>
       )}
     </>

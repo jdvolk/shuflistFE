@@ -3,6 +3,7 @@
 /* eslint-disable quote-props */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+// eslint-disable-next-line no-unused-vars
 import { addToFavorites, removeFromFavorites } from './getUserSlice';
 
 export const userPosts = createSlice({
@@ -28,29 +29,19 @@ export const userPosts = createSlice({
     addPosts: (state, action) => {
       state.posts = action.payload;
     },
-    favorite: (state, action) => {
+    favoritePosts: (state, action) => {
       const foundPost = state.posts
-        .find((post) => post.id === action.payload)
-        || action.payload;
+        .find((post) => post.id === action.payload);
       foundPost.song.isFavorite = 'true';
     },
-    unFavorite: (state, action) => {
+    unFavoritePosts: (state, action) => {
       const foundPost = state.posts
         .find((post) => post.id === action.payload)
-        || action.payload;
-      foundPost.song.isFavorite = 'false';
+        || null;
+      if (foundPost !== null) {
+        foundPost.song.isFavorite = 'false';
+      }
     },
-    // switchFavorite: (state, action) => {
-    //   const foundPost = state.posts
-    //     .find((post) => post.id === action.payload);
-    //   if (foundPost.song.isFavorite === 'true') {
-    //     foundPost.song.isFavorite = 'false';
-    //     removeFromFavorites(foundPost);
-    //   } else {
-    //     foundPost.song.isFavorite = 'true';
-    //     dispatch(addToFavorites(foundPost));
-    //   }
-    // },
   },
 });
 
@@ -58,8 +49,8 @@ export const {
   startLoading,
   stopLoading,
   addPosts,
-  favorite,
-  unFavorite,
+  favoritePosts,
+  unFavoritePosts,
 } = userPosts.actions;
 
 // eslint-disable-next-line no-unused-vars
@@ -84,12 +75,11 @@ export const getPosts = (id) => async (dispatch) => {
 };
 
 export const switchFavorite = (foundPost) => (dispatch) => {
-  console.log(foundPost);
   if (foundPost.song.isFavorite === 'true') {
-    dispatch(unFavorite(foundPost.id));
+    dispatch(unFavoritePosts(foundPost.id));
     dispatch(removeFromFavorites(foundPost.id));
   } else {
-    dispatch(favorite(foundPost.id));
+    dispatch(favoritePosts(foundPost.id));
     dispatch(addToFavorites(foundPost));
   }
 };
