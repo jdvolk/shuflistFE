@@ -26,8 +26,12 @@ export const userPosts = createSlice({
     stopLoading: (state) => {
       state.isloading = !state.isloading;
     },
-    addPosts: (state, action) => {
+    fetchPosts: (state, action) => {
       state.posts = action.payload;
+    },
+    addPosts: (state, action) => {
+      console.log(action.payload);
+      state.posts.push(action.payload);
     },
     favoritePosts: (state, action) => {
       const foundPost = state.posts
@@ -52,6 +56,7 @@ export const {
   startLoading,
   stopLoading,
   addPosts,
+  fetchPosts,
   favoritePosts,
   unFavoritePosts,
 } = userPosts.actions;
@@ -68,7 +73,7 @@ export const getPosts = (id) => async (dispatch) => {
         },
       });
     const parsed = await response.json();
-    dispatch(addPosts(parsed.posts));
+    dispatch(fetchPosts(parsed.posts));
   } catch (error) {
     console.error(error);
   } finally {

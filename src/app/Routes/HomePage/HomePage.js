@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import TimeLine from '../../Components/TimeLine/TimeLine';
 import SongSearch from '../../../features/SongSearch/Song_Input';
 
@@ -17,4 +18,4 @@ function HomePage(props) {
   );
 }
 
-export default HomePage;
+export default withRouter(HomePage);

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 // action/reducer imports
 import {
@@ -50,9 +50,9 @@ function SongSearch() {
           label="search"
         />
       </section>
-      {results && <Redirect to="/SearchResults" push />}
+      {results && <Redirect to="/SearchResults" />}
     </section>
   );
 }
 
-export default SongSearch;
+export default withRouter(SongSearch);
