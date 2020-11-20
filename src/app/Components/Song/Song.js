@@ -25,7 +25,7 @@ function Song(props) {
   const dispatch = useDispatch();
 
   const setFavorite = () => {
-    if (passedSong.song.isFavorite === 'true') {
+    if (passedSong.song.isFavorite === true) {
       setSong(
         {
           id: passedSong.id,
@@ -33,7 +33,7 @@ function Song(props) {
             Artist: passedSong.song.Artist,
             Song_Name: passedSong.song.Song_Name,
             Album_Cover: passedSong.song.Album_Cover,
-            isFavorite: 'false',
+            isFavorite: false,
           },
           comments: passedSong.comments || [],
         },
@@ -46,7 +46,7 @@ function Song(props) {
             Artist: passedSong.song.Artist,
             Song_Name: passedSong.song.Song_Name,
             Album_Cover: passedSong.song.Album_Cover,
-            isFavorite: 'true',
+            isFavorite: true,
           },
           comments: passedSong.comments || [],
         },
@@ -55,7 +55,7 @@ function Song(props) {
   };
 
   const searchResultFavorite = () => {
-    if (passedSong.song.isFavorite === 'false') {
+    if (passedSong.song.isFavorite === false) {
       dispatch(addToFavorites(
         {
           id: passedSong.id,
@@ -63,7 +63,7 @@ function Song(props) {
             Artist: passedSong.song.Artist,
             Song_Name: passedSong.song.Song_Name,
             Album_Cover: passedSong.song.Album_Cover,
-            isFavorite: 'true',
+            isFavorite: true,
           },
           comments: passedSong.comments || [],
         },

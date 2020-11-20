@@ -38,7 +38,7 @@ export const userPosts = createSlice({
         .find((post) => post.id === action.payload)
         || null;
       if (foundPost !== null) {
-        foundPost.song.isFavorite = 'true';
+        foundPost.song.isFavorite = true;
       }
     },
     unFavoritePosts: (state, action) => {
@@ -46,7 +46,7 @@ export const userPosts = createSlice({
         .find((post) => post.id === action.payload)
         || null;
       if (foundPost !== null) {
-        foundPost.song.isFavorite = 'false';
+        foundPost.song.isFavorite = false;
       }
     },
   },
@@ -83,7 +83,7 @@ export const getPosts = (id) => async (dispatch) => {
 };
 
 export const switchFavorite = (foundPost) => (dispatch) => {
-  if (foundPost.song.isFavorite === 'true') {
+  if (foundPost.song.isFavorite === true) {
     dispatch(unFavoritePosts(foundPost.id));
     dispatch(removeFromFavorites(foundPost.id));
   } else {

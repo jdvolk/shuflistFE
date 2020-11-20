@@ -10,7 +10,7 @@
         "Artist": "bty cll, Botanik",
         "Song_Name": "Like a Drug",
         "Album_Cover": "https://i.scdn.co/image/ab67616d0000b273377b5deeaf095feaa44339c1",
-        "isFavorite": "false"
+        "isFavorite": false
       },
       "body": "Check out this song I made",
       "comments" : [
@@ -27,7 +27,7 @@
         "Artist": "Louis The Child, Coin",
         "Song_Name": "Self Care",
         "Album_Cover": "https://i.scdn.co/image/ab67616d0000b2736c6c8ec19a095e0f881b9ddd",
-        "isFavorite": "false"
+        "isFavorite": false
       },
       "body": "Have you heard the new Louis the Child and Coin collab?",
       "comments" : []
