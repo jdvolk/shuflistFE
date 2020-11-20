@@ -43,7 +43,9 @@
   box-shadow: inset 4px 7px 13px 0px #000000c2,
     inset -4px -2px 13px 0px #000000c2, inset 0px 0px 13px 0px #000000c2;
 }
-
+p {
+  font-size: .5em;
+}
 .check:after { 
   content: "✔️"
 }

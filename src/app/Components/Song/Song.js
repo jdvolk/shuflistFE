@@ -129,11 +129,18 @@ function Song(props) {
         )}
         {/* eslint-disable-next-line no-mixed-operators */}
         {props.location.pathname === '/' && (
-          <section
-            className={`song ${songDetails.isFavorite}`}
-            label="check"
-            onClick={handleFavClick}
-          />
+          <section>
+            <section
+              className={`song ${songDetails.isFavorite}`}
+              label="check"
+              onClick={handleFavClick}
+            />
+            <p>
+              { props.song.Author.Author }
+              -
+              { props.song.body }
+            </p>
+          </section>
         )}
         {props.location.pathname === '/Favorites' && (
           <section

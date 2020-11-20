@@ -31,7 +31,7 @@ export const userPosts = createSlice({
     },
     addPosts: (state, action) => {
       console.log(action.payload);
-      state.posts.push(action.payload);
+      state.posts.unshift(action.payload);
     },
     favoritePosts: (state, action) => {
       const foundPost = state.posts
