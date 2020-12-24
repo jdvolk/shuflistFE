@@ -16,7 +16,8 @@ function PostSong() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { song } = location;
-  const songDetails = song.song;
+  // const songDetails = song.song;
+  console.log(song);
   const [userInput, setSongInput] = useState('');
   const [userSumbitted, setUserSubmitted] = useState(false);
   const User = useSelector((state) => state.user);
@@ -25,14 +26,14 @@ function PostSong() {
   // const [validation, setValidation] = useState(false);
   const addBody = (input) => {
     return {
-      id: song.id,
-      song: {
-        Artist: songDetails.Artist,
-        Song_Name: songDetails.Song_Name,
-        Album_Cover: songDetails.Album_Cover,
-        isFavorite: songDetails.isFavorite,
+      Song: {
+        Song_ID: song.Song_ID,
+        Artist: song.Artist,
+        Song_Name: song.Song_Name,
+        Album_Cover: song.Album_Cover,
+        isFavorite: song.isFavorite,
       },
-      body: input,
+      Body: input,
       Author: { Author: UserName, Author_Id: UserId },
     };
   };
@@ -50,7 +51,7 @@ function PostSong() {
   return (
     <section className="post-form">
       <Song
-        song={song}
+        Song={song}
       />
       <form
         onSubmit={(e) => {
