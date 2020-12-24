@@ -6,6 +6,8 @@ import { createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line no-unused-vars
 import { addToFavorites, removeFromFavorites } from './getUserSlice';
 
+const url = 'http://localhost:10000/';
+
 export const userPosts = createSlice({
   name: 'UserPosts',
   initialState: {
@@ -35,18 +37,18 @@ export const userPosts = createSlice({
     },
     favoritePosts: (state, action) => {
       const foundPost = state.posts
-        .find((post) => post.id === action.payload)
+        .find((post) => post.Post_ID === action.payload)
         || null;
       if (foundPost !== null) {
-        foundPost.song.isFavorite = true;
+        foundPost.Song.isFavorite = true;
       }
     },
     unFavoritePosts: (state, action) => {
       const foundPost = state.posts
-        .find((post) => post.id === action.payload)
+        .find((post) => post.Post_ID === action.payload)
         || null;
       if (foundPost !== null) {
-        foundPost.song.isFavorite = false;
+        foundPost.Song.isFavorite = false;
       }
     },
   },
@@ -65,15 +67,10 @@ export const {
 export const getPosts = (id) => async (dispatch) => {
   dispatch(startLoading());
   try {
-    const response = await fetch('/user_posts.json',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      });
+    const response = await fetch(`${url}Home`);
+    // const response = await fetch('/user_posts.json');
     const parsed = await response.json();
-    dispatch(fetchPosts(parsed.posts));
+    dispatch(fetchPosts(parsed));
   } catch (error) {
     console.error(error);
   } finally {
@@ -83,15 +80,15 @@ export const getPosts = (id) => async (dispatch) => {
 };
 
 export const switchFavorite = (foundPost) => (dispatch) => {
-  if (foundPost.song.isFavorite === true) {
-    dispatch(unFavoritePosts(foundPost.id));
-    dispatch(removeFromFavorites(foundPost.id));
+  if (foundPost.isFavorite === true) {
+    dispatch(unFavoritePosts(foundPost.Post_ID));
+    dispatch(removeFromFavorites(foundPost.Post_ID));
   } else {
-    dispatch(favoritePosts(foundPost.id));
+    dispatch(favoritePosts(foundPost.Post_ID));
     dispatch(addToFavorites(foundPost));
   }
 };
 
 export const selectPosts = (state) => state.posts.posts;
-export const findSong = (id) => selectPosts.find((song) => song.id === id);
+export const findSong = (id) => selectPosts.find((song) => song.Song_ID === id);
 export default userPosts.reducer;
