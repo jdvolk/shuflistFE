@@ -40,7 +40,7 @@ export const userSlice = createSlice({
       const foundSongIndex = state.userInfo.favorites
       // eslint-disable-next-line arrow-body-style
         .findIndex((song) => {
-          return song.id === action.payload.id;
+          return song.Song_ID === action.payload.Song_ID;
         });
       console.log('payload', action.payload);
       if (foundSongIndex === -1) {
@@ -51,7 +51,7 @@ export const userSlice = createSlice({
       const foundSongIndex = state.userInfo.favorites
         // eslint-disable-next-line arrow-body-style
         .findIndex((song) => {
-          return song.id === action.payload.id;
+          return song.Song_ID === action.payload.Song_ID;
         });
       if (foundSongIndex > -1) {
         state.userInfo.favorites.splice(foundSongIndex, 1);
@@ -91,7 +91,7 @@ export const getUser = () => async (dispatch) => {
 };
 
 export const selectUser = (state) => state.user;
-export const selectFavorites = (state) => state.user.userDetails.favorites;
+export const selectFavorites = (state) => state.user.userInfo.favorites;
 export const selectUserInput = (state) => state.user.userInfo.userInput;
 export const selectIsLoggedIn = (state) => state.user.isLoggedIn;
 // export const selectUserPosts = state => state.user.userInfo.posts;
