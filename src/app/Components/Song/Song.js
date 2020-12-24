@@ -19,53 +19,53 @@ import { switchFavorite } from '../../../features/User/userPostsSlice';
 function Song(props) {
   const [passedSong, setSong] = useState(null);
   useEffect(() => {
-    setSong(props.song);
-  }, [props.song]);
+    setSong(props.Song);
+  }, [props.Song]);
 
   const dispatch = useDispatch();
 
   const setFavorite = () => {
-    if (passedSong.song.isFavorite === true) {
+    if (passedSong.isFavorite === true) {
       setSong(
         {
-          id: passedSong.id,
-          song: {
-            Artist: passedSong.song.Artist,
-            Song_Name: passedSong.song.Song_Name,
-            Album_Cover: passedSong.song.Album_Cover,
-            isFavorite: false,
-          },
-          comments: passedSong.comments || [],
+          // Song: {
+          Song_ID: passedSong.Song_ID,
+          Artist: passedSong.Artist,
+          Song_Name: passedSong.Song_Name,
+          Album_Cover: passedSong.Album_Cover,
+          isFavorite: false,
+          // },
+          // Comments: passedSong.Comments || [],
         },
       );
     } else {
       setSong(
         {
-          id: passedSong.id,
-          song: {
-            Artist: passedSong.song.Artist,
-            Song_Name: passedSong.song.Song_Name,
-            Album_Cover: passedSong.song.Album_Cover,
-            isFavorite: true,
-          },
-          comments: passedSong.comments || [],
+          // Song: {
+          Song_ID: passedSong.Song_ID,
+          Artist: passedSong.Artist,
+          Song_Name: passedSong.Song_Name,
+          Album_Cover: passedSong.Album_Cover,
+          isFavorite: true,
+          // },
+          // Comments: passedSong.Comments || [],
         },
       );
     }
   };
 
   const searchResultFavorite = () => {
-    if (passedSong.song.isFavorite === false) {
+    if (passedSong.isFavorite === false) {
       dispatch(addToFavorites(
         {
-          id: passedSong.id,
-          song: {
-            Artist: passedSong.song.Artist,
-            Song_Name: passedSong.song.Song_Name,
-            Album_Cover: passedSong.song.Album_Cover,
-            isFavorite: true,
-          },
-          comments: passedSong.comments || [],
+          // Song: {
+          Song_ID: passedSong.Song_ID,
+          Artist: passedSong.Artist,
+          Song_Name: passedSong.Song_Name,
+          Album_Cover: passedSong.Album_Cover,
+          isFavorite: true,
+          // },
+          // Comments: passedSong.Comments || [],
         },
       ));
     } else {
@@ -79,79 +79,83 @@ function Song(props) {
       searchResultFavorite();
     } else {
       searchResultFavorite();
+      console.log(passedSong);
       dispatch(switchFavorite(passedSong));
     }
   };
 
   if (passedSong) {
-    const songDetails = passedSong.song;
+    const songDetails = passedSong;
+    // console.log(passedSong);
     return (
-      <section className="song-container">
-        <img
-          className="album-cover"
-          src={songDetails.Album_Cover}
-          alt={`album cover for${songDetails.Song_Name}by${songDetails.Artist}`}
-        />
-        <section className="song-description">
-          <h4>
-            Song:
-            {songDetails.Song_Name}
-          </h4>
-          <h4>
-            Artist:
-            {songDetails.Artist}
-          </h4>
-        </section>
-        {props.location.pathname === '/SearchResults' && (
-          <>
-            <section className="choose-song">
-              <section className="song x" label="x" />
+      <>
+        <section className="song-container">
+          <img
+            className="album-cover"
+            src={songDetails.Album_Cover}
+            alt={`album cover for${songDetails.Song_Name}by${songDetails.Artist}`}
+          />
+          <section className="song-description">
+            <h4>
+              Song:
+              {songDetails.Song_Name}
+            </h4>
+            <h4>
+              Artist:
+              {songDetails.Artist}
+            </h4>
+          </section>
+          {props.location.pathname === '/SearchResults' && (
+            <section>
+              <section className="choose-song">
+                <section className="song x" label="x" />
+                <section
+                  className="song check"
+                  label="check"
+                  // eslint-disable-next-line arrow-body-style
+                  onClick={() => {
+                    props.history.push({
+                      pathname: '/PostSong',
+                      song: passedSong,
+                    });
+                  }}
+                />
+              </section>
               <section
-                className="song check"
+                className={`song ${songDetails.isFavorite}`}
                 label="check"
-                // eslint-disable-next-line arrow-body-style
-                onClick={() => {
-                  props.history.push({
-                    pathname: '/PostSong',
-                    song: passedSong,
-                  });
-                }}
+                onClick={handleFavClick}
               />
             </section>
-            <section
-              className={`song ${songDetails.isFavorite}`}
-              label="check"
-              onClick={handleFavClick}
-            />
-            {/* <section className="song favorite" label="check" /> */}
-            {/* <section className="song favorite" label="check"></section> */}
-          </>
-        )}
-        {/* eslint-disable-next-line no-mixed-operators */}
-        {props.location.pathname === '/' && (
-          <section>
-            <section
-              className={`song ${songDetails.isFavorite}`}
-              label="check"
-              onClick={handleFavClick}
-            />
-            <p>
-              { props.song.Author.Author }
-              -
-              { props.song.body }
-            </p>
-          </section>
-        )}
-        {props.location.pathname === '/Favorites' && (
-          <section
-            className="song"
-            label="check"
-            onClick={handleFavClick}
-          >
-            <section className="song x" label="x" />
-          </section>
-        )}
-      </section>
+          )}
+          {/* eslint-disable-next-line no-mixed-operators */}
+          {props.location.pathname === '/' && (
+            <section>
+              <section
+                className={`song ${songDetails.isFavorite}`}
+                label="check"
+                onClick={handleFavClick}
+              />
+              <p>
+                { props.Post.Author.Author }
+                -
+                { props.Post.Body }
+              </p>
+            </section>
+          )}
+          {props.location.pathname === '/Favorites' && (
+            <section>
+              <section
+                className="song"
+                label="check"
+                onClick={handleFavClick}
+              >
+                <section className="song x" label="x" />
+              </section>
+            </section>
+          )}
+        </section>
+      </>
     );
   // eslint-disable-next-line no-else-return
   } else {
