@@ -18,7 +18,8 @@ function TimeLine(props) {
           <Song
             // eslint-disable-next-line react/prop-types
             location={props.location}
-            song={song}
+            Song={song.Song}
+            Post={song}
             isSearchResult="false"
           />
         </section>
