@@ -2,6 +2,7 @@
 /* eslint-disable quote-props */
 import { createSlice } from '@reduxjs/toolkit';
 
+const url = 'http://localhost:10000/';
 // song input actions/reducer
 export const songSearchSlice = createSlice({
   // default state
@@ -41,12 +42,13 @@ export const {
 export const fetchResults = (input) => async (dispatch) => {
   dispatch(songInput(input));
   try {
-    const response = await fetch('/song_results.json',
+    // const response = await fetch('/song_results.json',
+    const response = await fetch(`${url}searchResults`,
       {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   'Accept': 'application/json',
+        // },
       });
     const parsed = await response.json();
     dispatch(searchResults(parsed));
