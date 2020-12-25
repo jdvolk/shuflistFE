@@ -3,7 +3,7 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PostSong.css';
 import { Redirect, useLocation, withRouter } from 'react-router-dom';
@@ -12,12 +12,13 @@ import Emoji from '../Emoji/Emoji';
 import { addPosts } from '../../../features/User/userPostsSlice';
 import { resetSearch } from '../../../features/SongSearch/songInputSlice';
 
+import renderPostSong from './renderPostSong';
+
 function PostSong() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { song } = location;
   // const songDetails = song.song;
-  console.log(song);
   const [userInput, setSongInput] = useState('');
   const [userSumbitted, setUserSubmitted] = useState(false);
   const User = useSelector((state) => state.user);
@@ -49,46 +50,17 @@ function PostSong() {
 
   // const songDetails = song.song;
   return (
-    <section className="post-form">
-      <Song
-        Song={song}
-      />
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        }}
-      >
-        <section className="song-search-container">
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label>
-            <input
-              type="text"
-              value={userInput || ''}
-              onChange={(e) => setSongInput(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  // console.log('make post request');
-                  handlePostClick();
-                }
-              }}
-            />
-          </label>
-          <section
-            className="post-click"
-            onClick={() => {
-              // console.log('make post request');
-              handlePostClick();
-            }}
-          >
-            <Emoji
-              label="send-post"
-            />
-          </section>
-          {userSumbitted && <Redirect to="/" push exact /> }
-        </section>
-      </form>
-    </section>
+    // TODO Extract this render logic to seperate file
+    renderPostSong(
+      Song,
+      song,
+      Emoji,
+      userInput,
+      setSongInput,
+      handlePostClick,
+      userSumbitted,
+      Redirect,
+    )
   );
 }
 

@@ -7,24 +7,15 @@ function Favorites(props) {
   // eslint-disable-next-line react/prop-types
   const { location } = props;
   // const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  const favorites = useSelector((state) => state.user.userInfo.favorites);
+  const favorites = useSelector((state) => state.user.userInfo.Favorites);
   // let resultsList = null;
   const resultsList = favorites.map((song) => {
-    // const songDetails = song.song;
-    console.log(song);
     return (
       <section
         key={Math.random()}
       >
         <Song
           Song={song}
-          // Song={{
-          //   Song_ID: song.Song_,
-          //   Artist: songDetails.Artist,
-          //   Song_Name: songDetails.Song_Name,
-          //   Album_Cover: songDetails.Album_Cover,
-          //   isFavorite: 'true',
-          // }}
           isSearchResult="false"
           isFavoritesPage="true"
           location={location}

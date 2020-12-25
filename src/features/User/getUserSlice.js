@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-cycle
+const url = 'http://localhost:10000/';
 
 export const userSlice = createSlice({
   name: 'User',
@@ -9,12 +10,11 @@ export const userSlice = createSlice({
     isLoggedIn: false,
     userInput: '',
     userInfo: {
-      userId: '',
-      userName: '',
-      favorites: [],
-      following: [],
-      followers: [],
-      settings: [],
+      User_Id: '',
+      UserName: '',
+      Favorites: [],
+      Following: [],
+      Followers: [],
       isLoading: false,
     },
   },
@@ -37,24 +37,26 @@ export const userSlice = createSlice({
       state.userInput = '';
     },
     addToFavorites: (state, action) => {
-      const foundSongIndex = state.userInfo.favorites
+      const foundSongIndex = state.userInfo.Favorites
       // eslint-disable-next-line arrow-body-style
         .findIndex((song) => {
           return song.Song_ID === action.payload.Song_ID;
         });
-      console.log('payload', action.payload);
       if (foundSongIndex === -1) {
-        state.userInfo.favorites.unshift(action.payload);
+        state.userInfo.Favorites.unshift(action.payload);
       }
     },
     removeFromFavorites: (state, action) => {
-      const foundSongIndex = state.userInfo.favorites
+      console.log(action);
+      if (action.payload !== undefined) {
+        const foundSongIndex = state.userInfo.Favorites
         // eslint-disable-next-line arrow-body-style
-        .findIndex((song) => {
-          return song.Song_ID === action.payload.Song_ID;
-        });
-      if (foundSongIndex > -1) {
-        state.userInfo.favorites.splice(foundSongIndex, 1);
+          .findIndex((song) => {
+            return song.Song_ID === action.payload.Song_ID;
+          });
+        if (foundSongIndex > -1) {
+          state.userInfo.Favorites.splice(foundSongIndex, 1);
+        }
       }
     },
   },
@@ -73,14 +75,10 @@ export const {
 export const getUser = () => async (dispatch) => {
   dispatch(startLoading());
   try {
-    const response = await fetch('/user_data.json',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      });
+    // const response = await fetch('/user_data.json',
+    const response = await fetch(`${url}User`);
     const parsed = await response.json();
+    console.log(parsed);
     dispatch(login(parsed));
   } catch (error) {
     console.error(error);
@@ -91,7 +89,7 @@ export const getUser = () => async (dispatch) => {
 };
 
 export const selectUser = (state) => state.user;
-export const selectFavorites = (state) => state.user.userInfo.favorites;
+export const selectFavorites = (state) => state.user.userInfo.Favorites;
 export const selectUserInput = (state) => state.user.userInfo.userInput;
 export const selectIsLoggedIn = (state) => state.user.isLoggedIn;
 // export const selectUserPosts = state => state.user.userInfo.posts;

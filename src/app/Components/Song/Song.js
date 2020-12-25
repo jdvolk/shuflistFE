@@ -34,9 +34,9 @@ function Song(props) {
     setFavorite(passedSong, setSong);
     if (props.location === 'search-result') {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
+      dispatch(switchFavorite(passedSong));
     } else {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
-      dispatch(switchFavorite(passedSong));
     }
   };
 

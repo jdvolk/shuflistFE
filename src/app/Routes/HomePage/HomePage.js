@@ -7,7 +7,6 @@ import SongSearch from '../../../features/SongSearch/Song_Input';
 function HomePage(props) {
   // eslint-disable-next-line react/prop-types
   const { location } = props;
-  // const { isLoggedIn } = props
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <section>
