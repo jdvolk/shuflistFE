@@ -5,7 +5,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Song.css';
 import { withRouter, Redirect } from 'react-router-dom';
 import setFavorite from './useFavorite';
@@ -29,6 +29,7 @@ function Song(props) {
   }, [props.Song]);
 
   const dispatch = useDispatch();
+  const userFavorites = useSelector((state) => state.user.userInfo.Favorites);
 
   const handleFavClick = () => {
     setFavorite(passedSong, setSong);
@@ -40,8 +41,16 @@ function Song(props) {
     }
   };
 
+  const checkFavorite = (songID) => {
+    const isInFavorites = userFavorites.find((song) => song.Song_ID === songID);
+    if (isInFavorites) {
+      setFavorite(passedSong, setSong);
+    }
+  };
+
   if (passedSong) {
     const songDetails = passedSong;
+    if (!songDetails.isFavorite) checkFavorite(songDetails.Song_ID);
     return (
       <>
         <section className="song-container">
