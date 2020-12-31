@@ -22,7 +22,7 @@ function Comments(props) {
     });
   }
   return (
-    <section>{props.Comments && comments}</section>
+    <section>{props.Comments.length && comments}</section>
   );
 }
 
