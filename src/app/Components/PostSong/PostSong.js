@@ -3,27 +3,28 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PostSong.css';
 import { Redirect, useLocation, withRouter } from 'react-router-dom';
 import Song from '../Song/Song';
-import Emoji from '../Emoji/Emoji';
+// import CommentBox from '../CommentBox/CommentBox';
+// import Emoji from '../Emoji/Emoji';
 import { addPosts } from '../../../features/User/userPostsSlice';
 import { resetSearch } from '../../../features/SongSearch/songInputSlice';
 
-import renderPostSong from './renderPostSong';
+// import renderPostSong from './renderPostSong';
 
 function PostSong() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { song } = location;
   // const songDetails = song.song;
-  const [userInput, setSongInput] = useState('');
+  // const [userInput, setSongInput] = useState('');
   const [userSumbitted, setUserSubmitted] = useState(false);
   const User = useSelector((state) => state.user);
-  const UserName = User.userInfo.userName;
-  const UserId = User.userInfo.userId;
+  const UserName = User.userInfo.User_Name;
+  const UserId = User.userInfo.User_Id;
   // const [validation, setValidation] = useState(false);
   const addBody = (input) => {
     return {
@@ -38,8 +39,8 @@ function PostSong() {
       Author: { Author: UserName, Author_Id: UserId },
     };
   };
-  const handlePostClick = () => {
-    const payload = addBody(userInput);
+  const handlePostClick = (input) => {
+    const payload = addBody(input);
     // console.log('payload', payload);
     // song.body = userInput;
     dispatch(addPosts(payload));
@@ -51,16 +52,17 @@ function PostSong() {
   // const songDetails = song.song;
   return (
     // TODO Extract this render logic to seperate file
-    renderPostSong(
-      Song,
-      song,
-      Emoji,
-      userInput,
-      setSongInput,
-      handlePostClick,
-      userSumbitted,
-      Redirect,
-    )
+    <section className="post-form">
+      <Song
+        Song={song}
+        handlePostClick={handlePostClick}
+      />
+
+      <section className="song-search-container">
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+        {userSumbitted && <Redirect to="/" push exact /> }
+      </section>
+    </section>
   );
 }
 

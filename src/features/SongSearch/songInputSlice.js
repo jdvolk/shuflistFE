@@ -43,6 +43,7 @@ export const fetchResults = (input) => async (dispatch) => {
   dispatch(songInput(input));
   try {
     // const response = await fetch('/song_results.json',
+    // const response = await fetch(`${url}searchResults`,
     const response = await fetch(`${url}searchResults`,
       {
         // headers: {

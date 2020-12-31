@@ -14,10 +14,12 @@ import renderSearchResults from './render/SearchResults';
 import renderPosts from './render/Posts';
 import renderFavorites from './render/Favorites';
 import renderDefault from './render/Default';
+import renderPostSong from './render/PostSong';
 
 // import { switchFavorite } from '../../../features/User/userPostsSlice';
 import { addToFavorites, removeFromFavorites } from '../../../features/User/getUserSlice';
 import { switchFavorite } from '../../../features/User/userPostsSlice';
+
 // import { searchResults } from '../../../features/SongSearch/songInputSlice';
 
 // import Emoji from '../Emoji/Emoji'
@@ -43,9 +45,7 @@ function Song(props) {
 
   const checkFavorite = (songID) => {
     const isInFavorites = userFavorites.find((song) => song.Song_ID === songID);
-    if (isInFavorites) {
-      setFavorite(passedSong, setSong);
-    }
+    if (isInFavorites) setFavorite(passedSong, setSong);
   };
 
   if (passedSong) {
@@ -54,6 +54,7 @@ function Song(props) {
     return (
       <>
         <section className="song-container">
+          {/* TODO check if switch case will work  */}
           {renderDefault(songDetails)}
           {props.location.pathname === '/SearchResults' && (
             renderSearchResults(props, passedSong, songDetails, handleFavClick)
@@ -64,6 +65,9 @@ function Song(props) {
           )}
           {props.location.pathname === '/Favorites' && (
             renderFavorites(passedSong, handleFavClick)
+          )}
+          {props.location.pathname === '/PostSong' && (
+            renderPostSong(props.handlePostClick)
           )}
         </section>
       </>

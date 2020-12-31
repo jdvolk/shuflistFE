@@ -37,7 +37,14 @@ function Navigation(props) {
             Logout
           </Link>
         )}
-      <Link to="/Favorites"> Favorites </Link>
+      <Link
+        to="/Favorites"
+        onClick={() => {
+          dispatch(resetSearch());
+        }}
+      >
+        Favorites
+      </Link>
       <Link
         to="/Search"
       >
