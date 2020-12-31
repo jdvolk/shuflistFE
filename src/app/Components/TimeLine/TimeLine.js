@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Song from '../Song/Song';
+import Comments from '../Comments/Comments';
 import './TimeLine.css';
 
 function TimeLine(props) {
@@ -22,6 +23,7 @@ function TimeLine(props) {
             Post={song}
             isSearchResult="false"
           />
+          {song.Comments && <Comments Comments={song.Comments} />}
         </section>
       );
     });
