@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import useDynamicHeightField from './useDynamicHeightField';
 import './CommentBox.css';
+// eslint-disable-next-line import/no-named-as-default
+import { postComment, addComment } from '../../../features/User/userPostsSlice';
 
 const INITIAL_HEIGHT = 46;
 
@@ -13,6 +15,7 @@ const INITIAL_HEIGHT = 46;
  * https://letsbuildui.dev/articles/how-to-build-an-expandable-comment-box
  */
 function CommentBox(props) {
+  const dispatch = useDispatch();
   const location = useLocation();
   const user = useSelector((state) => state.user.userInfo);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -39,13 +42,28 @@ function CommentBox(props) {
     setIsExpanded(false);
   };
 
+  const handleCommentSubmit = () => {
+    const commentData = {
+      Comment_ID: Math.floor(Math.random()),
+      Author: {
+        Author: user.User_Name,
+        Author_ID: user.User_ID,
+      },
+      Body: commentValue,
+      Post_ID: props.Post.Post_ID,
+    };
+    return commentData;
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (location.pathname === '/PostSong') {
       props.handlePostClick(commentValue);
     }
     if (location.pathname === '/') {
-      console.log('send the form data somewhere');
+      const commentData = handleCommentSubmit();
+      dispatch(addComment(commentData));
+      postComment(commentData);
     }
   };
 
@@ -75,7 +93,7 @@ function CommentBox(props) {
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label id="comment" htmlFor="comment">What are your thoughts?</label>
+        <label name="comment" htmlFor="comment">What are your thoughts?</label>
         <textarea
           ref={textRef}
           onClick={onExpand}
@@ -85,10 +103,10 @@ function CommentBox(props) {
           placeholder="What are your thoughts?"
           value={commentValue}
           name="comment"
-          id="comment"
+          // id="comment"
         />
         <div className="actions">
-          <button id="comment" type="button" className="cancel" onClick={onClose}>
+          <button name="comment" type="button" className="cancel" onClick={onClose}>
             Cancel
           </button>
           <button className="comment" type="submit" disabled={commentValue.length < 1}>

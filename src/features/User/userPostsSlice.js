@@ -13,9 +13,19 @@ export const userPosts = createSlice({
   initialState: {
     posts: [
       {
-        id: 0,
-        song: {},
-        comments: [],
+        Post_ID: 0,
+        Song: {},
+        Comments: [
+          {
+            Comment_ID: 0,
+            Author: {
+              Author_ID: 0,
+              Author: 'string',
+            },
+            Body: 'String',
+            Post_ID: 0,
+          },
+        ],
         // isFavorite: 'false',
       },
     ],
@@ -32,7 +42,6 @@ export const userPosts = createSlice({
       state.posts = action.payload;
     },
     addPosts: (state, action) => {
-      console.log(action.payload);
       state.posts.unshift(action.payload);
     },
     favoritePosts: (state, action) => {
@@ -51,6 +60,16 @@ export const userPosts = createSlice({
         foundPost.Song.isFavorite = false;
       }
     },
+    addComment: (state, action) => {
+      if (action.payload !== undefined) {
+        const foundPost = state.posts
+          .find((post) => post.Post_ID === action.payload.Post_ID)
+        || null;
+        if (foundPost !== null) {
+          foundPost.Comments.push(action.payload);
+        }
+      }
+    },
   },
 });
 
@@ -61,6 +80,7 @@ export const {
   fetchPosts,
   favoritePosts,
   unFavoritePosts,
+  addComment,
 } = userPosts.actions;
 
 // eslint-disable-next-line no-unused-vars
@@ -72,7 +92,8 @@ export const getPosts = (id) => async (dispatch) => {
     const parsed = await response.json();
     dispatch(fetchPosts(parsed));
   } catch (error) {
-    console.error(error);
+    // eslint-disable-next-line no-alert
+    alert(error);
   } finally {
     // dispatch(resetInput())
     dispatch(stopLoading());
@@ -86,6 +107,24 @@ export const switchFavorite = (foundPost) => (dispatch) => {
   } else {
     dispatch(favoritePosts(foundPost.Post_ID));
     dispatch(addToFavorites(foundPost));
+  }
+};
+
+export const postComment = async (comment) => {
+  try {
+    const response = await fetch(`${url}Home/${comment.Post_ID}`, {
+      method: 'post',
+      body: JSON.stringify(comment),
+    });
+    const parsed = await response.json();
+    // eslint-disable-next-line no-console
+    console.log('parsed', parsed);
+    // dispatch(addComment(comment));
+    // console.log(response);
+    // eventually switch comment out for parsed when the api returns something back
+  } catch (error) {
+    // eslint-disable-next-line no-alert
+    alert(error);
   }
 };
 

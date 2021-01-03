@@ -22,12 +22,14 @@ function Navigation(props) {
         Home
       </Link>
       <Link
+        to="#/"
         onClick={() => props.history.goBack()}
       >
         Back
       </Link>
-      {!isLoggedIn ?
-        <Link to="/Login"> Login </Link> : (
+      {!isLoggedIn
+        ? <Link to="/Login"> Login </Link>
+        : (
           <Link
             to="/"
             onClick={() => {

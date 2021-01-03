@@ -19,6 +19,7 @@ const renderPosts = (props, songDetails, handleFavClick) => {
         </p>
         <CommentBox
           location="timeline"
+          Post={props.Post}
         />
       </section>
     </section>

@@ -8,8 +8,8 @@ function Comment(props) {
   if (props) {
     return (
       <section>
-        <p1>{props.Author}</p1>
-        <p1>{props.Body}</p1>
+        <p>{props.Author}</p>
+        <p>{props.Body}</p>
       </section>
     );
   }

@@ -54,7 +54,8 @@ export const fetchResults = (input) => async (dispatch) => {
     const parsed = await response.json();
     dispatch(searchResults(parsed));
   } catch (error) {
-    console.error(error);
+    // eslint-disable-next-line no-alert
+    alert(error);
   } finally {
     dispatch(resetInput());
   }

@@ -10,7 +10,7 @@ function Comments(props) {
     comments = comments.map((comment) => {
       return (
         <section
-          key={comment.Comment_ID}
+          key={comment.Comment_ID + Math.random()}
         >
           <Comment
             Author={comment.Author.Author}

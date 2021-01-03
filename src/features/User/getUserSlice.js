@@ -47,7 +47,6 @@ export const userSlice = createSlice({
       }
     },
     removeFromFavorites: (state, action) => {
-      console.log(action);
       if (action.payload !== undefined) {
         const foundSongIndex = state.userInfo.Favorites
         // eslint-disable-next-line arrow-body-style
@@ -78,10 +77,10 @@ export const getUser = () => async (dispatch) => {
     // const response = await fetch('/user_data.json',
     const response = await fetch(`${url}User`);
     const parsed = await response.json();
-    console.log(parsed);
     dispatch(login(parsed));
   } catch (error) {
-    console.error(error);
+    // eslint-disable-next-line no-alert
+    alert(error);
   } finally {
     // dispatch(resetInput())
     dispatch(stopLoading());
