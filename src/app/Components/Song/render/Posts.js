@@ -5,18 +5,26 @@ import CommentBox from '../../CommentBox/CommentBox';
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 const renderPosts = (props, songDetails, handleFavClick) => {
   return (
-    <section>
+    <section className="song-post">
       <section
-        className={`song ${songDetails.isFavorite}`}
+        className={`song favorite ${songDetails.isFavorite}`}
         label="check"
         onClick={handleFavClick}
       />
-      <section>
+      <section className="poster-info">
+        <div className="post-header">
+          <div className="user">
+            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg" alt="User avatar" />
+            <span>
+              { props.Post.Author.Author }
+            </span>
+          </div>
+        </div>
         <p>
-          { props.Post.Author.Author }
-          -
           { props.Post.Body }
         </p>
+      </section>
+      <section className="post-comment-box">
         <CommentBox
           location="timeline"
           Post={props.Post}

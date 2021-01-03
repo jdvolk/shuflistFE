@@ -1,7 +1,7 @@
 .song-container {
   padding: 2%;
   display: flex;
-  max-width: 60vw;
+  max-width: 80vw;
   margin: 10px;
   box-shadow: inset 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
   border-top-right-radius: 15px ;
@@ -9,7 +9,8 @@
 }
 
 .album-cover {
-  max-width: 30%;
+  max-width: 95%;
+  object-fit: contain;
 }
 
 .song {
@@ -31,6 +32,54 @@
   background-origin: border-box;
   background-clip: content-box, border-box;
   width: 50px
+}
+
+.song-default {
+  display:flex;
+  flex-direction: column;
+  max-width: 40%;
+}
+.song-description{
+  display: flex;
+  flex-direction: column;
+  align-content: unset;
+  text-align: left;
+}
+p {
+  margin: 0;
+}
+.song-post {
+  display: grid;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-columns: 50% 50%;
+}
+.poster-info {
+  grid-row-start: 1;
+}
+/* .header {
+  transition: opacity var(--transition) 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-40px);
+} */
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user img {
+  border-radius: 20px;
+  margin-right: 10px;
+}
+.post-comment-box {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+}
+.favorite {
+  grid-column-start: 2;
+  margin-left: 70%;
 }
   
 .song:hover {
