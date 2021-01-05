@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  width="800"
+  height="300"
+  viewBox="0 0 211.66667 79.375001"
+  version="1.1"
+  id="svg8"
+  inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+  sodipodi:docname="shuflist - Logo.svg">
+  <defs
+    id="defs2" />
+  <sodipodi:namedview
+    id="base"
+    pagecolor="#ffffff"
+    bordercolor="#666666"
+    borderopacity="1.0"
+    inkscape:pageopacity="0.0"
+    inkscape:pageshadow="2"
+    inkscape:zoom="0.47656919"
+    inkscape:cx="400"
+    inkscape:cy="400"
+    inkscape:document-units="mm"
+    inkscape:current-layer="layer1"
+    inkscape:document-rotation="0"
+    showgrid="false"
+    units="px"
+    inkscape:pagecheckerboard="true"
+    inkscape:window-width="1920"
+    inkscape:window-height="1017"
+    inkscape:window-x="-8"
+    inkscape:window-y="-8"
+    inkscape:window-maximized="1" />
+  <metadata
+    id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+        rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+          rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+    inkscape:label="Layer 1"
+    inkscape:groupmode="layer"
+    id="layer1">
+    <path
+      id="path884"
+      d="m 43.320403,44.266147 v 6.71537 c -2.51036,0 -4.894044,0.25304 -7.181577,-1.62514 -1.386645,-1.13854 -2.387671,-3.17393 -3.790276,-4.1745 -0.742095,1.82351 -3.367355,5.19707 -3.350798,7.32583 0.01331,1.68343 1.951386,3.35191 2.752332,4.16476 3.58321,3.63758 7.40321,4.07683 11.570319,4.07683 v 7.93636 l 7.979536,-11.90452 v -0.30524 z"
+      style="fill:#040400;fill-opacity:1;stroke:none;stroke-width:0.246763" />
+    <path
+      id="path882"
+      d="m 6.61456,18.930919 v 9.462549 c 2.716909,0 5.625537,-0.52258 8.179029,1.18308 0.952126,0.63596 3.046438,3.97676 3.971748,3.5952 1.309762,-0.53996 3.151296,-5.47271 3.808295,-7.22021 -1.96999,-2.27176 -3.82404,-4.602052 -6.184139,-5.891732 -3.106778,-1.69768 -6.531074,-1.128887 -9.774933,-1.128887"
+      style="fill:#040400;fill-opacity:1;stroke:none;stroke-width:0.246763" />
+    <path
+      id="path850"
+      d="m 43.320403,10.689343 v 7.936333 c -3.976201,0 -7.713205,0.194899 -11.171344,3.621715 -7.104773,7.040587 -10.013029,22.397266 -17.754456,27.722846 -2.364058,1.62634 -5.253698,1.01127 -7.780043,1.01127 v 9.46254 c 5.334196,0 9.993614,0.15176 14.363154,-5.33107 5.839434,-7.32678 9.095078,-21.619799 16.358043,-25.967469 1.88318,-1.12727 4.002139,-0.75204 5.984646,-0.75204 v 6.715349 L 51.299939,22.89909 v -0.305247 l -7.979536,-11.9045"
+      style="fill:#ff5700;fill-opacity:1;stroke:none;stroke-width:0.246763" />
+    <text
+      id="text894"
+      y="57.604328"
+      x="55.668827"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60.3545px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';letter-spacing:0px;word-spacing:0px;fill:#ff5700;fill-opacity:1;stroke-width:0.419788;stroke-miterlimit:4;stroke-dasharray:none"
+      xml:space="preserve"><tspan
+        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';fill:#ff5700;fill-opacity:1;stroke-width:0.419788;stroke-miterlimit:4;stroke-dasharray:none"
+        y="57.604328"
+        x="55.668827"
+        id="tspan892"
+        sodipodi:role="line">huflist</tspan></text>
+  </g>
+</svg>
