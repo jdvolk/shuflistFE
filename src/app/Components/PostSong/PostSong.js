@@ -10,7 +10,7 @@ import { Redirect, useLocation, withRouter } from 'react-router-dom';
 import Song from '../Song/Song';
 // import CommentBox from '../CommentBox/CommentBox';
 // import Emoji from '../Emoji/Emoji';
-import { addPosts } from '../../../features/User/userPostsSlice';
+import { addPosts, createPost } from '../../../features/User/userPostsSlice';
 import { resetSearch } from '../../../features/SongSearch/songInputSlice';
 
 // import renderPostSong from './renderPostSong';
@@ -37,13 +37,15 @@ function PostSong() {
       },
       Body: input,
       Author: { Author: UserName, Author_Id: UserId },
+      Comments: [],
     };
   };
-  const handlePostClick = (input) => {
+  const handlePostClick = async (input) => {
     const payload = addBody(input);
     // console.log('payload', payload);
     // song.body = userInput;
     dispatch(addPosts(payload));
+    await createPost(payload);
     dispatch(resetSearch());
     setUserSubmitted(true);
     // setValidation(true);

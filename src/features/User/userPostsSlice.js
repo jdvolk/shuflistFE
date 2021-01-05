@@ -110,21 +110,33 @@ export const switchFavorite = (foundPost) => (dispatch) => {
   }
 };
 
+export const createPost = async (post) => {
+  try {
+    const response = await fetch(`${url}searchResults`, {
+      method: 'post',
+      body: JSON.stringify(post),
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const postComment = async (comment) => {
   try {
     const response = await fetch(`${url}Home/${comment.Post_ID}`, {
       method: 'post',
       body: JSON.stringify(comment),
     });
-    const parsed = await response.json();
+    console.log(response);
+    // const parsed = await response.json();
     // eslint-disable-next-line no-console
-    console.log('parsed', parsed);
+    // console.log('parsed', parsed);
     // dispatch(addComment(comment));
     // console.log(response);
     // eventually switch comment out for parsed when the api returns something back
   } catch (error) {
-    // eslint-disable-next-line no-alert
-    alert(error);
+    console.log(error);
   }
 };
 
