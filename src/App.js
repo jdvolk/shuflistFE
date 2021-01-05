@@ -2,8 +2,9 @@
 import React from 'react';
 import './App.css';
 import { Switch, useHistory } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
+import logo from '../src/assets/shuflist-Logo.svg';
+
 import Navigation from './app/Components/Navagation/Navigation';
 // import SongSearch from './features/SongSearch/Song_Input'
 // import SearchResults from './features/SongResults/SongResultsContainer'
@@ -16,12 +17,12 @@ import Routes from '../src/app/Routes/routes';
 function App() {
   const history = useHistory();
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-
+  // const imageUrl = '../src/assets/shuflist-Logo.svg';
   return (
     <div className="App">
       <section className="App-Container">
         <header className="App-header">
-          <h1>ShuffList</h1>
+          <img src={logo} alt="shufflist-logo" className="logo" />
         </header>
         <Navigation history={history} />
         <section className="App-Body">
