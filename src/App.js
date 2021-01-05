@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <section className="App-Container">
         <header className="App-header">
-          <h1>Song Search</h1>
+          <h1>ShuffList</h1>
         </header>
         <Navigation history={history} />
         <section className="App-Body">

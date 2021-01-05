@@ -1,0 +1,9 @@
+.comments.expanded {
+  transform: translateY(10px);
+  opacity: 1;
+  visibility: visible;
+}
+.comments.collapsed {
+  transform: translate(185px, -50px);
+  opacity: 1;
+}
