@@ -28,6 +28,7 @@ function PostSong() {
   // const [validation, setValidation] = useState(false);
   const addBody = (input) => {
     return {
+      Post_ID: Math.floor(Math.random() * 100),
       Song: {
         Song_ID: song.Song_ID,
         Artist: song.Artist,
