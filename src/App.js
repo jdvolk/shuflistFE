@@ -3,7 +3,8 @@ import React from 'react';
 import './App.css';
 import { Switch, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import logo from '../src/assets/shuflist-Logo.svg';
+// import logo from '../src/assets/shuflist-Logo.svg';
+import logo2 from '../src/assets/shuflist_5.png';
 
 import Navigation from './app/Components/Navagation/Navigation';
 // import SongSearch from './features/SongSearch/Song_Input'
@@ -22,7 +23,7 @@ function App() {
     <div className="App">
       <section className="App-Container">
         <header className="App-header">
-          <img src={logo} alt="shufflist-logo" className="logo" />
+          <img src={logo2} alt="shufflist-logo" className="logo" />
         </header>
         <Navigation history={history} />
         <section className="App-Body">

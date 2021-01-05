@@ -1,6 +1,7 @@
 /* eslint-disable quote-props */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
 // eslint-disable-next-line import/no-cycle
 const url = 'http://localhost:10000/';
 
@@ -73,18 +74,8 @@ export const {
 
 export const getUser = () => async (dispatch) => {
   dispatch(startLoading());
-  try {
-    // const response = await fetch('/user_data.json',
-    const response = await fetch(`${url}User`);
-    const parsed = await response.json();
-    dispatch(login(parsed));
-  } catch (error) {
-    // eslint-disable-next-line no-alert
-    alert(error);
-  } finally {
-    // dispatch(resetInput())
-    dispatch(stopLoading());
-  }
+  const fullUrl = `${url}User`;
+  useFetchDispatch(fullUrl, login, stopLoading, dispatch);
 };
 
 export const selectUser = (state) => state.user;

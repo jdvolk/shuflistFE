@@ -5,6 +5,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line no-unused-vars
 import { addToFavorites, removeFromFavorites } from './getUserSlice';
+import usePostRequest from '../networkReqHooks/usePostRequest';
+import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
+import useFindPost from './UserHooks/useFindPost';
+import useFavoritesActions from './UserHooks/useFavoritesActions';
 
 const url = 'http://localhost:10000/';
 
@@ -45,26 +49,14 @@ export const userPosts = createSlice({
       state.posts.unshift(action.payload);
     },
     favoritePosts: (state, action) => {
-      const foundPost = state.posts
-        .find((post) => post.Post_ID === action.payload)
-        || null;
-      if (foundPost !== null) {
-        foundPost.Song.isFavorite = true;
-      }
+      useFavoritesActions(state, action);
     },
     unFavoritePosts: (state, action) => {
-      const foundPost = state.posts
-        .find((post) => post.Post_ID === action.payload)
-        || null;
-      if (foundPost !== null) {
-        foundPost.Song.isFavorite = false;
-      }
+      useFavoritesActions(state, action);
     },
     addComment: (state, action) => {
       if (action.payload !== undefined) {
-        const foundPost = state.posts
-          .find((post) => post.Post_ID === action.payload.Post_ID)
-        || null;
+        const foundPost = useFindPost(state, action);
         if (foundPost !== null) {
           foundPost.Comments.push(action.payload);
         }
@@ -86,18 +78,8 @@ export const {
 // eslint-disable-next-line no-unused-vars
 export const getPosts = (id) => async (dispatch) => {
   dispatch(startLoading());
-  try {
-    const response = await fetch(`${url}Home`);
-    // const response = await fetch('/user_posts.json');
-    const parsed = await response.json();
-    dispatch(fetchPosts(parsed));
-  } catch (error) {
-    // eslint-disable-next-line no-alert
-    alert(error);
-  } finally {
-    // dispatch(resetInput())
-    dispatch(stopLoading());
-  }
+  const fullUrl = `${url}Home`;
+  useFetchDispatch(fullUrl, fetchPosts, stopLoading, dispatch);
 };
 
 export const switchFavorite = (foundPost) => (dispatch) => {
@@ -111,33 +93,12 @@ export const switchFavorite = (foundPost) => (dispatch) => {
 };
 
 export const createPost = async (post) => {
-  try {
-    const response = await fetch(`${url}searchResults`, {
-      method: 'post',
-      body: JSON.stringify(post),
-    });
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
+  await usePostRequest(url, post);
 };
 
 export const postComment = async (comment) => {
-  try {
-    const response = await fetch(`${url}Home/${comment.Post_ID}`, {
-      method: 'post',
-      body: JSON.stringify(comment),
-    });
-    console.log(response);
-    // const parsed = await response.json();
-    // eslint-disable-next-line no-console
-    // console.log('parsed', parsed);
-    // dispatch(addComment(comment));
-    // console.log(response);
-    // eventually switch comment out for parsed when the api returns something back
-  } catch (error) {
-    console.log(error);
-  }
+  const fullUrl = `${url}Home/${comment.Post_ID}`;
+  await usePostRequest(fullUrl, comment);
 };
 
 export const selectPosts = (state) => state.posts.posts;

@@ -4,6 +4,7 @@
   visibility: visible;
 }
 .comments.collapsed {
-  transform: translate(30%, -180%);
+  max-width: 50%;
+  transform: translate(115%, -180%);
   opacity: 1;
 }
