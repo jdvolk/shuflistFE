@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
+import useSongIndex from '../User/UserHooks/useSongIndex';
 // eslint-disable-next-line import/no-cycle
 const url = 'http://localhost:10000/';
 
@@ -38,22 +39,14 @@ export const userSlice = createSlice({
       state.userInput = '';
     },
     addToFavorites: (state, action) => {
-      const foundSongIndex = state.userInfo.Favorites
-      // eslint-disable-next-line arrow-body-style
-        .findIndex((song) => {
-          return song.Song_ID === action.payload.Song_ID;
-        });
+      const foundSongIndex = useSongIndex(state, action);
       if (foundSongIndex === -1) {
         state.userInfo.Favorites.unshift(action.payload);
       }
     },
     removeFromFavorites: (state, action) => {
       if (action.payload !== undefined) {
-        const foundSongIndex = state.userInfo.Favorites
-        // eslint-disable-next-line arrow-body-style
-          .findIndex((song) => {
-            return song.Song_ID === action.payload.Song_ID;
-          });
+        const foundSongIndex = useSongIndex(state, action);
         if (foundSongIndex > -1) {
           state.userInfo.Favorites.splice(foundSongIndex, 1);
         }
