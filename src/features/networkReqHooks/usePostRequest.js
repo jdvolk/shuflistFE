@@ -1,6 +1,6 @@
 const usePostRequest = async (url, payload) => {
   try {
-    const response = await fetch(`${url}searchResults`, {
+    const response = await fetch(url, {
       method: 'post',
       body: JSON.stringify(payload),
     });

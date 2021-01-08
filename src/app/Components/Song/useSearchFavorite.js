@@ -1,3 +1,5 @@
+import { deleteFavorite } from '../../../features/User/userPostsSlice';
+
 const searchResultFavorite = (passedSong, addToFavorites, removeFromFavorites, dispatch) => {
   if (passedSong.isFavorite === false) {
     dispatch(addToFavorites(
@@ -14,6 +16,7 @@ const searchResultFavorite = (passedSong, addToFavorites, removeFromFavorites, d
     ));
   } else {
     dispatch(removeFromFavorites(passedSong));
+    dispatch(deleteFavorite(passedSong));
   }
 };
 

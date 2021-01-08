@@ -101,6 +101,24 @@ export const postComment = async (comment) => {
   await usePostRequest(fullUrl, comment);
 };
 
+export const postFavorite = async (song) => {
+  const fullUrl = `${url}favorites`;
+  // might need to impliment the favorites actions here
+  await usePostRequest(fullUrl, song);
+};
+
+export const deleteFavorite = async (song) => {
+  const fullUrl = `${url}favorites/${song.Song_ID}`;
+  try {
+    await fetch(fullUrl, {
+      method: 'delete',
+      body: JSON.stringify(song),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const selectPosts = (state) => state.posts.posts;
 export const findSong = (id) => selectPosts.find((song) => song.Song_ID === id);
 export default userPosts.reducer;

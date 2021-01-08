@@ -18,7 +18,7 @@ import renderPostSong from './render/PostSong';
 
 // import { switchFavorite } from '../../../features/User/userPostsSlice';
 import { addToFavorites, removeFromFavorites } from '../../../features/User/getUserSlice';
-import { switchFavorite } from '../../../features/User/userPostsSlice';
+import { switchFavorite, postFavorite } from '../../../features/User/userPostsSlice';
 
 // import { searchResults } from '../../../features/SongSearch/songInputSlice';
 
@@ -34,12 +34,14 @@ function Song(props) {
   const userFavorites = useSelector((state) => state.user.userInfo.Favorites);
 
   const handleFavClick = () => {
-    setFavorite(passedSong, setSong);
+    setFavorite(passedSong, setSong, dispatch);
     if (props.location === 'search-result') {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
       dispatch(switchFavorite(passedSong));
+      postFavorite(passedSong);
     } else {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
+      postFavorite(passedSong);
     }
   };
 
