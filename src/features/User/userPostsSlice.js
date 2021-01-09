@@ -93,7 +93,8 @@ export const switchFavorite = (foundPost) => (dispatch) => {
 };
 
 export const createPost = async (post) => {
-  await usePostRequest(url, post);
+  const fullUrl = `${url}searchResults`;
+  await usePostRequest(fullUrl, post);
 };
 
 export const postComment = async (comment) => {
