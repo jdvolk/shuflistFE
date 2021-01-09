@@ -39,6 +39,8 @@ function Song(props) {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
       dispatch(switchFavorite(passedSong));
       postFavorite(passedSong);
+    } else if (props.location.pathname === '/Favorites') {
+      searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
     } else {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
       postFavorite(passedSong);

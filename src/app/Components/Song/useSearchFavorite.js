@@ -16,7 +16,7 @@ const searchResultFavorite = (passedSong, addToFavorites, removeFromFavorites, d
     ));
   } else {
     dispatch(removeFromFavorites(passedSong));
-    dispatch(deleteFavorite(passedSong));
+    deleteFavorite(passedSong);
   }
 };
 
