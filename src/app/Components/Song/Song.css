@@ -2,6 +2,7 @@
   padding: 2%;
   display: flex;
   max-width: 80vw;
+  min-height: 30vmin;
   margin: 10px;
   box-shadow: inset 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
   border-top-right-radius: 15px ;
@@ -79,7 +80,7 @@ p {
 }
 .favorite {
   grid-column-start: 2;
-  margin-left: 70%;
+  margin-left: 10vmin;
 }
   
 .song:hover {

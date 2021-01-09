@@ -1,10 +1,22 @@
 .comments.expanded {
-  transform: translateY(10px);
+  transform: translate(9px, 0px);
   opacity: 1;
   visibility: visible;
+  box-shadow: inset 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px;
+  max-width: 76vmin;
 }
 .comments.collapsed {
   max-width: 50%;
-  transform: translate(115%, -180%);
+  transform: translate(105%, -180%);
   opacity: 1;
+}
+
+.comment {
+  font-size: 14px;
+  padding: 8px;
+  border: none;
+  line-height: 1;
 }

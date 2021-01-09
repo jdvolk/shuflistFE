@@ -52,7 +52,8 @@ button[className="comment"] {
   flex-wrap: wrap;
   max-width: 400px;
   /* margin: 50px auto; */
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  margin-top: 10px;
   background: var(--white);
   border-radius: var(--border-radius);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);

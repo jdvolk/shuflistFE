@@ -47,6 +47,7 @@ const renderLoginForm = (
         }}
         value={password}
       />
+      <section>{'\n'}</section>
       <button
         type="submit"
         className="login-button"

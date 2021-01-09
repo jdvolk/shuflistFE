@@ -8,7 +8,7 @@ import './CommentBox.css';
 // eslint-disable-next-line import/no-named-as-default
 import { postComment, addComment } from '../../../features/User/userPostsSlice';
 
-const INITIAL_HEIGHT = 46;
+const INITIAL_HEIGHT = 40;
 
 /*
  * Read the blog post here:
@@ -28,7 +28,7 @@ function CommentBox(props) {
 
   const onExpand = () => {
     if (!isExpanded) {
-      outerHeight.current = containerRef.current.scrollHeight;
+      outerHeight.current = containerRef.current.scrollHeight - 45;
       setIsExpanded(true);
     }
   };

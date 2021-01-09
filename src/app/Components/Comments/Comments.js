@@ -49,7 +49,7 @@ function Comments(props) {
       >
         {!isExpanded && `comments(${comments.length})`}
         {isExpanded && comments}
-        {isExpanded && 'close'}
+        {isExpanded && <button className="comment" type="button">close</button>}
       </section>
     );
   };
