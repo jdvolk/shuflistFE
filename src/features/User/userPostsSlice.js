@@ -10,7 +10,9 @@ import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
 import useFindPost from './UserHooks/useFindPost';
 import useFavoritesActions from './UserHooks/useFavoritesActions';
 
-const url = 'http://localhost:10000/';
+import url from '../ApiUrl';
+
+// const url = 'http://localhost:10000/';
 
 export const userPosts = createSlice({
   name: 'UserPosts',

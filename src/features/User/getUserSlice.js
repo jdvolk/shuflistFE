@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
 import useSongIndex from '../User/UserHooks/useSongIndex';
 // eslint-disable-next-line import/no-cycle
-const url = 'http://localhost:10000/';
+// const url = 'http://localhost:10000/';
+import url from '../ApiUrl';
 
 export const userSlice = createSlice({
   name: 'User',
