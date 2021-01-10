@@ -1,0 +1,9 @@
+button[name="button"] {
+  cursor: pointer;
+  /* background: var(--green); */
+  font-size: 14px;
+  padding: 8px;
+  border: none;
+  line-height: 1;
+  max-width: 20vmin;
+}
