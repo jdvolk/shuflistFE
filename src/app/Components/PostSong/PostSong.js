@@ -54,13 +54,11 @@ function PostSong() {
 
   // const songDetails = song.song;
   return (
-    // TODO Extract this render logic to seperate file
     <section className="post-form">
       <Song
         Song={song}
         handlePostClick={handlePostClick}
       />
-
       <section className="song-search-container">
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         {userSumbitted && <Redirect to="/" push exact /> }
