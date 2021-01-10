@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import Comment from '../Comment/Comment';
 import './Comments.css';
+import Button from '../Button/Button';
 
 function Comments(props) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -47,9 +48,9 @@ function Comments(props) {
         name="comment-close"
         onClick={onClose}
       >
-        {!isExpanded && `comments(${comments.length})`}
+        {!isExpanded && <Button className="comment open" label={`comments(${comments.length})`} /> }
         {isExpanded && comments}
-        {isExpanded && <button className="comment" type="button">close</button>}
+        {isExpanded && <Button className="comment" type="button" label="close" />}
       </section>
     );
   };
