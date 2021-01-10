@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import TimeLine from '../../Components/TimeLine/TimeLine';
 import SongSearch from '../../../features/SongSearch/Song_Input';
 
@@ -10,7 +10,13 @@ function HomePage(props) {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <section>
-      { !isLoggedIn && <h1>Please Log In </h1>}
+      { !isLoggedIn
+        && (
+          <>
+            <h1>Please Log In </h1>
+            <Link to="/SignUpForm">Sign Up</Link>
+          </>
+        )}
       {isLoggedIn && <SongSearch />}
       <TimeLine location={location} />
     </section>
