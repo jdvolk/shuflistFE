@@ -2,8 +2,8 @@
 /* eslint-disable quote-props */
 import { createSlice } from '@reduxjs/toolkit';
 import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
-
-const url = 'http://localhost:10000/';
+import url from '../ApiUrl';
+// const url = 'http://localhost:10000/';
 // song input actions/reducer
 export const songSearchSlice = createSlice({
   // default state
