@@ -2,6 +2,8 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import Button from '../../Components/Button/Button';
+import '../../Components/Button/Button.css';
 
 const renderLoginForm = (
   getPosts,
@@ -48,7 +50,7 @@ const renderLoginForm = (
         value={password}
       />
       <section>{'\n'}</section>
-      <button
+      <Button
         type="submit"
         className="login-button"
         value="login"
@@ -60,7 +62,7 @@ const renderLoginForm = (
         }}
       >
         Login
-      </button>
+      </Button>
       {isLoggedIn && <Redirect to="/" />}
     </form>
   );
