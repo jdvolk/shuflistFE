@@ -12,11 +12,21 @@ import SearchResults from './SongResults/SongResultsContainer';
 import Login from './Login/Login';
 import HomePage from './HomePage/HomePage';
 import Favorites from './Favorites/Favorites';
+import SignUpForm from './SignUpForm/SignUpForm';
 
 function Routes(props) {
   const { isLoggedIn } = props;
   return (
     <>
+      <Route
+        exact path="/SignUpForm"
+        render={() => {
+          return (
+            <SignUpForm />
+          );
+        }}
+      >
+      </Route>
       <Route
         exact path="/PostSong"
         render={() => {
