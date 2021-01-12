@@ -23,7 +23,7 @@ function Routes(props) {
     ['HomePage', <HomePage />],
     ['Login', <Login />],
     ['Search', <SongSearch />],
-    ['SearchResult', <SearchResults />],
+    ['SearchResults', <SearchResults />],
   ];
 
   const routeGenerator = () => routeComponents.map((route) => {
@@ -101,7 +101,8 @@ function Routes(props) {
           );
         }}
       >
-      </Route> */}
+      </Route>
+        */}
       <Route
         exact path="/"
         render={() => {

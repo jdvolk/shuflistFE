@@ -2,8 +2,8 @@
 /* eslint-disable quote-props */
 import { createSlice } from '@reduxjs/toolkit';
 import useFetchDispatch from '../networkReqHooks/useFetchDispatch';
-import url from '../ApiUrl';
-// const url = 'http://localhost:10000/';
+// import url from '../ApiUrl';
+const url = 'http://localhost:8000/';
 // song input actions/reducer
 export const songSearchSlice = createSlice({
   // default state
@@ -42,7 +42,8 @@ export const {
 // async function to get search results locally until we have an api set up
 
 export const fetchResults = (input) => async (dispatch) => {
-  const fullUrl = `${url}searchResults`;
+  const fullUrl = `${url}media?query=${input}`;
+  console.log(fullUrl);
   dispatch(songInput(input));
   useFetchDispatch(fullUrl, searchResults, resetInput, dispatch);
 };

@@ -39,7 +39,7 @@ function Song(props) {
 
   const handleFavClick = () => {
     setFavorite(passedSong, setSong, dispatch);
-    if (props.location === 'search-result') {
+    if (props.location.pathname === '/SearchResult') {
       searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
       dispatch(switchFavorite(passedSong));
       postFavorite(passedSong);

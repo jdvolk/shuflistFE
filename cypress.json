@@ -1,0 +1,6 @@
+{
+  "projectId": "4mnypd",
+  "baseUrl": "http://localhost:3000/",
+  "experimentalComponentTesting": true,
+  "componentFolder": "src/cypress/integration/Tests/Unit"
+}

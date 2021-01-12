@@ -16,9 +16,11 @@
     "react-scripts": "4.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "./node_modules/.bin/react-scripts start",
+    "startAPI": "cd ../song-share-api && go run main.go",
+    "db-api": "cd ../shuflist-api && make",
+    "test": "npx cypress open",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"./src/**/**/*.js\""
   },
@@ -38,11 +40,13 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^6.2.1",
     "eslint": "^7.12.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "start-server-and-test": "^1.11.7"
   }
 }
