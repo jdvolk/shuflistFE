@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 // reduxState
-import { Redirect } from 'react-router-dom';
 import { getPosts } from '../../../features/User/userPostsSlice';
 import { getUser, selectIsLoggedIn } from '../../../features/User/getUserSlice';
 
 // UI
 import Button from '../../Components/Button/Button';
 import '../../Components/Button/Button.css';
+import './Login.css';
 
 // custom hooks
 import useDynamicForm from '../useDynamicForm';
@@ -18,12 +18,17 @@ import useDynamicForm from '../useDynamicForm';
 function Login() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  // component state
   const [formState, setFormState] = useState({
     Email: '',
     Password: '',
   });
+
+  // rename for readibility
   const password = formState.Password;
   const email = formState.Email;
+
   const formElements = ['Email', 'Password'];
 
   return (

@@ -5,23 +5,24 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './PostSong.css';
 import { Redirect, useLocation, withRouter } from 'react-router-dom';
+
+// app imports
 import Song from '../Song/Song';
-// import CommentBox from '../CommentBox/CommentBox';
-// import Emoji from '../Emoji/Emoji';
 import { addPosts, createPost } from '../../../features/User/userPostsSlice';
 import { resetSearch } from '../../../features/SongSearch/songInputSlice';
 
-// import renderPostSong from './renderPostSong';
+// UI
+import './PostSong.css';
 
 function PostSong() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { song } = location;
-  // const songDetails = song.song;
-  // const [userInput, setSongInput] = useState('');
+
+  // component state
   const [userSumbitted, setUserSubmitted] = useState(false);
+
   const User = useSelector((state) => state.user);
   const UserName = User.userInfo.User_Name;
   const UserId = User.userInfo.User_Id;
@@ -43,8 +44,6 @@ function PostSong() {
   };
   const handlePostClick = async (input) => {
     const payload = addBody(input);
-    // console.log('payload', payload);
-    // song.body = userInput;
     dispatch(addPosts(payload));
     await createPost(payload);
     dispatch(resetSearch());
@@ -52,7 +51,6 @@ function PostSong() {
     // setValidation(true);
   };
 
-  // const songDetails = song.song;
   return (
     <section className="post-form">
       <Song

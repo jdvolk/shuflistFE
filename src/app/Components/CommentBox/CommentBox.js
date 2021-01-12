@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
-import useDynamicHeightField from './useDynamicHeightField';
-import './CommentBox.css';
-// import Button from '../Button/Button';
-// import '../Button/Button.css';
 // eslint-disable-next-line import/no-named-as-default
+// app imports
 import { postComment, addComment } from '../../../features/User/userPostsSlice';
+
+// custom hooks
+import useDynamicHeightField from './useDynamicHeightField';
+// UI
+import './CommentBox.css';
 
 const INITIAL_HEIGHT = 40;
 

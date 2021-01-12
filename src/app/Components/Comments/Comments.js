@@ -4,9 +4,13 @@
 /* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
 import cn from 'classnames';
+
+// app imports
 import Comment from '../Comment/Comment';
-import './Comments.css';
+
+// UI
 import Button from '../Button/Button';
+import './Comments.css';
 
 function Comments(props) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -56,7 +60,6 @@ function Comments(props) {
   };
 
   return (
-    // <section>{props.Comments.length > 0 && comments}</section>
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <section
       className={cn('comments', {
@@ -66,9 +69,6 @@ function Comments(props) {
       onClick={onExpand}
       onFocus={onExpand}
     >
-      {/* {`comments(${comments.length})`}
-      {comments.isExpanded && comments} */}
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       {comments && renderButton()}
     </section>
   );

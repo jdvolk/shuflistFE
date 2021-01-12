@@ -2,19 +2,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import './SongResults.css';
+// app imports
 import Song from '../../Components/Song/Song';
 import SongSearch from '../../../features/SongSearch/Song_Input';
 
-// console.log(searchResults);
+// UI
+import './SongResults.css';
+
 let resultsList = null;
 
 function SongResults(props) {
   const searchResults = useSelector((state) => state.songSearch.results);
+
   if (searchResults !== '') {
     resultsList = searchResults.map((song) => {
-      // eslint-disable-next-line no-param-reassign
-      // song = song.song;
       return (
         <section
           key={Math.random()}
