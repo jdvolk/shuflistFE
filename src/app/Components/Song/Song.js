@@ -54,25 +54,22 @@ function Song(props) {
 
   if (passedSong) {
     const songDetails = passedSong;
+    const { pathname } = props.location;
     if (!songDetails.isFavorite) checkFavorite(songDetails.Song_ID);
     return (
       <>
         <section className="song-container">
           {/* TODO check if switch case will work  */}
           {renderDefault(songDetails)}
-          {props.location.pathname === '/SearchResults' && (
-            renderSearchResults(props, passedSong, songDetails, handleFavClick)
-          )}
+          {pathname === '/SearchResults' && (
+            renderSearchResults(props, passedSong, songDetails, handleFavClick))}
           {/* eslint-disable-next-line no-mixed-operators */}
-          {props.location.pathname === '/' && (
-            renderPosts(props, songDetails, handleFavClick)
-          )}
-          {props.location.pathname === '/Favorites' && (
-            renderFavorites(passedSong, handleFavClick)
-          )}
-          {props.location.pathname === '/PostSong' && (
-            renderPostSong(props.handlePostClick)
-          )}
+          {pathname === '/' && (
+            renderPosts(props, songDetails, handleFavClick))}
+          {pathname === '/Favorites' && (
+            renderFavorites(passedSong, handleFavClick))}
+          {pathname === '/PostSong' && (
+            renderPostSong(props.handlePostClick))}
         </section>
       </>
     );
