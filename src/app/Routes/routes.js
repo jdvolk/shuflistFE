@@ -15,10 +15,27 @@ import Favorites from './Favorites/Favorites';
 import SignUpForm from './SignUpForm/SignUpForm';
 
 function Routes(props) {
+  const routeComponents = [
+    ['SignUpForm', <SignUpForm />],
+    ['PostSong', <PostSong />],
+    ['Favorites', <Favorites />],
+    ['HomePage', <HomePage />],
+    ['Login', <Login />],
+    ['Search', <SongSearch />],
+    ['SearchResult', <SearchResults />],
+  ];
+
+  const routeGenerator = () => routeComponents.map((route) => {
+    const path = route[0];
+    const component = route[1];
+    return <Route exact path={`/${path}`} render={() => component} key={path} />;
+  });
+
   const { isLoggedIn } = props;
   return (
     <>
-      <Route
+      {routeGenerator()}
+      {/* <Route
         exact path="/SignUpForm"
         render={() => {
           return (
@@ -83,10 +100,7 @@ function Routes(props) {
           );
         }}
       >
-      </Route>
-      {/* { !isLoggedIn && <Login />}
-      { isLoggedIn && <SongSearch /> }
-      { searchResults && <SearchResults />} */}
+      </Route> */}
       <Route
         exact path="/"
         render={() => {
