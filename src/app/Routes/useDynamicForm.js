@@ -13,12 +13,13 @@ const useDynamicForm = (state, elements, setState) => {
     }
   };
 
-  return elements.map((element) => {
+  return elements.map((element, index) => {
     const lowercase = element.toLowerCase();
     return (
       <label>
         { `${element}: ` }
         <input
+          id={index}
           type={typeHandler(lowercase)}
           name={`${lowercase}-input`}
           className={`${lowercase}-input text-input`}
