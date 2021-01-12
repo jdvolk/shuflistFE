@@ -6,6 +6,7 @@ import cn from 'classnames';
 // eslint-disable-next-line import/no-named-as-default
 // app imports
 import { postComment, addComment } from '../../../features/User/userPostsSlice';
+import UserHeader from '../UserHeader/UserHeader';
 
 // custom hooks
 import useDynamicHeightField from './useDynamicHeightField';
@@ -32,7 +33,7 @@ function CommentBox(props) {
 
   const onExpand = () => {
     if (!isExpanded) {
-      outerHeight.current = containerRef.current.scrollHeight - 45;
+      outerHeight.current = containerRef.current.scrollHeight - 35;
       setIsExpanded(true);
     }
   };
@@ -87,13 +88,15 @@ function CommentBox(props) {
       >
         <div className="header">
           <div className="user">
-            <img
+            {/* <img
               src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
               alt="User avatar"
+              draggable="false"
             />
             <span>
               {user.User_Name}
-            </span>
+            </span> */}
+            <UserHeader userName={user.User_Name} />
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}

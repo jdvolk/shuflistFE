@@ -70,7 +70,7 @@ button[className="comment"] {
   transform: translateY(-40px);
 }
 
-.user {
+/* .user {
   display: flex;
   align-items: center;
 }
@@ -78,7 +78,7 @@ button[className="comment"] {
 .user img {
   border-radius: 20px;
   margin-right: 10px;
-}
+} */
 
 .comment-field {
   color: var(--black);
@@ -128,6 +128,6 @@ button[className="comment"] {
   background: none;
 }
 
-.comment-box.modified {
+/* .comment-box.modified {
   max-height: unset;
-}
+} */

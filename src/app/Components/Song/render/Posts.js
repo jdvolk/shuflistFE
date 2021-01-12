@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import CommentBox from '../../CommentBox/CommentBox';
+import UserHeader from '../../UserHeader/UserHeader';
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 const renderPosts = (props, songDetails, handleFavClick) => {
@@ -14,7 +15,8 @@ const renderPosts = (props, songDetails, handleFavClick) => {
       <section className="poster-info">
         <div className="post-header">
           <div className="user">
-            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg" alt="User avatar" />
+            <UserHeader user={props.author} />
+            {/* <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg" alt="User avatar" draggable="false" /> */}
             <span>
               { props.Post.Author && props.Post.Author.Author }
             </span>

@@ -5,10 +5,13 @@ const searchResultFavorite = (passedSong, addToFavorites, removeFromFavorites, d
     dispatch(addToFavorites(
       {
         // Song: {
-        Song_ID: passedSong.Song_ID,
-        Artist: passedSong.Artist,
-        Song_Name: passedSong.Song_Name,
-        Album_Cover: passedSong.Album_Cover,
+        // Song_ID: passedSong.Song_ID,
+        // Artist: passedSong.Artist,
+        // Song_Name: passedSong.Song_Name,
+        // Album_Cover: passedSong.Album_Cover,
+        // Release_Date: passedSong.Release_Date,
+        // Type: passedSong.Type,
+        ...passedSong,
         isFavorite: true,
         // },
         // Comments: passedSong.Comments || [],

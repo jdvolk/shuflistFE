@@ -23,7 +23,7 @@ export const songSearchSlice = createSlice({
     },
     // reducer for search results
     searchResults: (state, action) => {
-      state.results = action.payload;
+      state.results = action.payload.data;
     },
     resetSearch: (state) => {
       state.results = '';
@@ -42,7 +42,8 @@ export const {
 // async function to get search results locally until we have an api set up
 
 export const fetchResults = (input) => async (dispatch) => {
-  const fullUrl = `${url}media?query=${input}`;
+  // todo js funct to format spaces
+  const fullUrl = `${url}media?query=${encodeURIComponent(input)}`;
   console.log(fullUrl);
   dispatch(songInput(input));
   useFetchDispatch(fullUrl, searchResults, resetInput, dispatch);

@@ -23,7 +23,15 @@ function SongResults(props) {
           <Song
             // eslint-disable-next-line react/prop-types
             location={props.location}
-            Song={song}
+            Song={{
+              Song_ID: song.data.id,
+              Artist: song.data.authors ? song.data.authors[0].name : null,
+              Type: song.type,
+              Song_Name: song.data.name,
+              Release_Date: song.data.releaseDate,
+              Album_Cover: 'https://i.scdn.co/image/ab67616d0000b2736c6c8ec19a095e0f881b9ddd',
+              isFavorite: false,
+            }}
             isSearchResult
           />
         </section>
