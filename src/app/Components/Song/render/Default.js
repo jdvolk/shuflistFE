@@ -1,17 +1,20 @@
 /* eslint-disable consistent-return */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import defaultAlbum from '../../../../assets/default_album.jpg';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 const renderDefault = (songDetails) => {
   let date;
   if (songDetails.Release_Date) date = songDetails.Release_Date;
+  const albumArt = songDetails.Album_Cover ?? defaultAlbum;
+  console.log(songDetails);
   return (
     <section className="song-default">
       <img
         className="album-cover"
-        src={songDetails.Album_Cover}
+        src={albumArt}
         alt={`album cover for${songDetails.Song_Name}by${songDetails.Artist}`}
         draggable="false"
       />
