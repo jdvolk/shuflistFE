@@ -17,19 +17,23 @@ import SignUpForm from './SignUpForm/SignUpForm';
 
 function Routes(props) {
   const routeComponents = [
-    ['SignUpForm', <SignUpForm />],
-    ['PostSong', <PostSong />],
-    ['Favorites', <Favorites />],
-    ['HomePage', <HomePage />],
-    ['Login', <Login />],
-    ['Search', <SongSearch />],
-    ['SearchResults', <SearchResults />],
+    { path: 'SignUpForm', component: <SignUpForm /> },
+    { path: 'PostSong', component: <PostSong /> },
+    { path: 'Favorites', component: <Favorites /> },
+    { path: 'HomePage', component: <HomePage /> },
+    { path: 'Login', component: <Login /> },
+    { path: 'Search', component: <SongSearch /> },
+    { path: 'SearchResults', component: <SearchResults /> },
   ];
 
   const routeGenerator = () => routeComponents.map((route) => {
-    const path = route[0];
-    const component = route[1];
-    return <Route exact path={`/${path}`} render={() => component} key={path} />;
+    return (
+      <Route
+        key={route.path}
+        exact path={`/${route.path}`}
+        render={() => route.component}
+      />
+    );
   });
 
   const { isLoggedIn } = props;
