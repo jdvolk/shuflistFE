@@ -26,11 +26,10 @@ function SignUpForm() {
     Email: '',
     'User-Name': '',
     Password: '',
-    'First-Name': '',
-    'Last-Name': '',
+    'Display-Name': '',
   });
 
-  const formElements = ['Email', 'User-Name', 'Password', 'First-Name', 'Last-Name'];
+  const formElements = ['Email', 'User-Name', 'Password', 'Display-Name'];
 
   return (
     <section>
