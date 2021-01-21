@@ -10,8 +10,9 @@
 }
 
 .album-cover {
-  max-width: 95%;
+  width: 100%;
   object-fit: contain;
+  max-width: 95%;
 }
 
 .song {
