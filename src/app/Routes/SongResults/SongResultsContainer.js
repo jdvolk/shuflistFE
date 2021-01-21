@@ -16,6 +16,8 @@ function SongResults(props) {
 
   if (searchResults !== '') {
     resultsList = searchResults.map((song) => {
+      const songDetails = song.data;
+      // eslint-disable-next-line no-debugger
       return (
         <section
           key={Math.random()}
@@ -24,12 +26,13 @@ function SongResults(props) {
             // eslint-disable-next-line react/prop-types
             location={props.location}
             Song={{
-              Song_ID: song.data.id,
-              Artist: song.data.authors ? song.data.authors[0].name : null,
+              Song_ID: songDetails.id,
+              Artist: songDetails.authors?.length ? songDetails.authors[0].name : null,
               Type: song.type,
-              Song_Name: song.data.name,
-              Release_Date: song.data.releaseDate,
-              Album_Cover: 'https://i.scdn.co/image/ab67616d0000b2736c6c8ec19a095e0f881b9ddd',
+              Song_Name: songDetails.name,
+              Release_Date: songDetails.releaseDate,
+              Album_Cover: songDetails.displayResources?.default
+                ? songDetails.displayResources.default : null,
               isFavorite: false,
             }}
             isSearchResult
