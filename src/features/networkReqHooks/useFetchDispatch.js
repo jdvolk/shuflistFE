@@ -3,7 +3,6 @@ const useFetchDispatch = async (url, infoRelay, endAction, dispatch) => {
     const response = await fetch(url);
     const parsed = await response.json();
     dispatch(infoRelay(parsed));
-    console.log(response);
   } catch (error) {
     console.log(error);
   } finally {

@@ -9,7 +9,6 @@ const renderDefault = (songDetails) => {
   let date;
   if (songDetails.Release_Date) date = songDetails.Release_Date;
   const albumArt = songDetails.Album_Cover ?? defaultAlbum;
-  console.log(songDetails);
   return (
     <section className="song-default">
       <img

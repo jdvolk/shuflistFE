@@ -29,7 +29,7 @@ function SignUpForm() {
     'Display-Name': '',
   });
 
-  const formElements = ['Email', 'User-Name', 'Password', 'Display-Name'];
+  const formElements = ['Email', 'User-Name', 'Password', 'Display-Name', 'Content-Creator'];
 
   return (
     <section>

@@ -26,7 +26,9 @@ function Comments(props) {
   };
 
   let comments = props.Comments;
+
   if (props.Comments.length >= 1) {
+    comments = comments.filter((comment) => comment.Body !== '');
     comments = comments.map((comment) => {
       return (
         <section
@@ -52,7 +54,7 @@ function Comments(props) {
         name="comment-close"
         onClick={onClose}
       >
-        {!isExpanded && <Button className="comment open" label={`comments(${comments.length})`} /> }
+        {(!isExpanded && comments[0]?.Comment_ID !== 0) && <Button className="comment open" label={`comments(${comments.length})`} /> }
         {isExpanded && comments}
         {isExpanded && <Button className="comment" type="button" label="close" />}
       </section>
@@ -69,7 +71,7 @@ function Comments(props) {
       onClick={onExpand}
       onFocus={onExpand}
     >
-      {comments && renderButton()}
+      { renderButton() }
     </section>
   );
 }

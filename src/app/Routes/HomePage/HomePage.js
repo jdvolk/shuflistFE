@@ -16,7 +16,8 @@ function HomePage(props) {
       { !isLoggedIn
         && (
           <>
-            <h1>Please Log In </h1>
+            <Link to="/Login">Login</Link>
+            <br />
             <Link to="/SignUpForm">Sign Up</Link>
           </>
         )}
