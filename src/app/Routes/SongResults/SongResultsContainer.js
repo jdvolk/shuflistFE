@@ -17,7 +17,8 @@ function SongResults(props) {
   if (searchResults !== '') {
     resultsList = searchResults.map((song) => {
       const songDetails = song.data;
-      // eslint-disable-next-line no-debugger
+      // eslint-disable-next-line radix
+      const intId = parseInt(songDetails.id);
       return (
         <section
           key={Math.random()}
@@ -26,7 +27,8 @@ function SongResults(props) {
             // eslint-disable-next-line react/prop-types
             location={props.location}
             Song={{
-              Song_ID: songDetails.id,
+              // Song_ID: songDetails?.data ? songDetails.data.id : songDetails.id,
+              Song_ID: intId,
               Artist: songDetails.authors?.length ? songDetails.authors[0].name : null,
               Type: song.type,
               Song_Name: songDetails.name,
