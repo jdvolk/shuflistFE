@@ -1,3 +1,8 @@
 .login-form {
   width: 80vmin;
+  /* display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: flex-end; */
 }

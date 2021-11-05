@@ -2,11 +2,12 @@
   transform: translate(9px, 0px);
   opacity: 1;
   visibility: visible;
-  box-shadow: inset 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
+  box-shadow: 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   padding: 10px;
-  max-width: 76vmin;
+  max-width: 80vw;
+  margin-right: 20px;
 }
 .comments.collapsed {
   max-width: 50%;

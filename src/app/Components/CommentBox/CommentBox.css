@@ -56,11 +56,11 @@ button[className="comment"] {
   margin-top: 10px;
   background: var(--white);
   border-radius: var(--border-radius);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   padding: 14px;
   transition: min-height var(--transition);
-  max-height: 46px;
+  max-height: 52px;
 }
 
 .header {
