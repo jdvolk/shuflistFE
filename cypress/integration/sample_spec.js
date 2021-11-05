@@ -2,8 +2,8 @@
 
 describe('clicking the login button takes you to the login page', () => {
   beforeEach(() => {
-    // cy.exec('npm run startAPI')
     // cy.exec('npm start')
+    // cy.exec('npm run startAPI')
   })
   it('finds the login button', () => {
     cy.visit('/')
@@ -25,7 +25,7 @@ describe('clicking the login button takes you to the login page', () => {
     cy.get('.favorite').click({ multiple: true })
     cy.contains('Favorites').click()
 
-    cy.get('.song-description').should('contain.text', 'Self Care')
+    cy.get('.song-description').should('contain.text', 'Like a Drug')
     cy.get('.x').click({ multiple: true })
   
     cy.get('.favorites-page').should('contain.text', 'Some Songs')

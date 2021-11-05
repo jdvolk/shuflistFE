@@ -27,4 +27,5 @@
     "arrow-body-style": ["error", "as-needed"],
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
   }
+  // "ignorePatterns": "['/cypress/*']"
 }

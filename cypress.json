@@ -4,3 +4,4 @@
   "experimentalComponentTesting": true,
   "componentFolder": "src/cypress/integration/Tests/Unit"
 }
+
