@@ -21,7 +21,7 @@ function App() {
         <header className="App-header">
           <img src={logo2} alt="shufflist-logo" className="logo" />
         </header>
-        <Navigation history={history} />
+        {!isLoggedIn && <Navigation history={history} />}
         <section className="App-Body">
           <Switch>
             <Routes isLoggedIn={isLoggedIn} />

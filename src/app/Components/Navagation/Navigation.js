@@ -41,6 +41,8 @@ function Navigation(props) {
         key={link.label}
         to={`${link.route}`}
         onClick={link.Click}
+        className="nav-link"
+        // style={{ textDecoration: 'none' }}
       >
         {link.label}
       </Link>

@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 // app imports
 import TimeLine from '../../Components/TimeLine/TimeLine';
 import SongSearch from '../../../features/SongSearch/Song_Input';
+import './HomePage.css';
 
 function HomePage(props) {
   // eslint-disable-next-line react/prop-types
@@ -15,11 +16,10 @@ function HomePage(props) {
     <section>
       { !isLoggedIn
         && (
-          <>
-            <Link to="/Login">Login</Link>
-            <br />
-            <Link to="/SignUpForm">Sign Up</Link>
-          </>
+          <section className="default-page">
+            <Link to="/Login" className="nav-link">Login</Link>
+            <Link to="/SignUpForm" className="nav-link">Sign Up</Link>
+          </section>
         )}
       {isLoggedIn && <SongSearch />}
       <TimeLine location={location} />

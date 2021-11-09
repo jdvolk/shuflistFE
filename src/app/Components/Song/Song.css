@@ -41,7 +41,7 @@
 .song-default {
   display:flex;
   flex-direction: column;
-  max-width: 40%;
+  max-width: 40vmin;
 }
 .song-description{
   display: flex;

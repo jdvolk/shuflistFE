@@ -1,0 +1,9 @@
+.default-page {
+  display: flex;
+  width: 100vmin;
+  margin-top: 6px;
+  align-items: stretch;
+  flex-direction: row;
+  /* align-content: stretch; */
+  justify-content: space-around;
+}
