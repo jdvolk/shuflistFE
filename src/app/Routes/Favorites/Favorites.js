@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Song from '../../Components/Song/Song';
-import SongSearch from '../../../features/SongSearch/Song_Input';
+// import SongSearch from '../../../features/SongSearch/Song_Input';
 
 function Favorites(props) {
   // eslint-disable-next-line react/prop-types
@@ -27,7 +27,7 @@ function Favorites(props) {
 
   return (
     <>
-      <SongSearch />
+      {/* <SongSearch /> */}
       { favorites.length > 0 && (
         <section className="favorites-page">
           {resultsList || null }

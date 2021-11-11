@@ -6,33 +6,32 @@
 }
 
 .nav-link {
-  background: #333333;
-  border-radius: 7px;
-  /* border-radius: 10px; */
-  color: #fdfcfce7;
-  cursor: pointer;
-  /* min-width: 2em;
-  min-height: 2em; */
-  outline: none;
-  border: solid 1px transparent;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0)
-  ),linear-gradient(63deg, #e309ff, #436bfd);
-  box-shadow: inset 3px 3px 6px 0px #4c4c4c,
-    inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+  border-radius: 3px;
+  padding: 5px;
+  color:black;
+  align-self: flex-end;
   text-decoration: none;
-  min-width: 23vmin;
-  min-height: 4.5vmin;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  background:linear-gradient( to left, #E309FC 0%, #436bfd 100% ) left bottom no-repeat;
+ /* gradient can be an image */;
+  background-size:100% 2px;
+  /* -webkit-transition: all 0.2s ease-in-out; */
+  /* transition: background 2s ease-out 100ms; */
+  /* transition: all 0.2s ease-in-out; */
+  transition: box-shadow 0.2s ease-out;
 }
 
 .nav-link:hover {
-  color: white;
-  box-shadow: inset 4px 7px 13px 0px #000000c2,
-    inset -4px -2px 13px 0px #000000c2 ;
+
+  /* background-image: 
+    linear-gradient( rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) ),
+    linear-gradient(63deg, #e309ff, #436bfd); */
+    /* box-shadow: inset 3px 3px 6px 0px #4c4c4c,
+    inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset; */
+  /* box-shadow: 3px 3px 6px 0px #4c4c4c, 4px 5px 4px 0px #292929; */
+  box-shadow: inset -1px -1px 3px 0px #4c4c4c, inset 1px 1px 4px 0px #292929;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  outline: none;
+  background:linear-gradient( to left, #E309FC 0%, #436bfd 100% ) left no-repeat; 
+  transition: all 0.2s ease-in-out;
 }

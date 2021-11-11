@@ -7,7 +7,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 // app imports
-import SongSearch from '../../features/SongSearch/Song_Input';
+// import SongSearch from '../../features/SongSearch/Song_Input';
 import PostSong from '../Components/PostSong/PostSong';
 import SearchResults from './SongResults/SongResultsContainer';
 import Login from './Login/Login';
@@ -22,7 +22,7 @@ function Routes(props) {
     { path: 'Favorites', component: <Favorites /> },
     { path: 'HomePage', component: <HomePage /> },
     { path: 'Login', component: <Login /> },
-    { path: 'Search', component: <SongSearch /> },
+    // { path: 'Search', component: <SongSearch /> },
     { path: 'SearchResults', component: <SearchResults /> },
   ];
 

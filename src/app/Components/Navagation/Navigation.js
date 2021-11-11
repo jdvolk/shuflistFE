@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // app imports
+import SongSearch from '../../../features/SongSearch/Song_Input';
 import { logout } from '../../../features/User/getUserSlice';
 import { resetSearch } from '../../../features/SongSearch/songInputSlice';
 
@@ -21,7 +22,7 @@ function Navigation(props) {
   const defaultNav = [
     { label: 'Home', route: '/', Click: () => dispatch(resetSearch()) },
     { label: 'Back', route: '#/', Click: () => history.goBack() },
-    { label: 'Search', route: '/Search', Click: () => null },
+    // { label: 'Search', route: '/Search', Click: () => null },
   ];
 
   const loggedIn = [
@@ -51,6 +52,7 @@ function Navigation(props) {
 
   return (
     <section className="nav-bar">
+      <SongSearch />
       {isLoggedIn && renderNav(loggedIn)}
       {!isLoggedIn && renderNav(loggedOut)}
       {/* <Link to="/" onClick={() => dispatch(resetSearch())}>Home</Link>

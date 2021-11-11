@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 // app imports
 import TimeLine from '../../Components/TimeLine/TimeLine';
-import SongSearch from '../../../features/SongSearch/Song_Input';
+// import SongSearch from '../../../features/SongSearch/Song_Input';
 import './HomePage.css';
 
 function HomePage(props) {
@@ -21,7 +21,7 @@ function HomePage(props) {
             <Link to="/SignUpForm" className="nav-link">Sign Up</Link>
           </section>
         )}
-      {isLoggedIn && <SongSearch />}
+      {/* {isLoggedIn && <SongSearch />} */}
       <TimeLine location={location} />
     </section>
   );

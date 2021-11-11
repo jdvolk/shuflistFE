@@ -1,14 +1,15 @@
 .song-search-container {
   display: flex;
+  margin-left: 5%;
   /* flex-direction: column; */
   justify-content: center;
   /* width: 90vw; */
 }
 
 .song-input {
-  width: 50vw;
+  /* width: 50vw; */
   padding: .4em;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   /* height: 2.8em; */
   /* background: #282e33; */
   border: none;
