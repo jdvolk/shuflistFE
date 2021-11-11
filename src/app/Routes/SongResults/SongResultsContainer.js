@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 // app imports
 import Song from '../../Components/Song/Song';
-import SongSearch from '../../../features/SongSearch/Song_Input';
+// import SongSearch from '../../../features/SongSearch/Song_Input';
 
 // UI
 import './SongResults.css';
@@ -45,7 +45,6 @@ function SongResults(props) {
   }
   return (
     <>
-      <SongSearch />
       <section className="search-results">
         {resultsList || null }
       </section>

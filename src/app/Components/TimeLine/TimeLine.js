@@ -27,7 +27,7 @@ function TimeLine(props) {
             Post={song}
             isSearchResult="false"
           />
-          {song.Comments && <Comments Comments={song.Comments} />}
+          {song.Comments && <Comments />}
         </section>
       );
     });

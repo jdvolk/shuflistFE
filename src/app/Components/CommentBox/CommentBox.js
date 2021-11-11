@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -47,7 +48,8 @@ function CommentBox(props) {
     setIsExpanded(false);
   };
 
-  const handleCommentSubmit = () => {
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
     const commentData = {
       Comment_ID: Math.floor(Math.random()),
       Author: {
@@ -61,12 +63,14 @@ function CommentBox(props) {
   };
 
   const onSubmit = (e) => {
+    // e.stopPropagation();
     e.preventDefault();
     if (location.pathname === '/PostSong') {
       props.handlePostClick(commentValue);
     }
     if (location.pathname === '/') {
-      const commentData = handleCommentSubmit();
+      // eslint-disable-next-line no-debugger
+      const commentData = handleCommentSubmit(e);
       dispatch(addComment(commentData));
       postComment(commentData);
     }
@@ -75,7 +79,7 @@ function CommentBox(props) {
   return (
     <div className="container">
       <form
-        onSubmit={onSubmit}
+        onSubmit={(e) => onSubmit(e)}
         ref={containerRef}
         className={cn('comment-box', {
           expanded: isExpanded,
@@ -116,7 +120,7 @@ function CommentBox(props) {
           <button name="comment" type="button" className="cancel" onClick={onClose}>
             Cancel
           </button>
-          <button className="comment" type="submit" disabled={commentValue.length < 1}>
+          <button className="comment" type="button" disabled={commentValue.length < 1} onClick={(e) => onSubmit(e)}>
             {location.pathname === '/' && 'Respond'}
             {location.pathname === '/PostSong' && 'Post'}
           </button>

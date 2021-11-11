@@ -1,4 +1,5 @@
 .comments.expanded {
+  transition: box-shadow .2s ease-in;
   transform: translate(9px, 0px);
   opacity: 1;
   visibility: visible;
