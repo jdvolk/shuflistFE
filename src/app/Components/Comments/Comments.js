@@ -25,7 +25,7 @@ function Comments(props) {
     setIsExpanded(false);
   };
 
-  let comments = props.Comments 
+  let comments = props.Comments;
 
   if (props.Comments.length >= 1) {
     comments = comments.filter((comment) => comment.Body !== '');

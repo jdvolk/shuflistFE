@@ -27,11 +27,12 @@ function TimeLine(props) {
             Post={song}
             isSearchResult="false"
           />
-          {song.Comments && <Comments />}
+          {song.Comments && <Comments Comments={song.Comments} />}
         </section>
       );
     });
   }
+  // use selectors instead of prop drilling
 
   return (
     <section>
