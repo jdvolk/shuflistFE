@@ -36,11 +36,6 @@ button {
   cursor: pointer;
 }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 button[className="comment"] {
   background: var(--green);
   color: var(--white);
@@ -69,6 +64,15 @@ button[className="comment"] {
   visibility: hidden;
   transform: translateY(-40px);
 }
+.disabled {
+  cursor: not-allowed;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 
 /* .user {
   display: flex;

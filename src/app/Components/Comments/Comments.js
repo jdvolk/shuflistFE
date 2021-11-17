@@ -15,8 +15,10 @@ import './Comments.css';
 function Comments(props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  let comments = props.Comments;
+
   const onExpand = () => {
-    if (!isExpanded) {
+    if (!isExpanded && comments.length > 0) {
       setIsExpanded(true);
     }
   };
@@ -24,8 +26,6 @@ function Comments(props) {
   const onClose = () => {
     setIsExpanded(false);
   };
-
-  let comments = props.Comments;
 
   if (props.Comments.length >= 1) {
     comments = comments.filter((comment) => comment.Body !== '');
@@ -54,7 +54,8 @@ function Comments(props) {
         name="comment-close"
         onClick={onClose}
       >
-        {(!isExpanded && comments[0]?.Comment_ID !== 0) && <Button className="comment open" label={`comments(${comments.length})`} /> }
+        {(!isExpanded && comments.length > 0) && <Button className="comment open" label={`comments(${comments.length})`} /> }
+        {(!isExpanded && comments.length === 0) && <Button className="comment open disabled" label="no comments" disabled={comments.length === 0} /> }
         {isExpanded && comments}
         {isExpanded && <Button className="comment" type="button" label="close" />}
       </section>

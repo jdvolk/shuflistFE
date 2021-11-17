@@ -1,5 +1,5 @@
 button[name="button"] {
-  cursor: pointer;
+  /* cursor: pointer; */
   /* background: var(--green); */
   font-size: 14px;
   padding: 8px;
