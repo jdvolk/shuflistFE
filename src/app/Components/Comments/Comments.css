@@ -17,12 +17,18 @@
 }
 
 .comment {
+  border-radius: 30px;
+  box-shadow: inset -2px 1px 8px 0px #0000004a;
   border: none;
   display: flex;
   flex-direction: row;
   align-content: flex-start;
+  max-width: fit-content;
+  padding: 2px;
+  margin-bottom: 2px;
 }
 
 .comment-body {
   display: flex;
+  padding: 10px;
 }
