@@ -17,7 +17,7 @@ const useDynamicForm = (state: any, elements: any, setState: any) => {
     const lowercase = element.toLowerCase();
     return (
       <label key={element}>
-        { `${element}: ` }
+        {`${element}: `}
         <input
           id={index}
           key={lowercase}

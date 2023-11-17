@@ -1,10 +1,15 @@
 import { deleteFavorite } from '../../Store/User/userPostsSlice';
 import { AppDispatch } from '../../Store/store';
 
-export const searchResultFavorite = (passedSong: any, addToFavorites: any, removeFromFavorites: any, dispatch: AppDispatch) => {
+export const searchResultFavorite = (
+  passedSong: any,
+  addToFavorites: any,
+  removeFromFavorites: any,
+  dispatch: AppDispatch
+) => {
   if (passedSong.isFavorite === false) {
-    dispatch(addToFavorites(
-      {
+    dispatch(
+      addToFavorites({
         // Song: {
         // Song_ID: passedSong.Song_ID,
         // Artist: passedSong.Artist,
@@ -16,12 +21,10 @@ export const searchResultFavorite = (passedSong: any, addToFavorites: any, remov
         isFavorite: true,
         // },
         // Comments: passedSong.Comments || [],
-      },
-    ));
+      })
+    );
   } else {
     dispatch(removeFromFavorites(passedSong));
     deleteFavorite(passedSong);
   }
 };
-
-

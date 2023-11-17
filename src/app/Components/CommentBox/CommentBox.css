@@ -16,7 +16,7 @@ body {
   font-family: var(--font-family);
 } */
 
-textarea[name="comment"] {
+textarea[name='comment'] {
   font-family: var(--font-family);
   border: none;
   resize: none;
@@ -26,7 +26,7 @@ textarea::placeholder {
   color: var(--gray);
 }
 
-label[name="comment"] {
+label[name='comment'] {
   height: 0;
   width: 0;
   visibility: hidden;
@@ -36,7 +36,7 @@ button {
   cursor: pointer;
 }
 
-button[className="comment"] {
+button[className='comment'] {
   background: var(--green);
   color: var(--white);
   border-radius: var(--border-radius);
@@ -72,7 +72,6 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 
 /* .user {
   display: flex;

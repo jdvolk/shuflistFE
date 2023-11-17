@@ -7,11 +7,15 @@ import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 // eslint-disable-next-line import/no-named-as-default
 // app imports
-import { postComment, addComment, Comment } from '../../Store/User/userPostsSlice';
-import {UserHeader} from '../UserHeader/UserHeader';
+import {
+  postComment,
+  addComment,
+  Comment,
+} from '../../Store/User/userPostsSlice';
+import { UserHeader } from '../UserHeader/UserHeader';
 
 // custom hooks
-import {useDynamicHeightField} from './useDynamicHeightField';
+import { useDynamicHeightField } from './useDynamicHeightField';
 // UI
 import './CommentBox.css';
 import { RootState, useAppDispatch } from '../../Store/store';
@@ -106,9 +110,12 @@ export const CommentBox = (props: any) => {
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label 
-        // name="comment" 
-        htmlFor="comment">What are your thoughts?</label>
+        <label
+          // name="comment"
+          htmlFor="comment"
+        >
+          What are your thoughts?
+        </label>
         <textarea
           ref={textRef}
           onClick={onExpand}
@@ -121,10 +128,20 @@ export const CommentBox = (props: any) => {
           // id="comment"
         />
         <div className="actions">
-          <button name="comment" type="button" className="cancel" onClick={onClose}>
+          <button
+            name="comment"
+            type="button"
+            className="cancel"
+            onClick={onClose}
+          >
             Cancel
           </button>
-          <button className="comment" type="button" disabled={commentValue.length < 1} onClick={(e) => onSubmit(e)}>
+          <button
+            className="comment"
+            type="button"
+            disabled={commentValue.length < 1}
+            onClick={(e) => onSubmit(e)}
+          >
             {location.pathname === '/' && 'Respond'}
             {location.pathname === '/PostSong' && 'Post'}
           </button>
@@ -132,4 +149,4 @@ export const CommentBox = (props: any) => {
       </form>
     </div>
   );
-}
+};

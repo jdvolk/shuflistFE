@@ -5,7 +5,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // app imports
 import Song, { withRouter } from '../Song/Song';
@@ -17,20 +17,20 @@ import './PostSong.css';
 import { RootState } from '../../Store/store';
 import { Song as SongType } from '../../Store/User/getUserSlice';
 
-const PostSong =()=>  {
+const PostSong = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   // const { song } = location;
   const song: SongType = {
-    title: "asdklfs",
-      Song_ID: 1,
-      Artist: "22",
-      Song_Name: "asdklfjas",
-      Album_Cover: "asdjklfhsa",
-      Release_Date: "djksafhk",
-      Type: "sadjklfh",
-      isFavorite: false,
-  }
+    title: 'asdklfs',
+    Song_ID: 1,
+    Artist: '22',
+    Song_Name: 'asdklfjas',
+    Album_Cover: 'asdjklfhsa',
+    Release_Date: 'djksafhk',
+    Type: 'sadjklfh',
+    isFavorite: false,
+  };
 
   // component state
   const [userSumbitted, setUserSubmitted] = useState(false);
@@ -44,7 +44,6 @@ const PostSong =()=>  {
     return {
       Post_ID: Math.floor(Math.random() * 100),
       Song: {
-
         // Song_ID: song.Song_ID,
         // Artist: song.Artist,
         // Song_Name: song.Song_Name,
@@ -65,22 +64,19 @@ const PostSong =()=>  {
     await createPost(payload);
     dispatch(resetSearch());
     setUserSubmitted(true);
-    navigate("/")
+    navigate('/');
     // setValidation(true);
   };
 
   return (
     <section className="post-form">
-      <Song
-        Song={song}
-        handlePostClick={handlePostClick}
-      />
+      <Song Song={song} handlePostClick={handlePostClick} />
       <section className="song-search-container">
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         {/* {userSumbitted && navigate("/") } */}
       </section>
     </section>
   );
-}
+};
 
 export default withRouter(PostSong);

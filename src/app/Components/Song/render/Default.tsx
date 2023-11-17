@@ -8,7 +8,9 @@ import defaultAlbum from '../../../../assets/default_album.jpg';
 export const renderDefault = (songDetails: any) => {
   let date;
   if (songDetails.Release_Date) date = songDetails.Release_Date;
-  const albumArt = songDetails.Album_Cover?.length ? songDetails.Album_Cover : defaultAlbum;
+  const albumArt = songDetails.Album_Cover?.length
+    ? songDetails.Album_Cover
+    : defaultAlbum;
   // const albumArt = songDetails.Album_Cover ?? defaultAlbum;
   return (
     <section className="song-default">
@@ -47,4 +49,3 @@ export const renderDefault = (songDetails: any) => {
     </section>
   );
 };
-

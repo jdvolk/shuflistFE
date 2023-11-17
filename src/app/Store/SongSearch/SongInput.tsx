@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 // action/reducer imports
 import {
   fetchResults,
@@ -13,7 +12,7 @@ import {
 
 // app imports
 import './SongInput.css';
-import {Emoji} from '../../Components/Emoji/Emoji';
+import { Emoji } from '../../Components/Emoji/Emoji';
 import { withRouter } from '../../Components/Song/Song';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store';
@@ -46,15 +45,12 @@ function SongSearch() {
       <section
         onClick={() => {
           dispatch(fetchResults(userInput));
-          navigate("/SearchResults")
+          navigate('/SearchResults');
           setSongInput('');
         }}
       >
-        <Emoji
-          label="search"
-        />
+        <Emoji label="search" />
       </section>
-  
     </section>
   );
 }

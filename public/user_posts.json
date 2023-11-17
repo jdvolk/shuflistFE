@@ -1,12 +1,12 @@
 {
-  "posts" : [
+  "posts": [
     {
       "Post_id": 1,
-      "Author" : {
-        "Author" : "Justin",
-        "Author_Id" : "2"
+      "Author": {
+        "Author": "Justin",
+        "Author_Id": "2"
       },
-      "Song" :   {
+      "Song": {
         "Song_ID": 1,
         "Artist": "bty cll, Botanik",
         "Song_Name": "Like a Drug",
@@ -14,17 +14,15 @@
         "isFavorite": false
       },
       "Body": "Check out this song I made",
-      "Comments" : [
-
-      ]
+      "Comments": []
     },
     {
       "Post_ID": 2,
-      "Author" : {
-        "Author" : "Trevor",
-        "Author_Id" : "1"
+      "Author": {
+        "Author": "Trevor",
+        "Author_Id": "1"
       },
-      "Song" :   {
+      "Song": {
         "Song_ID": 2,
         "Artist": "Louis The Child, Coin",
         "Song_Name": "Self Care",
@@ -32,7 +30,7 @@
         "isFavorite": false
       },
       "Body": "Have you heard the new Louis the Child and Coin collab?",
-      "Comments" : []
+      "Comments": []
     }
   ]
 }

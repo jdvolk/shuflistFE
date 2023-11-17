@@ -3,12 +3,18 @@ import React from 'react';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-export const renderSearchResults = (props: any, passedSong: any, songDetails: any, handleFavClick: any) => {
+export const renderSearchResults = (
+  props: any,
+  passedSong: any,
+  songDetails: any,
+  handleFavClick: any
+) => {
   return (
     <section>
       <section className="choose-song">
-        <section className="song x" 
-        // label="x" 
+        <section
+          className="song x"
+          // label="x"
         />
         <section
           className="song check"
@@ -30,5 +36,3 @@ export const renderSearchResults = (props: any, passedSong: any, songDetails: an
     </section>
   );
 };
-
-

@@ -6,10 +6,10 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 
 // app imports
-import {Comment} from '../Comment/Comment';
+import { Comment } from '../Comment/Comment';
 
 // UI
-import{ Button} from '../Button/Button';
+import { Button } from '../Button/Button';
 import './Comments.css';
 
 export function Comments(props: any) {
@@ -31,14 +31,8 @@ export function Comments(props: any) {
     comments = comments.filter((comment: any) => comment.Body !== '');
     comments = comments.map((comment: any) => {
       return (
-        <section
-          key={comment.Comment_ID + Math.random()}
-        >
-          <Comment
-            Author={comment.Author.Author}
-            Body={comment.Body}
-          />
-
+        <section key={comment.Comment_ID + Math.random()}>
+          <Comment Author={comment.Author.Author} Body={comment.Body} />
         </section>
       );
     });
@@ -54,10 +48,23 @@ export function Comments(props: any) {
         // name="comment-close"
         onClick={onClose}
       >
-        {(!isExpanded && comments.length > 0) && <Button className="comment open" label={`comments(${comments.length})`} /> }
-        {(!isExpanded && comments.length === 0) && <Button className="comment open disabled" label="no comments" disabled={comments.length === 0} /> }
+        {!isExpanded && comments.length > 0 && (
+          <Button
+            className="comment open"
+            label={`comments(${comments.length})`}
+          />
+        )}
+        {!isExpanded && comments.length === 0 && (
+          <Button
+            className="comment open disabled"
+            label="no comments"
+            disabled={comments.length === 0}
+          />
+        )}
         {isExpanded && comments}
-        {isExpanded && <Button className="comment" type="button" label="close" />}
+        {isExpanded && (
+          <Button className="comment" type="button" label="close" />
+        )}
       </section>
     );
   };
@@ -72,8 +79,7 @@ export function Comments(props: any) {
       onClick={onExpand}
       onFocus={onExpand}
     >
-      { renderButton() }
+      {renderButton()}
     </section>
   );
 }
-

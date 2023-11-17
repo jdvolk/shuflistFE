@@ -3,7 +3,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import {UserHeader} from '../UserHeader/UserHeader';
+import { UserHeader } from '../UserHeader/UserHeader';
 
 export function Comment(props: any) {
   // eslint-disable-next-line react/prop-types
@@ -19,4 +19,3 @@ export function Comment(props: any) {
     );
   }
 }
-

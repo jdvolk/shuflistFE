@@ -1,21 +1,26 @@
-import { ActionCreatorWithPayload, ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
-import { AppDispatch } from "../store";
+import {
+  ActionCreatorWithPayload,
+  ActionCreatorWithoutPayload,
+} from '@reduxjs/toolkit';
+import { AppDispatch } from '../store';
 
-
-export const useFetchDispatch = async (url: string, infoRelay: ActionCreatorWithPayload<any>, endAction: ActionCreatorWithoutPayload<any>, dispatch: AppDispatch) => {
+export const useFetchDispatch = async (
+  url: string,
+  infoRelay: ActionCreatorWithPayload<any>,
+  endAction: ActionCreatorWithoutPayload<any>,
+  dispatch: AppDispatch
+) => {
   try {
     const response = await fetch(url);
     const parsed = await response.json();
     dispatch(infoRelay(parsed));
   } catch (error) {
     console.log(error);
-  } finally  {
+  } finally {
     dispatch(endAction());
     // return parsed;
   }
 };
-
-
 
 // export const getUser = () => async (dispatch) => {
 //   dispatch(startLoading());

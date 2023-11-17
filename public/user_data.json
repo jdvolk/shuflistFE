@@ -1,8 +1,8 @@
 {
-  "userId" : 1,
-  "userName" : "Justin Volk",
-  "favorites" : [],
+  "userId": 1,
+  "userName": "Justin Volk",
+  "favorites": [],
   "following": [1],
   "followers": [1],
-  "settings" : [1]
+  "settings": [1]
 }

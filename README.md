@@ -1,15 +1,16 @@
 ### Shuflist Frontend Setup
 
-
 Before proceeding, ensure you have `nvm` (Node Version Manager) installed globally and operational. If you're not using `nvm`, verify that you are utilizing the Node version specified in the `.nvmrc` file.
 
 #### Installation Scripts
+
 `npm install`
 `npm run prepare`
 
 Make sure to download the API and microservice repositories, ensuring all three repositories are stored within the same folder.
 
 #### Startup Commands (Run the following from the Frontend repo folder)
+
 To initiate the frontend:
 `npm run dev`
 

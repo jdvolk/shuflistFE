@@ -8,10 +8,7 @@ import { Comments } from '../Comments/Comments';
 // UI
 import './TimeLine.css';
 import { getPosts, selectPosts } from '../../Store/User/userPostsSlice';
-import {
-  selectIsLoggedIn,
-  selectUser,
-} from '../../Store/User/getUserSlice';
+import { selectIsLoggedIn, selectUser } from '../../Store/User/getUserSlice';
 import { useAppDispatch } from '../../Store/store';
 
 function TimeLine(props: any) {

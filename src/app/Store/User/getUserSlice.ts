@@ -55,7 +55,8 @@ export const userSlice = createSlice({
     login: (state, action) => {
       state.userInfo = {
         ...state.userInfo,
-        ...action.payload};
+        ...action.payload,
+      };
       state.isLoggedIn = true;
     },
     logout: (state) => {
@@ -113,7 +114,7 @@ export const loginUser = async (payload: any, dispatch: AppDispatch) => {
     const response = await fetch(url);
     const parsed = await response.json();
     dispatch(startLoading());
-    if(parsed.error === null) dispatch(login(parsed.data));
+    if (parsed.error === null) dispatch(login(parsed.data));
   } catch (error) {
     console.log(error);
   } finally {

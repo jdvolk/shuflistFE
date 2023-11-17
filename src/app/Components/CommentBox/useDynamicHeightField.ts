@@ -9,5 +9,3 @@ export const useDynamicHeightField = (element: any, value: any) => {
     element.current.style.height = `${element.current.scrollHeight}px`;
   }, [element, value]);
 };
-
-

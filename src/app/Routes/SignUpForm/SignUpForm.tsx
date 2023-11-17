@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Dropzone from 'react-dropzone-uploader';
 import 'react-dropzone-uploader/dist/styles.css';
 
-import {Button} from '../../Components/Button/Button';
+import { Button } from '../../Components/Button/Button';
 import '../../Components/Button/Button.css';
 
 import './SignUpForm.css';
@@ -29,7 +29,13 @@ export function SignUpForm() {
     'Display-Name': '',
   });
 
-  const formElements = ['Email', 'User-Name', 'Password', 'Display-Name', 'Content-Creator'];
+  const formElements = [
+    'Email',
+    'User-Name',
+    'Password',
+    'Display-Name',
+    'Content-Creator',
+  ];
 
   return (
     <section>
@@ -42,12 +48,17 @@ export function SignUpForm() {
         }}
       >
         <h1>Sign Up</h1>
-        {formElements ? useDynamicForm(formState, formElements, setFormState) : null}
-        <label>
-          User Image:
-        </label>
+        {formElements
+          ? useDynamicForm(formState, formElements, setFormState)
+          : null}
+        <label>User Image:</label>
         <Dropzone key="image-upload" />
-        <Button type="submit" className="sign-up-submit" label="Sign Up" key="button" />
+        <Button
+          type="submit"
+          className="sign-up-submit"
+          label="Sign Up"
+          key="button"
+        />
       </form>
     </section>
   );

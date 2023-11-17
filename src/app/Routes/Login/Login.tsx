@@ -5,7 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // reduxState
 import { getPosts } from '../../Store/User/userPostsSlice';
-import { getUser, loginUser, selectIsLoggedIn, selectUser } from '../../Store/User/getUserSlice';
+import {
+  getUser,
+  loginUser,
+  selectIsLoggedIn,
+  selectUser,
+} from '../../Store/User/getUserSlice';
 
 // UI
 import { Button } from '../../Components/Button/Button';
@@ -56,7 +61,7 @@ export function Login() {
         name="login-button"
         label="Login"
         onClick={() => {
-          loginUser({userHandle: Handle}, dispatch);
+          loginUser({ userHandle: Handle }, dispatch);
           // dispatch(getPosts(Number(userInfo.userInfo.User_Id)));
           // dispatch(getUser({ email, password }));
           navigate('/');
@@ -67,4 +72,3 @@ export function Login() {
     </form>
   );
 }
-

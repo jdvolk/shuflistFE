@@ -1,5 +1,5 @@
 import { configureStore, MiddlewareArray } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import counterReducer from './counter/counterSlice';
 import songInputReducer from './SongSearch/songInputSlice';
 import userReducer from './User/getUserSlice';
@@ -14,8 +14,8 @@ const store = configureStore({
   },
   // middleware: new MiddlewareArray().concat(additionalMiddleware, logger)
 });
-export type AppDispatch = typeof store.dispatch
-export const useAppDispatch: () => AppDispatch = useDispatch
-export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export type RootState = ReturnType<typeof store.getState>;
 
-export default store
+export default store;

@@ -11,14 +11,14 @@ import store from './app/Store/store';
 // UI
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
         <App />
       </Router>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

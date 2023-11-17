@@ -38,12 +38,12 @@ export const RoutesInternal = () => {
         />
       );
     });
-    const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
   return (
-    <><Routes>
-
-      {routeGenerator()}
-      {/* <Route
+    <>
+      <Routes>
+        {routeGenerator()}
+        {/* <Route
         exact path="/SignUpForm"
         render={() => {
           return (
@@ -110,12 +110,11 @@ export const RoutesInternal = () => {
       >
       </Route>
         */}
-      <Route
-        path="/"
-        element={<HomePage isLoggedIn={isLoggedIn} location="home-page" />}
-      />
-    </Routes>
+        <Route
+          path="/"
+          element={<HomePage isLoggedIn={isLoggedIn} location="home-page" />}
+        />
+      </Routes>
     </>
-
   );
 };

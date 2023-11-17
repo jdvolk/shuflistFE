@@ -45,7 +45,6 @@ const initialState: UserPostState = {
     // {
     //   Post_ID: 0,
     //   Song: {
-      
     //     Song_ID: 0,
     //     title: 'string;',
     //     isFavorite: false ,
@@ -88,7 +87,7 @@ export const userPosts = createSlice({
       state.posts.unshift(action.payload);
     },
     favoritePosts: (state, action) => {
-    //   useFavoritesActions(store.getState(), action);
+      //   useFavoritesActions(store.getState(), action);
     },
     unFavoritePosts: (state, action) => {
       // useFavoritesActions(store.getState(), action);
@@ -141,13 +140,13 @@ export const postComment = async (comment: Comment) => {
   await usePostRequest(fullUrl, comment);
 };
 
-export const postFavorite = async (song: Song|null) => {
+export const postFavorite = async (song: Song | null) => {
   const fullUrl = `${url}favorites`;
   // might need to impliment the favorites actions here
   await usePostRequest(fullUrl, song);
 };
 
-export const deleteFavorite = async (song:Song) => {
+export const deleteFavorite = async (song: Song) => {
   const fullUrl = `${url}favorites/${song.Song_ID}`;
   try {
     await fetch(fullUrl, {
@@ -160,5 +159,6 @@ export const deleteFavorite = async (song:Song) => {
 };
 
 export const selectPosts = (state: RootState) => state.posts.posts;
-export const findSong = (id: number, state: RootState) => state.posts.posts.find((post: Post) => post.Post_ID === id);
+export const findSong = (id: number, state: RootState) =>
+  state.posts.posts.find((post: Post) => post.Post_ID === id);
 export default userPosts.reducer;

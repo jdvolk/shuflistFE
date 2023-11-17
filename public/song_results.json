@@ -1,5 +1,5 @@
 [
-  { 
+  {
     "Song": {
       "Song_ID": 1,
       "Artist": "bty cll, Botanik",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "Song" : {
+    "Song": {
       "Song_ID": 5,
       "Artist": "Louis The Child, Drew Love",
       "Song_Name": "Free",

@@ -10,10 +10,7 @@ export function UserHeader(props: any) {
         alt="User avatar"
         draggable="false"
       />
-      <span>
-        {userName}
-      </span>
+      <span>{userName}</span>
     </div>
   );
 }
-

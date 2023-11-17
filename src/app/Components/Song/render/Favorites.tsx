@@ -12,13 +12,12 @@ export const renderFavorites = (passedSong: any, handleFavClick: any) => {
           // label="check"
           onClick={handleFavClick}
         >
-          <section className="song x" 
-          // label="x" 
+          <section
+            className="song x"
+            // label="x"
           />
         </section>
       </section>
     );
   }
 };
-
-
