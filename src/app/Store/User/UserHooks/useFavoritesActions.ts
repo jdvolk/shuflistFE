@@ -1,4 +1,4 @@
-import { RootState } from '../../../app/store';
+import { RootState } from '../../store';
 import { Post, UserPostState } from '../userPostsSlice';
 import {useFindPost} from './useFindPost';
 import {PayloadAction} from '@reduxjs/toolkit';

@@ -7,12 +7,12 @@ import { Comments } from '../Comments/Comments';
 
 // UI
 import './TimeLine.css';
-import { getPosts, selectPosts } from '../../../features/User/userPostsSlice';
+import { getPosts, selectPosts } from '../../Store/User/userPostsSlice';
 import {
   selectIsLoggedIn,
   selectUser,
-} from '../../../features/User/getUserSlice';
-import { useAppDispatch } from '../../store';
+} from '../../Store/User/getUserSlice';
+import { useAppDispatch } from '../../Store/store';
 
 function TimeLine(props: any) {
   const userTimeLine = useSelector(selectPosts);

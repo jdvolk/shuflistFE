@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 import { PayloadAction,} from "@reduxjs/toolkit";
 import { Post, UserPostState } from "../userPostsSlice";
-import { RootState } from "../../../app/store";
+import { RootState } from "../../store";
 
 export const useFindPost = (state: RootState, action: PayloadAction<Post>) => {
   const found = state.posts.posts

@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 // app imports
-import SongSearch from '../../../features/SongSearch/SongInput';
-import { logout, selectIsLoggedIn } from '../../../features/User/getUserSlice';
-import { resetSearch } from '../../../features/SongSearch/songInputSlice';
+import SongSearch from '../../Store/SongSearch/SongInput';
+import { logout, selectIsLoggedIn } from '../../Store/User/getUserSlice';
+import { resetSearch } from '../../Store/SongSearch/songInputSlice';
 
 // UI
 import './Navigation.css';

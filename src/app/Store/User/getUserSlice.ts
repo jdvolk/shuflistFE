@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction, CaseReducer } from '@reduxjs/toolkit';
 import { useFetchDispatch } from '../networkReqHooks/useFetchDispatch';
-import { useSongIndex } from './UserHooks/useSongIndex';
-import { url, apiUrl } from '../ApiUrl';
-import { AppDispatch, RootState } from '../../app/store';
+
+import { AppDispatch, RootState } from '../store';
 import { usePostRequest } from '../networkReqHooks/usePostRequest';
+import { apiUrl, url } from '../ApiUrl';
+import { useSongIndex } from './UserHooks/useSongIndex';
 
 export interface UserInfoState {
   User_Id: string;

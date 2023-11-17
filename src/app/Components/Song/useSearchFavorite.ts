@@ -1,5 +1,5 @@
-import { deleteFavorite } from '../../../features/User/userPostsSlice';
-import { AppDispatch } from '../../store';
+import { deleteFavorite } from '../../Store/User/userPostsSlice';
+import { AppDispatch } from '../../Store/store';
 
 export const searchResultFavorite = (passedSong: any, addToFavorites: any, removeFromFavorites: any, dispatch: AppDispatch) => {
   if (passedSong.isFavorite === false) {

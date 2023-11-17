@@ -7,7 +7,7 @@ import TimeLine from '../../Components/TimeLine/TimeLine';
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 import './HomePage.css';
 import { withRouter } from '../../Components/Song/Song';
-import { RootState } from '../../store';
+import { RootState } from '../../Store/store';
 
 function HomePage(props: any) {
   // eslint-disable-next-line react/prop-types

@@ -7,14 +7,14 @@ import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 // eslint-disable-next-line import/no-named-as-default
 // app imports
-import { postComment, addComment, Comment } from '../../../features/User/userPostsSlice';
+import { postComment, addComment, Comment } from '../../Store/User/userPostsSlice';
 import {UserHeader} from '../UserHeader/UserHeader';
 
 // custom hooks
 import {useDynamicHeightField} from './useDynamicHeightField';
 // UI
 import './CommentBox.css';
-import { RootState, useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../Store/store';
 
 const INITIAL_HEIGHT = 40;
 

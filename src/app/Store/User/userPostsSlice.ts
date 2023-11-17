@@ -10,8 +10,8 @@ import { useFetchDispatch } from '../networkReqHooks/useFetchDispatch';
 import { useFindPost } from './UserHooks/useFindPost';
 import { useFavoritesActions } from './UserHooks/useFavoritesActions';
 
+import { AppDispatch, RootState } from '../store';
 import { url } from '../ApiUrl';
-import { AppDispatch, RootState } from '../../app/store';
 
 // const url = 'http://localhost:10000/';
 

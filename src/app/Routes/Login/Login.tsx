@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 
 // reduxState
-import { getPosts } from '../../../features/User/userPostsSlice';
-import { getUser, loginUser, selectIsLoggedIn, selectUser } from '../../../features/User/getUserSlice';
+import { getPosts } from '../../Store/User/userPostsSlice';
+import { getUser, loginUser, selectIsLoggedIn, selectUser } from '../../Store/User/getUserSlice';
 
 // UI
 import { Button } from '../../Components/Button/Button';
@@ -14,7 +14,7 @@ import './Login.css';
 
 // custom hooks
 import useDynamicForm from '../useDynamicForm';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch } from '../../Store/store';
 import { useNavigate } from 'react-router-dom';
 
 export function Login() {

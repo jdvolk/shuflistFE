@@ -9,13 +9,13 @@ import {  useLocation, useNavigate } from 'react-router-dom';
 
 // app imports
 import Song, { withRouter } from '../Song/Song';
-import { addPosts, createPost } from '../../../features/User/userPostsSlice';
-import { resetSearch } from '../../../features/SongSearch/songInputSlice';
+import { addPosts, createPost } from '../../Store/User/userPostsSlice';
+import { resetSearch } from '../../Store/SongSearch/songInputSlice';
 
 // UI
 import './PostSong.css';
-import { RootState } from '../../store';
-import { Song as SongType } from '../../../features/User/getUserSlice';
+import { RootState } from '../../Store/store';
+import { Song as SongType } from '../../Store/User/getUserSlice';
 
 const PostSong =()=>  {
   const dispatch = useDispatch();

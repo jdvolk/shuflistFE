@@ -1,9 +1,9 @@
 import { configureStore, MiddlewareArray } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux'
-import counterReducer from '../features/counter/counterSlice';
-import songInputReducer from '../features/SongSearch/songInputSlice';
-import userReducer from '../features/User/getUserSlice';
-import userPostsReducer from '../features/User/userPostsSlice';
+import counterReducer from './counter/counterSlice';
+import songInputReducer from './SongSearch/songInputSlice';
+import userReducer from './User/getUserSlice';
+import userPostsReducer from './User/userPostsSlice';
 
 const store = configureStore({
   reducer: {

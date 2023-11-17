@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Song from '../../Components/Song/Song';
-import { RootState } from '../../store';
+import { RootState } from '../../Store/store';
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 
 export function Favorites(props: any) {

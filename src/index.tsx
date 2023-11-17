@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 // app imports
 import App from './App';
-import store from './app/store';
+import store from './app/Store/store';
 // import * as serviceWorker from './serviceWorker';
 
 // UI

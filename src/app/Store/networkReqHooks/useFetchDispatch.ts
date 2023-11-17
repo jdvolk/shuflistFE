@@ -1,5 +1,6 @@
 import { ActionCreatorWithPayload, ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
-import { AppDispatch } from "../../app/store";
+import { AppDispatch } from "../store";
+
 
 export const useFetchDispatch = async (url: string, infoRelay: ActionCreatorWithPayload<any>, endAction: ActionCreatorWithoutPayload<any>, dispatch: AppDispatch) => {
   try {

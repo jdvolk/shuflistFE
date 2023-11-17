@@ -2,7 +2,7 @@
 /* eslint-disable quote-props */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {useFetchDispatch} from '../networkReqHooks/useFetchDispatch';
-import { AppDispatch, RootState } from '../../app/store';
+import { AppDispatch, RootState } from '../store';
 import {apiUrl as url} from '../ApiUrl';
 // const url = 'http://localhost:8000/';
 // song input actions/reducer

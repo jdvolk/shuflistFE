@@ -15,7 +15,7 @@ import HomePage from './HomePage/HomePage';
 import { Favorites } from './Favorites/Favorites';
 import { SignUpForm } from './SignUpForm/SignUpForm';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { RootState } from '../Store/store';
 
 export const RoutesInternal = () => {
   const routeComponents = [

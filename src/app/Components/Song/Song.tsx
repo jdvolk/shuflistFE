@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // app imports
-import { Song, addToFavorites, removeFromFavorites } from '../../../features/User/getUserSlice';
-import { switchFavorite, postFavorite } from '../../../features/User/userPostsSlice';
+import { Song, addToFavorites, removeFromFavorites } from '../../Store/User/getUserSlice';
+import { switchFavorite, postFavorite } from '../../Store/User/userPostsSlice';
 
 // render methods
 import {renderSearchResults} from './render/SearchResults';
@@ -19,7 +19,7 @@ import './Song.css';
 // custom hooks
 import {setFavorite} from './useFavorite';
 import {searchResultFavorite} from './useSearchFavorite';
-import { RootState, useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../Store/store';
 
 const SongRender = (props: any)  => {
   // component state

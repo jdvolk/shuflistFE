@@ -9,7 +9,7 @@ import Song from '../../Components/Song/Song';
 
 // UI
 import './SongResults.css';
-import { RootState } from '../../store';
+import { RootState } from '../../Store/store';
 
 let resultsList: any = null;
 

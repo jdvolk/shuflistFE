@@ -13,10 +13,10 @@ import {
 
 // app imports
 import './SongInput.css';
-import {Emoji} from '../../app/Components/Emoji/Emoji';
-import { withRouter } from '../../app/Components/Song/Song';
+import {Emoji} from '../../Components/Emoji/Emoji';
+import { withRouter } from '../../Components/Song/Song';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/store';
+import { useAppDispatch } from '../store';
 
 function SongSearch() {
   // eslint-disable-next-line react/prop-types
