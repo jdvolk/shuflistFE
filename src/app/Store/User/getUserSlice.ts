@@ -1,35 +1,13 @@
 import { createSlice, PayloadAction, CaseReducer } from '@reduxjs/toolkit';
-import { useFetchDispatch } from '../networkReqHooks/useFetchDispatch';
+import {
+  createFetchDispatch,
+  createPostRequest,
+} from '../networkReqHooks/NetworkUtils';
 
-import { AppDispatch, RootState } from '../store';
-import { usePostRequest } from '../networkReqHooks/usePostRequest';
+import type { AppDispatch, RootState, UserState } from '../storetypes';
 import { apiUrl, url } from '../ApiUrl';
-import { useSongIndex } from './UserHooks/useSongIndex';
+import { getSongIndex } from './UserUtils/utils';
 
-export interface UserInfoState {
-  User_Id: string;
-  UserName: string;
-  Favorites: any[];
-  Following: any[];
-  Followers: any[];
-}
-export interface UserState {
-  isLoggedIn: boolean;
-  userInput: string;
-  userInfo: UserInfoState;
-  isLoading: boolean;
-}
-export interface Song {
-  Song_ID: number;
-  title: string;
-  isFavorite: boolean;
-  Artist: string;
-  Song_Name: string;
-  Album_Cover: string;
-  Release_Date: string;
-  Type: string;
-  // comments: Array<Comment>;
-}
 const initialState: UserState = {
   isLoggedIn: false,
   userInput: '',
@@ -72,15 +50,15 @@ export const userSlice = createSlice({
     resetInput: (state) => {
       state.userInput = '';
     },
-    addToFavorites: (state, action: PayloadAction<Song>) => {
-      const foundSongIndex = useSongIndex(state, action);
+    addToFavorites: (state, action: PayloadAction<any>) => {
+      const foundSongIndex = getSongIndex(state, action);
       if (foundSongIndex === -1) {
         state.userInfo.Favorites.unshift(action.payload);
       }
     },
     removeFromFavorites: (state, action) => {
       if (action.payload !== undefined) {
-        const foundSongIndex = useSongIndex(state, action);
+        const foundSongIndex = getSongIndex(state, action);
         if (foundSongIndex > -1) {
           state.userInfo.Favorites.splice(foundSongIndex, 1);
         }
@@ -102,16 +80,16 @@ export const {
 export const getUser = () => async (dispatch: AppDispatch) => {
   dispatch(startLoading());
   const fullUrl = `${url}user/`;
-  useFetchDispatch(fullUrl, login, stopLoading, dispatch);
+  createFetchDispatch(fullUrl, login, stopLoading, dispatch);
 };
 // export const loginUser = async (dispatch: AppDispatch, userName: string, password: string) => {
 //   const fullUrl
 // }
 export const loginUser = async (payload: any, dispatch: AppDispatch) => {
   // useFetchDispatch(`http://localhost:8000/users/${payload.userHandle}`, payload);
-  const url = `${apiUrl}users/${payload.userHandle}`;
+  const fullUrl = `${apiUrl}users/${payload.userHandle}`;
   try {
-    const response = await fetch(url);
+    const response = await fetch(fullUrl);
     const parsed = await response.json();
     dispatch(startLoading());
     if (parsed.error === null) dispatch(login(parsed.data));
@@ -124,7 +102,7 @@ export const loginUser = async (payload: any, dispatch: AppDispatch) => {
   }
 };
 export const postUser = (payload: any) => {
-  usePostRequest('http://localhost:8000/users/', payload);
+  createPostRequest('http://localhost:8000/users/', payload);
 };
 
 export const selectUser = (state: RootState) => state.user;

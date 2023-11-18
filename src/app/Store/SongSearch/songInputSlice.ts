@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable quote-props */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { useFetchDispatch } from '../networkReqHooks/useFetchDispatch';
-import { AppDispatch, RootState } from '../store';
+import { createFetchDispatch } from '../networkReqHooks/NetworkUtils';
+import type { AppDispatch, RootState } from '../storetypes';
 import { apiUrl as url } from '../ApiUrl';
 // const url = 'http://localhost:8000/';
 // song input actions/reducer
@@ -45,7 +45,7 @@ export const fetchResults =
     const fullUrl = `${url}media?query=${encodeURIComponent(input)}`;
     console.log(fullUrl);
     dispatch(songInput(input));
-    useFetchDispatch(fullUrl, searchResults, resetInput, dispatch);
+    createFetchDispatch(fullUrl, searchResults, resetInput, dispatch);
   };
 
 // selectors to access state out side of this file

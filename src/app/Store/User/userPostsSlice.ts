@@ -4,40 +4,25 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line no-unused-vars
-import { Song, addToFavorites, removeFromFavorites } from './getUserSlice';
-import { usePostRequest } from '../networkReqHooks/usePostRequest';
-import { useFetchDispatch } from '../networkReqHooks/useFetchDispatch';
-import { useFindPost } from './UserHooks/useFindPost';
-import { useFavoritesActions } from './UserHooks/useFavoritesActions';
+import { addToFavorites, removeFromFavorites } from './getUserSlice';
+import {
+  createFetchDispatch,
+  createPostRequest,
+} from '../networkReqHooks/NetworkUtils';
+// import { useFindPost } from './UserHooks/useFindPost';
+// import { useFavoritesActions } from './UserHooks/useFavoritesActions';
 
-import { AppDispatch, RootState } from '../store';
+import type {
+  AppDispatch,
+  Post,
+  RootState,
+  Song,
+  UserPostState,
+  Comment,
+} from '../storetypes';
 import { url } from '../ApiUrl';
 
 // const url = 'http://localhost:10000/';
-
-interface Author {
-  Author_ID: number;
-  AuthorHandle: string;
-}
-
-export interface Comment {
-  Comment_ID: number;
-  Author: Author;
-  Body: string;
-  Post_ID: number; // Changed to number from string
-}
-
-export interface Post {
-  Post_ID: number;
-  Song: Song;
-  Comments: Comment[];
-  isFavorite?: boolean;
-}
-
-export interface UserPostState {
-  isLoading: boolean;
-  posts: Post[] | any[];
-}
 
 const initialState: UserPostState = {
   isLoading: false,
@@ -117,7 +102,7 @@ export const {
 export const getPosts = (id: number) => async (dispatch: AppDispatch) => {
   dispatch(startLoading());
   const fullUrl = `${url}Home`;
-  useFetchDispatch(fullUrl, fetchPosts, stopLoading, dispatch);
+  createFetchDispatch(fullUrl, fetchPosts, stopLoading, dispatch);
 };
 
 export const switchFavorite = (foundPost: Post) => (dispatch: AppDispatch) => {
@@ -132,18 +117,18 @@ export const switchFavorite = (foundPost: Post) => (dispatch: AppDispatch) => {
 
 export const createPost = async (post: Post) => {
   const fullUrl = `${url}searchResults`;
-  await usePostRequest(fullUrl, post);
+  await createPostRequest(fullUrl, post);
 };
 
 export const postComment = async (comment: Comment) => {
   const fullUrl = `${url}Home/${comment.Post_ID}`;
-  await usePostRequest(fullUrl, comment);
+  await createPostRequest(fullUrl, comment);
 };
 
 export const postFavorite = async (song: Song | null) => {
   const fullUrl = `${url}favorites`;
   // might need to impliment the favorites actions here
-  await usePostRequest(fullUrl, song);
+  await createPostRequest(fullUrl, song);
 };
 
 export const deleteFavorite = async (song: Song) => {

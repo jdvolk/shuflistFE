@@ -1,5 +1,28 @@
-import { PayloadAction } from '@reduxjs/toolkit';
-export const usePostRequest = async (url: string, payload: any) => {
+import {
+  ActionCreatorWithPayload,
+  ActionCreatorWithoutPayload,
+} from '@reduxjs/toolkit';
+
+import type { AppDispatch } from '../storetypes';
+
+export const createFetchDispatch = async (
+  url: string,
+  infoRelay: ActionCreatorWithPayload<any>,
+  endAction: ActionCreatorWithoutPayload<any>,
+  dispatch: AppDispatch
+) => {
+  try {
+    const response = await fetch(url);
+    const parsed = await response.json();
+    dispatch(infoRelay(parsed));
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(endAction());
+    // return parsed;
+  }
+};
+export const createPostRequest = async (url: string, payload: any) => {
   try {
     const response = await fetch(url, {
       method: 'post',
