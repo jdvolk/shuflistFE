@@ -5,7 +5,7 @@ import Navigation from './app/Components/Navagation/Navigation';
 import { RoutesInternal } from './app/Routes/routes';
 
 // UI
-import logo2 from '../src/assets/shuflist_5.png';
+import logo2 from './assets/shuflist_5.png';
 import './App.css';
 
 function App() {

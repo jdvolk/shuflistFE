@@ -13,10 +13,10 @@ import {
   logout,
   startLoading,
   stopLoading,
-} from './User/getUserSlice';
+} from '../Store/User/getUserSlice';
 
-import type { RootState, AppDispatch } from './storetypes';
-import { userApi } from './Api/UserApiSlice';
+import type { RootState, AppDispatch } from '../Store/storetypes';
+import { userApi } from '../Api/UserApiSlice';
 
 export const listenerMiddleware = createListenerMiddleware();
 

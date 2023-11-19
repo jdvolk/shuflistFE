@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 // app imports
-import { SongSearch } from '../../Store/SongSearch/SongInput';
+import { SongSearch } from '../SongInput/SongInput';
 import { logout, selectIsLoggedIn } from '../../Store/User/getUserSlice';
 import { resetSearch } from '../../Store/SongSearch/songInputSlice';
 

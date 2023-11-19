@@ -6,26 +6,32 @@ import { useNavigate } from 'react-router-dom';
 
 // action/reducer imports
 import {
-  fetchResults,
+  // fetchResults,
   selectSongInput,
   selectSearchResults as searchResults,
-} from './songInputSlice';
+  songInput,
+} from '../../Store/SongSearch/songInputSlice';
 
 // app imports
 import './SongInput.css';
-import { Emoji } from '../../Components/Emoji/Emoji';
+import { Emoji } from '../Emoji/Emoji';
 
-import { useAppDispatch } from '../storetypes';
+import { useAppDispatch } from '../../Store/storetypes';
+import { useOnEnterKeyDown } from '../../utils/onEnterKeyDown';
 
 export const SongSearch = () => {
   // eslint-disable-next-line react/prop-types
   // hooks
   const input = useSelector(selectSongInput);
-  const results = useSelector(searchResults);
   const dispatch = useAppDispatch();
   // const [userInput, setSongInput] = useState(input);
   const [userInput, setSongInput] = useState(input);
   const navigate = useNavigate();
+  const handleClick = () => {
+    dispatch(songInput(userInput));
+    navigate('/SearchResults');
+  };
+  useOnEnterKeyDown(handleClick);
   // render
   return (
     <section className="song-search-container">
@@ -42,13 +48,7 @@ export const SongSearch = () => {
         //   }
         // }}
       />
-      <section
-        onClick={() => {
-          dispatch(fetchResults(userInput));
-          navigate('/SearchResults');
-          setSongInput('');
-        }}
-      >
+      <section onClick={handleClick}>
         <Emoji label="search" />
       </section>
     </section>

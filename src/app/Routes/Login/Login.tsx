@@ -15,6 +15,7 @@ import './Login.css';
 // custom hooks
 import useDynamicForm from '../useDynamicForm';
 import { useAppDispatch } from '../../Store/storetypes';
+import { useOnEnterKeyDown } from '../../utils/onEnterKeyDown';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -36,19 +37,7 @@ export const Login = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo.isLoggedIn]);
 
-  useEffect(() => {
-    const listener = (event: KeyboardEvent) => {
-      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-        event.preventDefault();
-        handleClick();
-      }
-    };
-    document.addEventListener('keydown', listener);
-    return () => {
-      document.removeEventListener('keydown', listener);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useOnEnterKeyDown(handleClick);
 
   return (
     <form

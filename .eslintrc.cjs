@@ -17,7 +17,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
+    // extraFileExtensions: ['.css'],
   },
+  ignorePatterns: ['**/*.css', '**/*.scss'],
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'react/react-in-jsx-scope': 0,

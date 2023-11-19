@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 // app imports
 // import SongSearch from '../../features/SongSearch/Song_Input';
 import { PostSong } from '../Components/PostSong/PostSong';
-import { SearchResults } from './SongResults/SongResultsContainer';
+import { SearchResults } from '../Components/SongResults/SongResultsContainer';
 import { Login } from './Login/Login';
 import { HomePage } from './HomePage/HomePage';
 import { Favorites } from './Favorites/Favorites';

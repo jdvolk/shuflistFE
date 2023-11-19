@@ -1,18 +1,29 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable quote-props */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { createFetchDispatch } from '../networkReqHooks/NetworkUtils';
-import type { AppDispatch, RootState } from '../storetypes';
+import type { AppDispatch, RootState, Song } from '../storetypes';
 import { apiUrl as url } from '../ApiUrl';
-// const url = 'http://localhost:8000/';
-// song input actions/reducer
+import {
+  searchApi,
+  SongResults,
+  Error,
+  SongQuery,
+} from '../../Api/SearchApiSlice';
+
+interface SearchState {
+  inputValue: string;
+  results: SongResults[] | null;
+  error: Error | null;
+}
+
+const initialState: SearchState = {
+  inputValue: '',
+  results: null,
+  error: null,
+};
+
 export const songSearchSlice = createSlice({
-  // default state
   name: 'songSearch',
-  initialState: {
-    inputValue: '',
-    results: [],
-  },
+  initialState,
   reducers: {
     // reducer for searchbar input
     songInput: (state, action: PayloadAction<string>) => {
@@ -23,7 +34,7 @@ export const songSearchSlice = createSlice({
       state.inputValue = '';
     },
     // reducer for search results
-    searchResults: (state, action: PayloadAction<any>) => {
+    searchResults: (state, action: PayloadAction<SongQuery>) => {
       // fix types for payload
       state.results = action.payload.data;
     },
@@ -31,22 +42,20 @@ export const songSearchSlice = createSlice({
       state.results = [];
     },
   },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      searchApi.endpoints.getSearchResults.matchFulfilled,
+      (state, action) => {
+        state.results = action.payload.data;
+        state.error = action.payload.error;
+      }
+    );
+  },
 });
 
 // export actions
 export const { songInput, searchResults, resetInput, resetSearch } =
   songSearchSlice.actions;
-
-// async function to get search results locally until we have an api set up
-
-export const fetchResults =
-  (input: string) => async (dispatch: AppDispatch) => {
-    // todo js funct to format spaces
-    const fullUrl = `${url}media?query=${encodeURIComponent(input)}`;
-    console.log(fullUrl);
-    dispatch(songInput(input));
-    createFetchDispatch(fullUrl, searchResults, resetInput, dispatch);
-  };
 
 // selectors to access state out side of this file
 export const selectSongInput = (state: RootState) =>

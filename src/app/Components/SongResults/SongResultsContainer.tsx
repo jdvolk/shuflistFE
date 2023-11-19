@@ -1,25 +1,22 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 // app imports
-import { SongRender } from '../../Components/Song/Song';
+import { SongRender } from '../Song/Song';
+
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 
 // UI
 import './SongResults.css';
-import { RootState } from '../../Store/storetypes';
 
-let resultsList: any = null;
+import { selectSearchResults } from '../../Store/SongSearch/songInputSlice';
 
 export const SearchResults = (props: any) => {
-  const searchResults = useSelector(
-    (state: RootState) => state.songSearch.results
-  );
+  const results = useSelector(selectSearchResults);
 
-  if (searchResults.length) {
-    resultsList = searchResults.map((song: any) => {
+  // if (results.length) {
+  const listMapper = (list: any[] | null) =>
+    list?.map((song: any) => {
       const songDetails = song.data;
       // eslint-disable-next-line radix
       const intId = parseInt(songDetails.id);
@@ -27,7 +24,6 @@ export const SearchResults = (props: any) => {
         <section key={Math.random()}>
           <SongRender
             // eslint-disable-next-line react/prop-types
-            location={props.location}
             Song={{
               // Song_ID: songDetails?.data ? songDetails.data.id : songDetails.id,
               Song_ID: intId,
@@ -47,6 +43,8 @@ export const SearchResults = (props: any) => {
         </section>
       );
     });
-  }
-  return <section className="search-results">{resultsList || null}</section>;
+  // }
+  return (
+    <section className="search-results">{listMapper(results) || null}</section>
+  );
 };

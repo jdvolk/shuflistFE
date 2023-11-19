@@ -36,6 +36,7 @@ export function SignUpForm() {
     'Display-Name',
     'Content-Creator',
   ];
+  const form = useDynamicForm(formState, formElements, setFormState);
 
   return (
     <section>
@@ -48,9 +49,7 @@ export function SignUpForm() {
         }}
       >
         <h1>Sign Up</h1>
-        {formElements
-          ? useDynamicForm(formState, formElements, setFormState)
-          : null}
+        {formElements && form}
         <label>User Image:</label>
         <Dropzone key="image-upload" />
         <Button
