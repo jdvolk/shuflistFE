@@ -24,19 +24,26 @@ export function SignUpForm() {
   // component state
   const [formState, setFormState] = useState({
     Email: '',
-    'User-Name': '',
+    Usernname: '',
+    Handle: '',
     Password: '',
-    'Display-Name': '',
+    'ReType Password': '',
   });
 
   const formElements = [
     'Email',
-    'User-Name',
+    'Username',
+    'Handle',
     'Password',
-    'Display-Name',
-    'Content-Creator',
+    'ReType Password',
   ];
-  const form = useDynamicForm(formState, formElements, setFormState);
+  const mapFormElements = formElements.map((element) => {
+    return { name: element };
+  });
+  const form = useDynamicForm(formState, mapFormElements, setFormState);
+
+  // validate bothe passwords
+  //  set up post request
 
   return (
     <section>

@@ -42,17 +42,17 @@ interface UserQuery {
 // Define a service using a base URL and expected endpoints
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${apiUrl}` }),
   endpoints: (builder) => ({
     getUserInfo: builder.query<UserQuery, string>({
       query: (handle) => `users/${handle}`,
     }),
-    getUsers: builder.query<UserQuery, string>({
-      query: (query) => `users/`,
-    }),
+    // getUsers: builder.query<UserQuery, string>({
+    //   query: (query) => `users/`,
+    // }),
   }),
 });
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUserInfoQuery, useGetUsersQuery } = userApi;
+export const { useGetUserInfoQuery } = userApi;

@@ -15,7 +15,6 @@ import './Login.css';
 // custom hooks
 import useDynamicForm from '../useDynamicForm';
 import { useAppDispatch } from '../../Store/storetypes';
-import { useOnEnterKeyDown } from '../../utils/onEnterKeyDown';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -23,21 +22,21 @@ export const Login = () => {
 
   // component state
   const [formState, setFormState] = useState({
-    handle: '',
+    'User Handle': '',
   });
   const navigate = useNavigate();
-  const userHandle = formState.handle;
+  const userHandle = formState['User Handle'];
 
-  const formElements = ['User Handle'];
+  const handleClick = () => {
+    return userHandle.length ? dispatch(getUserInfo(userHandle)) : alert('bro');
+  };
+  const formElements = [{ name: 'User Handle', onClick: handleClick }];
   const form = useDynamicForm(formState, formElements, setFormState);
-  const handleClick = () => dispatch(getUserInfo(userHandle));
 
   useEffect(() => {
     if (userInfo.isLoggedIn) navigate('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo.isLoggedIn]);
-
-  useOnEnterKeyDown(handleClick);
 
   return (
     <form
@@ -45,8 +44,6 @@ export const Login = () => {
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        // getPosts();
-        // getUser({ email, password });
       }}
     >
       <h1>Login</h1>
@@ -59,6 +56,7 @@ export const Login = () => {
         name="login-button"
         label="Login"
         onClick={handleClick}
+        onEnterKeyDown={handleClick}
       >
         Login
       </Button>

@@ -1,12 +1,8 @@
-/* eslint-disable react/function-component-definition */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
-// eslint-disable-next-line import/no-named-as-default
 // app imports
 import { postComment, addComment } from '../../Store/User/userPostsSlice';
 import { UserHeader } from '../UserHeader/UserHeader';
@@ -57,8 +53,8 @@ export const CommentBox = (props: any) => {
     const commentData: Comment = {
       Comment_ID: Math.floor(Math.random()),
       Author: {
-        AuthorHandle: user.UserName,
-        Author_ID: Number(user.User_Id),
+        AuthorHandle: user.handle,
+        Author_ID: Number(user.id),
       },
       Body: commentValue,
       Post_ID: props.Post.Post_ID,
@@ -104,7 +100,7 @@ export const CommentBox = (props: any) => {
             <span>
               {user.User_Name}
             </span> */}
-            <UserHeader userName={user.UserName} />
+            <UserHeader userName={user.displayName} />
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}

@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // action/reducer imports
 import {
-  // fetchResults,
   selectSongInput,
-  selectSearchResults as searchResults,
   songInput,
 } from '../../Store/SongSearch/songInputSlice';
 
@@ -17,22 +15,17 @@ import './SongInput.css';
 import { Emoji } from '../Emoji/Emoji';
 
 import { useAppDispatch } from '../../Store/storetypes';
-import { useOnEnterKeyDown } from '../../utils/onEnterKeyDown';
 
 export const SongSearch = () => {
-  // eslint-disable-next-line react/prop-types
-  // hooks
   const input = useSelector(selectSongInput);
   const dispatch = useAppDispatch();
-  // const [userInput, setSongInput] = useState(input);
   const [userInput, setSongInput] = useState(input);
   const navigate = useNavigate();
+
   const handleClick = () => {
     dispatch(songInput(userInput));
     navigate('/SearchResults');
   };
-  useOnEnterKeyDown(handleClick);
-  // render
   return (
     <section className="song-search-container">
       <input
@@ -41,12 +34,7 @@ export const SongSearch = () => {
         className="song-input"
         value={userInput || ''}
         onChange={(e) => setSongInput(e.target.value)}
-        // onKeyPress={(e) => {
-        //   if (e.key === 'Enter') {
-        //     dispatch(fetchResults(userInput));
-        //     setSongInput('');
-        //   }
-        // }}
+        onKeyDown={(e) => (e.code === 'Enter' ? handleClick() : null)}
       />
       <section onClick={handleClick}>
         <Emoji label="search" />

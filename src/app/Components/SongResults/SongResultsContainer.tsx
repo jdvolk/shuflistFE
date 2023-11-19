@@ -4,28 +4,24 @@ import { useSelector } from 'react-redux';
 // app imports
 import { SongRender } from '../Song/Song';
 
-// import SongSearch from '../../../features/SongSearch/Song_Input';
-
 // UI
 import './SongResults.css';
 
 import { selectSearchResults } from '../../Store/SongSearch/songInputSlice';
+import { SongResults } from '../../Api/SearchApiSlice';
 
-export const SearchResults = (props: any) => {
+export const SearchResults = () => {
   const results = useSelector(selectSearchResults);
 
-  // if (results.length) {
-  const listMapper = (list: any[] | null) =>
-    list?.map((song: any) => {
+  const listMapper = (list: SongResults[] | null) =>
+    list?.map((song: SongResults) => {
       const songDetails = song.data;
       // eslint-disable-next-line radix
       const intId = parseInt(songDetails.id);
       return (
         <section key={Math.random()}>
           <SongRender
-            // eslint-disable-next-line react/prop-types
             Song={{
-              // Song_ID: songDetails?.data ? songDetails.data.id : songDetails.id,
               Song_ID: intId,
               Artist: songDetails.authors?.length
                 ? songDetails.authors[0].name
@@ -43,7 +39,6 @@ export const SearchResults = (props: any) => {
         </section>
       );
     });
-  // }
   return (
     <section className="search-results">{listMapper(results) || null}</section>
   );

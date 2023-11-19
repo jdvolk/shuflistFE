@@ -1,22 +1,19 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable react/jsx-filename-extension */
-import React from 'react';
 import './Emoji.css';
 
+interface EmojiProps {
+  label: string;
+}
 // render
-export function Emoji(props: any) {
-  const { label } = props;
+export const Emoji = ({ label }: EmojiProps) => {
   return (
     <section className="emoji-background">
       <span
-        className={label ? `emoji ${label}` : 'emoji Common'}
+        className={label.length ? `emoji ${label}` : 'emoji Common'}
         role="img"
-        // aria-label={props.label ? props.label : ''}
-        // aria-hidden={props.label ? "false" : "true"}
+        aria-label={label.length ? label : ''}
+        aria-hidden={label.length ? 'false' : 'true'}
         // onClick={handleClick}
-      ></span>
+      />
     </section>
   );
-}
+};

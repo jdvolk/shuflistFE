@@ -18,7 +18,6 @@ interface MenuItem {
 
 function Navigation() {
   const navagate = useNavigate();
-  // const { history } = props;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
@@ -67,21 +66,6 @@ function Navigation() {
       <SongSearch />
       {isLoggedIn && renderNav(loggedIn)}
       {!isLoggedIn && renderNav(loggedOut)}
-      {/* <Link to="/" onClick={() => dispatch(resetSearch())}>Home</Link>
-      <Link to="#/" onClick={() => history.goBack()}>Back</Link>
-      {!isLoggedIn && <Link to="/Login"> Login </Link>}
-      { isLoggedIn && (
-        <>
-          <Link
-            to="/"
-            onClick={() => dispatch(logout()) && dispatch(resetSearch())}
-          >
-            Logout
-          </Link>
-          <Link to="/Favorites" onClick={() => dispatch(resetSearch())}>Favorites</Link>
-        </>
-      )}
-      <Link to="/Search">Search</Link> */}
     </section>
   );
 }

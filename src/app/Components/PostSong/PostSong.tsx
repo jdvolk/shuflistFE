@@ -1,9 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -14,7 +9,7 @@ import { resetSearch } from '../../Store/SongSearch/songInputSlice';
 
 // UI
 import './PostSong.css';
-import { RootState, Song as SongType } from '../../Store/storetypes';
+import { Song as SongType } from '../../Store/storetypes';
 import { selectUser } from '../../Store/User/getUserSlice';
 
 export const PostSong = () => {
@@ -44,13 +39,6 @@ export const PostSong = () => {
     return {
       Post_ID: Math.floor(Math.random() * 100),
       Song: {
-        // Song_ID: song.Song_ID,
-        // Artist: song.Artist,
-        // Song_Name: song.Song_Name,
-        // Album_Cover: song.Album_Cover,
-        // Release_Date: song.Release_Date,
-        // Type: song.Type,
-        // isFavorite: song.isFavorite,
         ...song,
       },
       Body: input,
@@ -72,7 +60,6 @@ export const PostSong = () => {
     <section className="post-form">
       <SongRender Song={song} handlePostClick={handlePostClick} />
       <section className="song-search-container">
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         {/* {userSumbitted && navigate("/") } */}
       </section>
     </section>

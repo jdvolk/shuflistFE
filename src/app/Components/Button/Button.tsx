@@ -1,16 +1,31 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-import React from 'react';
+export enum ButtonType {
+  SUBMIT = 'submit',
+  BUTTON = 'button',
+}
+interface ButtonProps {
+  className: string;
+  type?: ButtonType;
+  label?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+}
 
-export function Button(props: any) {
+export const Button = ({
+  className,
+  type = ButtonType.BUTTON,
+  onClick,
+  label,
+  disabled = false,
+}: ButtonProps) => {
   return (
     <button
-      className={props.className}
+      className={className}
       name="button"
-      type={props.type === 'submit' ? 'submit' : 'button'}
-      onClick={props.onClick}
+      type={type === ButtonType.SUBMIT ? 'submit' : 'button'}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {props.label}
+      {label}
     </button>
   );
-}
+};

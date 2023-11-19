@@ -14,10 +14,10 @@ const useDynamicForm = (state: any, elements: any, setState: any) => {
   };
 
   return elements.map((element: any, index: any) => {
-    const lowercase = element.toLowerCase();
+    const lowercase = element.name.toLowerCase();
     return (
-      <label key={element}>
-        {`${element}: `}
+      <label key={element.name}>
+        {`${element.name}: `}
         <input
           id={index}
           key={lowercase}
@@ -26,11 +26,12 @@ const useDynamicForm = (state: any, elements: any, setState: any) => {
           className={`${lowercase}-input text-input`}
           onChange={(e) => {
             setState((prevState: any) => {
-              return { ...prevState, [element]: e.target.value };
+              return { ...prevState, [element.name]: e.target.value };
             });
           }}
-          value={state.element}
-          placeholder={`${element}`}
+          value={state.element?.name}
+          placeholder={`${element.name}`}
+          onKeyDown={(e) => (e.code === 'Enter' ? element.onClick() : null)}
         />
       </label>
     );

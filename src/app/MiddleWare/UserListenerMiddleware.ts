@@ -36,12 +36,14 @@ startAppListening({
   effect: async (action, listenerApi) => {
     // listenerApi.cancelActiveListeners();
     listenerApi.dispatch(startLoading());
-    listenerApi.dispatch(
-      userApi.endpoints.getUserInfo.initiate(
-        action.payload
-        // {subscriptionOptions: { pollingInterval: 50000 },}
-      )
-    );
+    if (action.payload.length) {
+      listenerApi.dispatch(
+        userApi.endpoints.getUserInfo.initiate(
+          action.payload
+          // {subscriptionOptions: { pollingInterval: 50000 },}
+        )
+      );
+    }
   },
 });
 
