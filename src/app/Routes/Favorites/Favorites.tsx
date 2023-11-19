@@ -1,8 +1,8 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Song from '../../Components/Song/Song';
-import { RootState } from '../../Store/store';
+import { SongRender } from '../../Components/Song/Song';
+import { RootState } from '../../Store/storetypes';
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 
 export function Favorites(props: any) {
@@ -16,7 +16,7 @@ export function Favorites(props: any) {
   const resultsList = favorites.map((song: any) => {
     return (
       <section key={Math.random()}>
-        <Song
+        <SongRender
           Song={song}
           isSearchResult="false"
           isFavoritesPage="true"

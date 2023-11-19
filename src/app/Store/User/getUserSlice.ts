@@ -1,19 +1,22 @@
-import { createSlice, PayloadAction, CaseReducer } from '@reduxjs/toolkit';
-import {
-  createFetchDispatch,
-  createPostRequest,
-} from '../networkReqHooks/NetworkUtils';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createPostRequest } from '../networkReqHooks/NetworkUtils';
 
-import type { AppDispatch, RootState, UserState } from '../storetypes';
-import { apiUrl, url } from '../ApiUrl';
+import type { RootState, UserState } from '../storetypes';
 import { getSongIndex } from './UserUtils/utils';
+import { userApi } from '../Api/UserApiSlice';
+
+export enum UserStatus {
+  SUCCESS = 'SUCCESS',
+  FAILED = 'FAILED',
+}
 
 const initialState: UserState = {
   isLoggedIn: false,
   userInput: '',
   userInfo: {
-    User_Id: '',
-    UserName: '',
+    id: '',
+    handle: '',
+    displayName: '',
     Favorites: [],
     Following: [],
     Followers: [],
@@ -30,6 +33,15 @@ export const userSlice = createSlice({
     stopLoading: (state) => {
       state.isLoading = !state.isLoading;
     },
+    getUserInfo: (state, action: PayloadAction<string>) => {
+      state.userInfo.handle = action.payload;
+    },
+    getUserSuccess: (state) => {
+      state.status = UserStatus.SUCCESS;
+    },
+    getUserFailed: (state) => {
+      state.status = UserStatus.FAILED;
+    },
     login: (state, action) => {
       state.userInfo = {
         ...state.userInfo,
@@ -39,8 +51,9 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       state.userInfo = {
-        User_Id: '',
-        UserName: '',
+        id: '',
+        handle: '',
+        displayName: '',
         Favorites: [],
         Following: [],
         Followers: [],
@@ -65,11 +78,25 @@ export const userSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      userApi.endpoints.getUserInfo.matchFulfilled,
+      (state, action) => {
+        state.userInfo = { ...action.payload.data, ...state.userInfo };
+      }
+    );
+    // .addMatcher(userApi.endpoints.logout.matchFulfilled, (state, action) => {
+    //  state.user = null;
+    // });
+  },
 });
 
 export const {
   startLoading,
   stopLoading,
+  getUserInfo,
+  getUserSuccess,
+  getUserFailed,
   login,
   logout,
   resetInput,
@@ -77,30 +104,6 @@ export const {
   removeFromFavorites,
 } = userSlice.actions;
 
-export const getUser = () => async (dispatch: AppDispatch) => {
-  dispatch(startLoading());
-  const fullUrl = `${url}user/`;
-  createFetchDispatch(fullUrl, login, stopLoading, dispatch);
-};
-// export const loginUser = async (dispatch: AppDispatch, userName: string, password: string) => {
-//   const fullUrl
-// }
-export const loginUser = async (payload: any, dispatch: AppDispatch) => {
-  // useFetchDispatch(`http://localhost:8000/users/${payload.userHandle}`, payload);
-  const fullUrl = `${apiUrl}users/${payload.userHandle}`;
-  try {
-    const response = await fetch(fullUrl);
-    const parsed = await response.json();
-    dispatch(startLoading());
-    if (parsed.error === null) dispatch(login(parsed.data));
-  } catch (error) {
-    console.log(error);
-  } finally {
-    // dispatch(login(parsed))
-    dispatch(stopLoading());
-    // return parsed;
-  }
-};
 export const postUser = (payload: any) => {
   createPostRequest('http://localhost:8000/users/', payload);
 };

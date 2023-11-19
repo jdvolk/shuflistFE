@@ -4,7 +4,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // app imports
 import {
-  Song,
   addToFavorites,
   removeFromFavorites,
 } from '../../Store/User/getUserSlice';
@@ -23,21 +22,25 @@ import './Song.css';
 // custom hooks
 import { setFavorite } from './useFavorite';
 import { searchResultFavorite } from './useSearchFavorite';
-import { RootState, useAppDispatch } from '../../Store/store';
+import { RootState, Song, useAppDispatch } from '../../Store/storetypes';
 
-const SongRender = (props: any) => {
+export const SongRender = (props: any) => {
+  const location = useLocation();
   // component state
   const [passedSong, setSong] = useState<Song>();
+  // eslint-disable-next-line @typescript-eslint/no-shadow, react/destructuring-assignment
+  const { Song } = props;
 
   useEffect(() => {
-    setSong(props.Song);
-  }, [props.Song]);
+    setSong(Song);
+  }, [Song]);
 
   const dispatch = useAppDispatch();
   const userFavorites = useSelector(
     (state: RootState) => state.user.userInfo.Favorites
   );
-  const { pathname } = props.router.location;
+
+  const { pathname } = location;
   const handleFavClick = () => {
     setFavorite(
       passedSong,
@@ -48,7 +51,7 @@ const SongRender = (props: any) => {
     //   searchResultFavorite(passedSong, addToFavorites, removeFromFavorites, dispatch);
     //   dispatch(switchFavorite(passedSong));
     //   postFavorite(passedSong);
-    if (props.location.pathname === '/Favorites') {
+    if (location.pathname === '/Favorites') {
       searchResultFavorite(
         passedSong,
         addToFavorites,
@@ -70,17 +73,15 @@ const SongRender = (props: any) => {
     const songDetails = passedSong;
     if (!songDetails.isFavorite) checkFavorite(songDetails.Song_ID);
     return (
-      <>
-        <section className="song-container">
-          {renderDefault(songDetails)}
-          {pathname === '/SearchResults' &&
-            renderSearchResults(props, passedSong, songDetails, handleFavClick)}
-          {pathname === '/' && renderPosts(props, songDetails, handleFavClick)}
-          {pathname === '/Favorites' &&
-            renderFavorites(passedSong, handleFavClick)}
-          {pathname === '/PostSong' && renderPostSong(props.handlePostClick)}
-        </section>
-      </>
+      <section className="song-container">
+        {renderDefault(songDetails)}
+        {pathname === '/SearchResults' &&
+          renderSearchResults(props, passedSong, songDetails, handleFavClick)}
+        {pathname === '/' && renderPosts(props, songDetails, handleFavClick)}
+        {pathname === '/Favorites' &&
+          renderFavorites(passedSong, handleFavClick)}
+        {/* {pathname === '/PostSong' && renderPostSong(props.handlePostClick)} */}
+      </section>
     );
     // eslint-disable-next-line no-else-return
   } else {
@@ -88,18 +89,18 @@ const SongRender = (props: any) => {
   }
 };
 
-export default withRouter(SongRender);
+// export function withRouter<ComponentProps>(
+//   Component: React.FunctionComponent<ComponentProps>
+// ) {
+//   function ComponentWithRouterProp(props: ComponentProps) {
+//     const location = useLocation();
+//     const navigate = useNavigate();
+//     const params = useParams();
 
-export function withRouter<ComponentProps>(
-  Component: React.FunctionComponent<ComponentProps>
-) {
-  function ComponentWithRouterProp(props: ComponentProps) {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const params = useParams();
+//     return <Component {...props} router={{ location, navigate, params }} />;
+//   }
 
-    return <Component {...props} router={{ location, navigate, params }} />;
-  }
+//   return ComponentWithRouterProp;
+// }
 
-  return ComponentWithRouterProp;
-}
+// export default withRouter(SongRender);

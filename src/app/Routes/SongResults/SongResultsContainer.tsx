@@ -4,12 +4,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 // app imports
-import Song from '../../Components/Song/Song';
+import { SongRender } from '../../Components/Song/Song';
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 
 // UI
 import './SongResults.css';
-import { RootState } from '../../Store/store';
+import { RootState } from '../../Store/storetypes';
 
 let resultsList: any = null;
 
@@ -25,7 +25,7 @@ export const SearchResults = (props: any) => {
       const intId = parseInt(songDetails.id);
       return (
         <section key={Math.random()}>
-          <Song
+          <SongRender
             // eslint-disable-next-line react/prop-types
             location={props.location}
             Song={{
@@ -48,9 +48,5 @@ export const SearchResults = (props: any) => {
       );
     });
   }
-  return (
-    <>
-      <section className="search-results">{resultsList || null}</section>
-    </>
-  );
+  return <section className="search-results">{resultsList || null}</section>;
 };

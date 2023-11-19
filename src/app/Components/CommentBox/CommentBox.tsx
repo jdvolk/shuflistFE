@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -7,18 +8,14 @@ import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 // eslint-disable-next-line import/no-named-as-default
 // app imports
-import {
-  postComment,
-  addComment,
-  Comment,
-} from '../../Store/User/userPostsSlice';
+import { postComment, addComment } from '../../Store/User/userPostsSlice';
 import { UserHeader } from '../UserHeader/UserHeader';
 
 // custom hooks
 import { useDynamicHeightField } from './useDynamicHeightField';
 // UI
 import './CommentBox.css';
-import { RootState, useAppDispatch } from '../../Store/store';
+import { RootState, useAppDispatch, Comment } from '../../Store/storetypes';
 
 const INITIAL_HEIGHT = 40;
 
@@ -26,6 +23,7 @@ const INITIAL_HEIGHT = 40;
  * Read the blog post here:
  * https://letsbuildui.dev/articles/how-to-build-an-expandable-comment-box
  */
+// eslint-disable-next-line import/prefer-default-export
 export const CommentBox = (props: any) => {
   const dispatch = useAppDispatch();
   const location = useLocation();

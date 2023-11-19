@@ -6,8 +6,11 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
 export interface UserInfoState {
-  User_Id: string;
-  UserName: string;
+  id: string;
+  handle: string;
+  displayName: string;
+  createdAt?: string;
+  updatedAt?: string;
   Favorites: any[];
   Following: any[];
   Followers: any[];
@@ -17,6 +20,7 @@ export interface UserState {
   userInput: string;
   userInfo: UserInfoState;
   isLoading: boolean;
+  status?: string;
 }
 export interface Song {
   Song_ID: number;

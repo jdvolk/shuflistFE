@@ -1,17 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // app imports
-import TimeLine from '../../Components/TimeLine/TimeLine';
+import { TimeLine } from '../../Components/TimeLine/TimeLine';
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 import './HomePage.css';
-import { withRouter } from '../../Components/Song/Song';
-import { RootState } from '../../Store/store';
+import { RootState } from '../../Store/storetypes';
 
-function HomePage(props: any) {
+export const HomePage = (props: any) => {
   // eslint-disable-next-line react/prop-types
-  const { location } = props;
+  const location = useLocation();
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
 
   return (
@@ -30,6 +29,4 @@ function HomePage(props: any) {
       <TimeLine location={location} />
     </section>
   );
-}
-
-export default withRouter(HomePage);
+};

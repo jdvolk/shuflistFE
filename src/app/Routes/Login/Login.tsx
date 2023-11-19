@@ -1,16 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
 // reduxState
-import { getPosts } from '../../Store/User/userPostsSlice';
-import {
-  getUser,
-  loginUser,
-  selectIsLoggedIn,
-  selectUser,
-} from '../../Store/User/getUserSlice';
+import { getUserInfo, selectUser } from '../../Store/User/getUserSlice';
 
 // UI
 import { Button } from '../../Components/Button/Button';
@@ -19,25 +14,41 @@ import './Login.css';
 
 // custom hooks
 import useDynamicForm from '../useDynamicForm';
-import { useAppDispatch } from '../../Store/store';
-import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../Store/storetypes';
 
-export function Login() {
+export const Login = () => {
   const dispatch = useAppDispatch();
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const userInfo = useSelector(selectUser);
 
   // component state
   const [formState, setFormState] = useState({
-    UserHandle: '',
-    // Password: '',
+    handle: '',
   });
   const navigate = useNavigate();
-  // rename for readibility
-  // const password = formState.Password;
-  const Handle = formState.UserHandle;
+  const userHandle = formState.handle;
 
-  const formElements = ['UserHandle'];
+  const formElements = ['User Handle'];
+  const form = useDynamicForm(formState, formElements, setFormState);
+  const handleClick = () => dispatch(getUserInfo(userHandle));
+
+  useEffect(() => {
+    if (userInfo.isLoggedIn) navigate('/');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userInfo.isLoggedIn]);
+
+  useEffect(() => {
+    const listener = (event: KeyboardEvent) => {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        event.preventDefault();
+        handleClick();
+      }
+    };
+    document.addEventListener('keydown', listener);
+    return () => {
+      document.removeEventListener('keydown', listener);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <form
@@ -50,25 +61,18 @@ export function Login() {
       }}
     >
       <h1>Login</h1>
-      {formElements
-        ? useDynamicForm(formState, formElements, setFormState)
-        : null}
+      {formElements && form}
       <section>{'\n'}</section>
       <Button
-        type="submit"
+        type="button"
         className="login-button"
         value="login"
         name="login-button"
         label="Login"
-        onClick={() => {
-          loginUser({ userHandle: Handle }, dispatch);
-          // dispatch(getPosts(Number(userInfo.userInfo.User_Id)));
-          // dispatch(getUser({ email, password }));
-          navigate('/');
-        }}
+        onClick={handleClick}
       >
         Login
       </Button>
     </form>
   );
-}
+};

@@ -28,5 +28,13 @@ module.exports = {
       },
     ],
     'no-param-reassign': ['error', { props: false }],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: ['arrow-function', 'function-declaration'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'import/prefer-default-export': 'off',
   },
 };

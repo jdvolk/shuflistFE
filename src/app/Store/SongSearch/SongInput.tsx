@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // action/reducer imports
 import {
@@ -13,11 +14,10 @@ import {
 // app imports
 import './SongInput.css';
 import { Emoji } from '../../Components/Emoji/Emoji';
-import { withRouter } from '../../Components/Song/Song';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../store';
 
-function SongSearch() {
+import { useAppDispatch } from '../storetypes';
+
+export const SongSearch = () => {
   // eslint-disable-next-line react/prop-types
   // hooks
   const input = useSelector(selectSongInput);
@@ -53,6 +53,4 @@ function SongSearch() {
       </section>
     </section>
   );
-}
-
-export default withRouter(SongSearch);
+};

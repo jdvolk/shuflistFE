@@ -8,16 +8,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 // app imports
-import Song, { withRouter } from '../Song/Song';
+import { SongRender } from '../Song/Song';
 import { addPosts, createPost } from '../../Store/User/userPostsSlice';
 import { resetSearch } from '../../Store/SongSearch/songInputSlice';
 
 // UI
 import './PostSong.css';
-import { RootState } from '../../Store/store';
-import { Song as SongType } from '../../Store/User/getUserSlice';
+import { RootState, Song as SongType } from '../../Store/storetypes';
+import { selectUser } from '../../Store/User/getUserSlice';
 
-const PostSong = () => {
+export const PostSong = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   // const { song } = location;
@@ -35,9 +35,9 @@ const PostSong = () => {
   // component state
   const [userSumbitted, setUserSubmitted] = useState(false);
 
-  const User = useSelector((state: RootState) => state.user);
-  const UserName = User.userInfo.UserName;
-  const UserId = User.userInfo.User_Id;
+  const User = useSelector(selectUser);
+  const { displayName, id } = User.userInfo;
+
   const navigate = useNavigate();
   // const [validation, setValidation] = useState(false);
   const addBody = (input: any) => {
@@ -54,7 +54,7 @@ const PostSong = () => {
         ...song,
       },
       Body: input,
-      Author: { Author: UserName, Author_Id: UserId },
+      Author: { Author: displayName, Author_Id: id },
       Comments: [],
     };
   };
@@ -70,7 +70,7 @@ const PostSong = () => {
 
   return (
     <section className="post-form">
-      <Song Song={song} handlePostClick={handlePostClick} />
+      <SongRender Song={song} handlePostClick={handlePostClick} />
       <section className="song-search-container">
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         {/* {userSumbitted && navigate("/") } */}
@@ -78,5 +78,3 @@ const PostSong = () => {
     </section>
   );
 };
-
-export default withRouter(PostSong);

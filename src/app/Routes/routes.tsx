@@ -5,17 +5,17 @@
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // app imports
 // import SongSearch from '../../features/SongSearch/Song_Input';
-import PostSong from '../Components/PostSong/PostSong';
+import { PostSong } from '../Components/PostSong/PostSong';
 import { SearchResults } from './SongResults/SongResultsContainer';
 import { Login } from './Login/Login';
-import HomePage from './HomePage/HomePage';
+import { HomePage } from './HomePage/HomePage';
 import { Favorites } from './Favorites/Favorites';
 import { SignUpForm } from './SignUpForm/SignUpForm';
-import { useSelector } from 'react-redux';
-import { RootState } from '../Store/store';
+import { RootState } from '../Store/storetypes';
 
 export const RoutesInternal = () => {
   const routeComponents = [
@@ -34,16 +34,15 @@ export const RoutesInternal = () => {
         <Route
           key={route.path}
           path={`/${route.path}`}
-          element={<>{route.component}</>}
+          element={route.component}
         />
       );
     });
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
   return (
-    <>
-      <Routes>
-        {routeGenerator()}
-        {/* <Route
+    <Routes>
+      {routeGenerator()}
+      {/* <Route
         exact path="/SignUpForm"
         render={() => {
           return (
@@ -110,11 +109,10 @@ export const RoutesInternal = () => {
       >
       </Route>
         */}
-        <Route
-          path="/"
-          element={<HomePage isLoggedIn={isLoggedIn} location="home-page" />}
-        />
-      </Routes>
-    </>
+      <Route
+        path="/"
+        element={<HomePage isLoggedIn={isLoggedIn} location="home-page" />}
+      />
+    </Routes>
   );
 };
