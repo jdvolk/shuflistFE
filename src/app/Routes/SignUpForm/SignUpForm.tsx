@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Dropzone from 'react-dropzone-uploader';
 import 'react-dropzone-uploader/dist/styles.css';
 
-import { Button } from '../../Components/Button/Button';
+import { Button, ButtonType } from '../../Components/Button/Button';
 import '../../Components/Button/Button.css';
 
 import './SignUpForm.css';
@@ -60,7 +60,7 @@ export function SignUpForm() {
         <label>User Image:</label>
         <Dropzone key="image-upload" />
         <Button
-          type="submit"
+          type={ButtonType.SUBMIT}
           className="sign-up-submit"
           label="Sign Up"
           key="button"

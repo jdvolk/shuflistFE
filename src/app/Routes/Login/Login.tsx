@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUserInfo, selectUser } from '../../Store/User/getUserSlice';
 
 // UI
-import { Button } from '../../Components/Button/Button';
+import { Button, ButtonType } from '../../Components/Button/Button';
 import '../../Components/Button/Button.css';
 import './Login.css';
 
@@ -50,16 +50,14 @@ export const Login = () => {
       {formElements && form}
       <section>{'\n'}</section>
       <Button
-        type="button"
+        type={ButtonType.BUTTON}
         className="login-button"
-        value="login"
-        name="login-button"
+        // value="login"
+        // name="login-button"
         label="Login"
         onClick={handleClick}
-        onEnterKeyDown={handleClick}
-      >
-        Login
-      </Button>
+      />
+      {/* Login */}
     </form>
   );
 };
