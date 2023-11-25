@@ -39,7 +39,8 @@ startAppListening({
     if (action.payload.length) {
       listenerApi.dispatch(
         userApi.endpoints.getUserInfo.initiate(
-          action.payload
+          action.payload,
+          { forceRefetch: true }
           // {subscriptionOptions: { pollingInterval: 50000 },}
         )
       );
@@ -55,12 +56,16 @@ startAppListening({
     // authApi.endpoints.logout.matchFulfilled
   ),
   effect: (action, listenerApi) => {
+    // listenerApi.cancelActiveListeners();
     if (action.meta.arg.endpointName === 'getUserInfo') {
       const { user } = listenerApi.getState();
       listenerApi.dispatch(getUserSuccess());
       listenerApi.dispatch(login(user));
       listenerApi.dispatch(stopLoading());
-      // localStorage.setItem(AUTHENTICATED_USER, JSON.stringify(user));
+      localStorage.setItem(
+        'AUTHENTICATED_USER',
+        JSON.stringify(user.userInfo.handle)
+      );
       // set up persist
     }
     if (action.meta.arg.endpointName === 'logout') {
@@ -73,10 +78,11 @@ startAppListening({
 startAppListening({
   matcher: isAnyOf(userApi.endpoints.getUserInfo.matchRejected),
   effect: (action, listenerApi) => {
+    listenerApi.cancelActiveListeners();
     if (action.meta.arg.endpointName === 'getUserInfo') {
       // listenerApi.dispatch(getUserFailed());
-      listenerApi.dispatch(logout());
-      // localStorage.removeItem(AUTHENTICATED_USER);
+      // listenerApi.dispatch(logout());
+      // localStorage.removeItem('AUTHENTICATED_USER');
     }
   },
 });

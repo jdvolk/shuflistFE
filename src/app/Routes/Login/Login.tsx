@@ -26,12 +26,20 @@ export const Login = () => {
   });
   const navigate = useNavigate();
   const userHandle = formState['User Handle'];
+  const storedUser = localStorage.getItem('AUTHENTICATED_USER');
 
   const handleClick = () => {
     return userHandle.length ? dispatch(getUserInfo(userHandle)) : alert('bro');
   };
   const formElements = [{ name: 'User Handle', onClick: handleClick }];
   const form = useDynamicForm(formState, formElements, setFormState);
+
+  useEffect(() => {
+    if (storedUser?.length && !userHandle.length) {
+      dispatch(getUserInfo(JSON.parse(storedUser)));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storedUser]);
 
   useEffect(() => {
     if (userInfo.isLoggedIn) navigate('/');

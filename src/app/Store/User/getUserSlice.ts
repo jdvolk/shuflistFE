@@ -52,6 +52,7 @@ export const userSlice = createSlice({
         ...action.payload,
       };
       state.isLoggedIn = true;
+      state.isLoading = false;
     },
     logout: (state) => {
       state.userInfo = {

@@ -1,17 +1,26 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // app imports
 import { TimeLine } from '../../Components/TimeLine/TimeLine';
 // import SongSearch from '../../../features/SongSearch/Song_Input';
 import './HomePage.css';
-import { RootState } from '../../Store/storetypes';
+import { RootState, useAppDispatch } from '../../Store/storetypes';
+import { getUserInfo } from '../../Store/User/getUserSlice';
 
-export const HomePage = (props: any) => {
+export const HomePage = () => {
   // eslint-disable-next-line react/prop-types
-  const location = useLocation();
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  const storedUser = localStorage.getItem('AUTHENTICATED_USER');
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (storedUser?.length) {
+      dispatch(getUserInfo(JSON.parse(storedUser)));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storedUser]);
 
   return (
     <section>
@@ -26,7 +35,7 @@ export const HomePage = (props: any) => {
         </section>
       )}
       {/* {isLoggedIn && <SongSearch />} */}
-      <TimeLine location={location} />
+      <TimeLine />
     </section>
   );
 };
