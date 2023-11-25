@@ -1,11 +1,13 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // UI
 import Dropzone from 'react-dropzone-uploader';
 import 'react-dropzone-uploader/dist/styles.css';
 
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Button, ButtonType } from '../../Components/Button/Button';
 import '../../Components/Button/Button.css';
 
@@ -14,6 +16,8 @@ import '../Login/Login.css';
 
 // custom hooks
 import useDynamicForm from '../useDynamicForm';
+import { useAddUserMutation } from '../../Api/UserApiSlice';
+import { selectIsLoggedIn } from '../../Store/User/getUserSlice';
 
 // https://react-dropzone-uploader.js.org/docs/quick-start
 
@@ -24,7 +28,8 @@ export function SignUpForm() {
   // component state
   const [formState, setFormState] = useState({
     Email: '',
-    Usernname: '',
+    Username: '',
+    'Display Name': '',
     Handle: '',
     Password: '',
     'ReType Password': '',
@@ -33,6 +38,7 @@ export function SignUpForm() {
   const formElements = [
     'Email',
     'Username',
+    'Display Name',
     'Handle',
     'Password',
     'ReType Password',
@@ -41,9 +47,29 @@ export function SignUpForm() {
     return { name: element };
   });
   const form = useDynamicForm(formState, mapFormElements, setFormState);
+  const createUser = useAddUserMutation()[0];
+  const { Email, Username, Handle, Password } = formState;
+  // setting up mutation request
+  const mutationTrigger = () =>
+    createUser(
+      JSON.stringify({
+        emails: [{ address: Email }],
+        userName: Username,
+        handle: Handle,
+        password: Password,
+        displayName: formState['Display Name'],
+      })
+    );
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn]);
 
   // validate bothe passwords
-  //  set up post request
 
   return (
     <section>
@@ -52,7 +78,6 @@ export function SignUpForm() {
         onSubmit={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          // put the rest of the click handler here
         }}
       >
         <h1>Sign Up</h1>
@@ -64,6 +89,7 @@ export function SignUpForm() {
           className="sign-up-submit"
           label="Sign Up"
           key="button"
+          onClick={mutationTrigger}
         />
       </form>
     </section>

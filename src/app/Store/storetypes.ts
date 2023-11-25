@@ -20,7 +20,7 @@ export interface UserState {
   userInput: string;
   userInfo: UserInfoState;
   isLoading: boolean;
-  status?: string;
+  status?: string | null;
 }
 export interface Song {
   Song_ID: number;

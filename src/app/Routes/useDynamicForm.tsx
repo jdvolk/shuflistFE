@@ -6,6 +6,9 @@ import React from 'react';
 
 const useDynamicForm = (state: any, elements: any, setState: any) => {
   const typeHandler = (type: any) => {
+    if (type === 're type password') {
+      console.log('here');
+    }
     if (type === 'email' || type === 'password') {
       return type;
     } else {
@@ -29,9 +32,8 @@ const useDynamicForm = (state: any, elements: any, setState: any) => {
               return { ...prevState, [element.name]: e.target.value };
             });
           }}
-          value={state.element?.name}
+          value={state[element.name]}
           placeholder={`${element.name}`}
-          onKeyDown={(e) => (e.code === 'Enter' ? element.onClick() : null)}
         />
       </label>
     );

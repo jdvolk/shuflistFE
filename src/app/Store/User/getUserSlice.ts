@@ -22,6 +22,7 @@ const initialState: UserState = {
     Followers: [],
   },
   isLoading: false,
+  status: null,
 };
 export const userSlice = createSlice({
   name: 'User',
@@ -42,6 +43,9 @@ export const userSlice = createSlice({
     getUserFailed: (state) => {
       state.status = UserStatus.FAILED;
     },
+    createUser: () => {},
+    createUserSuccess: () => {},
+    createUserFailed: () => {},
     login: (state, action) => {
       state.userInfo = {
         ...state.userInfo,
@@ -85,6 +89,13 @@ export const userSlice = createSlice({
         state.userInfo = { ...action.payload.data, ...state.userInfo };
       }
     );
+    builder.addMatcher(
+      userApi.endpoints.addUser.matchFulfilled,
+      (state, action) => {
+        state.userInfo = { ...state.userInfo, ...action.payload.data };
+        // state.isLoggedIn = true;
+      }
+    );
     // .addMatcher(userApi.endpoints.logout.matchFulfilled, (state, action) => {
     //  state.user = null;
     // });
@@ -97,6 +108,9 @@ export const {
   getUserInfo,
   getUserSuccess,
   getUserFailed,
+  createUser,
+  createUserSuccess,
+  createUserFailed,
   login,
   logout,
   resetInput,

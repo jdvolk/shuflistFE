@@ -1,5 +1,4 @@
-import { configureStore, MiddlewareArray } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import counterReducer from './counter/counterSlice';
 import songInputReducer from './SongSearch/songInputSlice';
@@ -20,7 +19,10 @@ const store = configureStore({
     [searchApi.reducerPath]: searchApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
+    getDefaultMiddleware({
+      immutableCheck: { warnAfter: 128 },
+      serializableCheck: { warnAfter: 128 },
+    })
       .prepend(
         userListenerMiddleware.middleware,
         searchListenerMiddleware.middleware

@@ -16,7 +16,7 @@ import {
 } from '../Store/User/getUserSlice';
 
 import type { RootState, AppDispatch } from '../Store/storetypes';
-import { userApi } from '../Api/UserApiSlice';
+import { useAddUserMutation, userApi } from '../Api/UserApiSlice';
 
 export const listenerMiddleware = createListenerMiddleware();
 
@@ -51,6 +51,7 @@ startAppListening({
 startAppListening({
   matcher: isAnyOf(
     userApi.endpoints.getUserInfo.matchFulfilled
+    // userApi.endpoints.addUser.matchFulfilled
     // authApi.endpoints.logout.matchFulfilled
   ),
   effect: (action, listenerApi) => {
@@ -76,6 +77,20 @@ startAppListening({
       // listenerApi.dispatch(getUserFailed());
       listenerApi.dispatch(logout());
       // localStorage.removeItem(AUTHENTICATED_USER);
+    }
+  },
+});
+
+//  user creation flow
+startAppListening({
+  matcher: isAnyOf(userApi.endpoints.addUser.matchFulfilled),
+  effect: async (action, listenerApi) => {
+    // listenerApi.cancelActiveListeners();
+    listenerApi.dispatch(startLoading());
+    if (action.meta.arg.endpointName === 'addUser') {
+      listenerApi.dispatch(
+        userApi.endpoints.getUserInfo.initiate(action.payload.data.handle)
+      );
     }
   },
 });

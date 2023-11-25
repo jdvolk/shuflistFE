@@ -47,6 +47,14 @@ export const userApi = createApi({
     getUserInfo: builder.query<UserQuery, string>({
       query: (handle) => `users/${handle}`,
     }),
+    addUser: builder.mutation<UserQuery, any>({
+      query: (body) => ({
+        url: `users/`,
+        method: 'POST',
+        body,
+      }),
+    }),
+    // not needed
     // getUsers: builder.query<UserQuery, string>({
     //   query: (query) => `users/`,
     // }),
@@ -55,4 +63,4 @@ export const userApi = createApi({
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUserInfoQuery } = userApi;
+export const { useGetUserInfoQuery, useAddUserMutation } = userApi;
