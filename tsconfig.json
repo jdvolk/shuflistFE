@@ -14,8 +14,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react-jsxdev",
+    "plugins": [
+      {
+      "name": "@styled/typescript-styled-plugin",
+      "tags": ["styled", "css", "sty"]
+      },
+    ]
   },
-  "include": [".eslintrc.cjs", "src", "vite.config.ts"],
+  "include": [".eslintrc.cjs", "src", "vite.config.ts", ".stylelintrc.cjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
