@@ -6,9 +6,8 @@ import React from 'react';
 
 const useDynamicForm = (state: any, elements: any, setState: any) => {
   const typeHandler = (type: any) => {
-    if (type === 're type password') {
-      console.log('here');
-    }
+    // if (type === 're type password') {
+    // }
     if (type === 'email' || type === 'password') {
       return type;
     } else {

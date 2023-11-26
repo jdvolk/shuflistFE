@@ -109,10 +109,7 @@ export const RoutesInternal = () => {
       >
       </Route>
         */}
-      <Route
-        path="/"
-        element={<HomePage isLoggedIn={isLoggedIn} location="home-page" />}
-      />
+      <Route path="/" element={<HomePage />} />
     </Routes>
   );
 };

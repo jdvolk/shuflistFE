@@ -1,14 +1,8 @@
-/* eslint-disable arrow-body-style */
-import React from 'react';
-
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-export const renderSearchResults = (
-  props: any,
-  passedSong: any,
-  songDetails: any,
-  handleFavClick: any
-) => {
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Song } from '../../../Store/storetypes';
+
+export const renderSearchResults = (songDetails: Song, onClick: () => void) => {
   return (
     <section>
       <section className="choose-song">
@@ -20,18 +14,13 @@ export const renderSearchResults = (
           className="song check"
           // label="check"
           // eslint-disable-next-line arrow-body-style
-          onClick={() => {
-            props.history.push({
-              pathname: '/PostSong',
-              song: passedSong,
-            });
-          }}
+          onClick={onClick}
         />
       </section>
       <section
         className={`song ${songDetails.isFavorite}`}
         // label="check"
-        onClick={handleFavClick}
+        // onClick={handleFavClick}
       />
     </section>
   );

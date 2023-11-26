@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // app imports
 import {
@@ -10,11 +10,11 @@ import {
 import { switchFavorite, postFavorite } from '../../Store/User/userPostsSlice';
 
 // render methods
-import { renderSearchResults } from './render/SearchResults';
-import { renderPosts } from './render/Posts';
-import { renderFavorites } from './render/Favorites';
+import { renderSearchResults } from './render/renderSearchResults';
+import { renderPosts } from './render/renderPosts';
+import { renderFavorites } from './render/renderFavorites';
 import { renderDefault } from './render/Default';
-import { renderPostSong } from './render/PostSong';
+import { renderPostSong } from './render/renderPostSong';
 
 // UI
 import './Song.css';
@@ -24,16 +24,28 @@ import { setFavorite } from './useFavorite';
 import { searchResultFavorite } from './useSearchFavorite';
 import { RootState, Song, useAppDispatch } from '../../Store/storetypes';
 
-export const SongRender = (props: any) => {
+interface SongRenderProps {
+  handlePostClick?: (input: any) => Promise<void>;
+  song: Song;
+  post?: any;
+  props?: any;
+}
+export const SongRender = ({
+  handlePostClick,
+  song,
+  post,
+  props,
+}: SongRenderProps) => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   // component state
   const [passedSong, setSong] = useState<Song>();
   // eslint-disable-next-line @typescript-eslint/no-shadow, react/destructuring-assignment
-  const { Song } = props;
 
   useEffect(() => {
-    setSong(Song);
-  }, [Song]);
+    setSong(song);
+  }, [song]);
 
   const dispatch = useAppDispatch();
   const userFavorites = useSelector(
@@ -41,6 +53,12 @@ export const SongRender = (props: any) => {
   );
 
   const { pathname } = location;
+  const handleSearchClick = useCallback(
+    () => navigate('/PostSong', { state: song }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
   const handleFavClick = () => {
     setFavorite(
       passedSong,
@@ -65,7 +83,9 @@ export const SongRender = (props: any) => {
   };
 
   const checkFavorite = (songID: number) => {
-    const isInFavorites = userFavorites.find((song) => song.Song_ID === songID);
+    const isInFavorites = userFavorites.find(
+      (songFav) => songFav.Song_ID === songID
+    );
     if (isInFavorites) setFavorite(passedSong, setSong);
   };
 
@@ -76,11 +96,12 @@ export const SongRender = (props: any) => {
       <section className="song-container">
         {renderDefault(songDetails)}
         {pathname === '/SearchResults' &&
-          renderSearchResults(props, passedSong, songDetails, handleFavClick)}
-        {pathname === '/' && renderPosts(props, songDetails, handleFavClick)}
+          renderSearchResults(songDetails, handleSearchClick)}
+        {pathname === '/' &&
+          renderPosts(props, post, songDetails, handleFavClick)}
         {pathname === '/Favorites' &&
           renderFavorites(passedSong, handleFavClick)}
-        {/* {pathname === '/PostSong' && renderPostSong(props.handlePostClick)} */}
+        {pathname === '/PostSong' && renderPostSong(handlePostClick)}
       </section>
     );
     // eslint-disable-next-line no-else-return

@@ -1,3 +1,5 @@
+/* eslint-disable no-sequences */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -13,15 +15,30 @@ interface MenuItem {
   route: string;
   Click: () => void;
 }
+interface NavLinksProps {
+  onClick?: () => void;
+}
 
-export const NavLinks = () => {
+export const NavLinks = ({ onClick }: NavLinksProps) => {
   const navagate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const defaultNav: MenuItem[] = [
-    { label: 'Home', route: '/', Click: () => dispatch(resetSearch()) },
-    { label: 'Back', route: '#/', Click: () => navagate(-1) },
+    {
+      label: 'Home',
+      route: '/',
+      Click: () => {
+        dispatch(resetSearch()), onClick && onClick();
+      },
+    },
+    {
+      label: 'Back',
+      route: '#/',
+      Click: () => {
+        navagate(-1), onClick && onClick();
+      },
+    },
     // { label: 'Search', route: '/Search', Click: () => null },
   ];
 
@@ -30,17 +47,27 @@ export const NavLinks = () => {
     {
       label: 'Favorites',
       route: '/Favorites',
-      Click: () => dispatch(resetSearch()),
+      Click: () => {
+        dispatch(resetSearch()), onClick && onClick();
+      },
     },
     {
       label: 'Logout',
       route: '/',
-      Click: () => dispatch(logout()) && dispatch(resetSearch()),
+      Click: () => {
+        dispatch(logout()) && dispatch(resetSearch()), onClick && onClick();
+      },
     },
   ];
 
   const loggedOut: MenuItem[] = [
-    { label: 'Login', route: '/Login', Click: () => null },
+    {
+      label: 'Login',
+      route: '/Login',
+      Click: () => {
+        onClick && onClick();
+      },
+    },
     ...defaultNav,
   ];
 

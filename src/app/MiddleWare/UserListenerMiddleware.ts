@@ -58,13 +58,12 @@ startAppListening({
   effect: (action, listenerApi) => {
     // listenerApi.cancelActiveListeners();
     if (action.meta.arg.endpointName === 'getUserInfo') {
-      const { user } = listenerApi.getState();
       listenerApi.dispatch(getUserSuccess());
-      listenerApi.dispatch(login(user));
+      listenerApi.dispatch(login(action.payload.data));
       listenerApi.dispatch(stopLoading());
       localStorage.setItem(
         'AUTHENTICATED_USER',
-        JSON.stringify(user.userInfo.handle)
+        JSON.stringify(action.payload.data.handle)
       );
       // set up persist
     }

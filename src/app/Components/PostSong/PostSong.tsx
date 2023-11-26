@@ -9,23 +9,17 @@ import { resetSearch } from '../../Store/SongSearch/songInputSlice';
 
 // UI
 import './PostSong.css';
-import { Song as SongType } from '../../Store/storetypes';
+import { Song, Song as SongType } from '../../Store/storetypes';
 import { selectUser } from '../../Store/User/getUserSlice';
+
+interface PostSongProps {
+  song: Song;
+}
 
 export const PostSong = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  // const { song } = location;
-  const song: SongType = {
-    title: 'asdklfs',
-    Song_ID: 1,
-    Artist: '22',
-    Song_Name: 'asdklfjas',
-    Album_Cover: 'asdjklfhsa',
-    Release_Date: 'djksafhk',
-    Type: 'sadjklfh',
-    isFavorite: false,
-  };
+  const { state } = useLocation();
+  const song = state;
 
   // component state
   const [userSumbitted, setUserSubmitted] = useState(false);
@@ -58,7 +52,7 @@ export const PostSong = () => {
 
   return (
     <section className="post-form">
-      <SongRender Song={song} handlePostClick={handlePostClick} />
+      <SongRender song={song} handlePostClick={handlePostClick} />
       <section className="song-search-container">
         {/* {userSumbitted && navigate("/") } */}
       </section>

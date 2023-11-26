@@ -21,20 +21,21 @@ export const SearchResults = () => {
       return (
         <section key={Math.random()}>
           <SongRender
-            Song={{
+            song={{
+              title: song.data.name,
               Song_ID: intId,
               Artist: songDetails.authors?.length
                 ? songDetails.authors[0].name
-                : null,
+                : 'null',
               Type: song.type,
               Song_Name: songDetails.name,
               Release_Date: songDetails.releaseDate,
               Album_Cover: songDetails.displayResources?.default
                 ? songDetails.displayResources.default
-                : null,
+                : 'null',
               isFavorite: false,
             }}
-            isSearchResult
+            // isSearchResult
           />
         </section>
       );
