@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -15,8 +14,11 @@ interface MenuItem {
   route: string;
   Click: () => void;
 }
+interface NavigationProps {
+  isMobile: boolean;
+}
 
-function Navigation() {
+export const Navigation = ({ isMobile }: NavigationProps) => {
   const navagate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -64,10 +66,7 @@ function Navigation() {
   return (
     <section className="nav-bar">
       <SongSearch />
-      {isLoggedIn && renderNav(loggedIn)}
-      {!isLoggedIn && renderNav(loggedOut)}
+      {!isMobile && renderNav(isLoggedIn ? loggedIn : loggedOut)}
     </section>
   );
-}
-
-export default Navigation;
+};

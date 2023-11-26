@@ -29,7 +29,7 @@ export const TimeLine = () => {
       ? userTimeLine?.map((song) => {
           return (
             <section key={Math.random()}>
-              <SongRender Song={song.Song} Post={song} isSearchResult="false" />
+              <SongRender Song={song.Song} Post={song} isSearchResult={false} />
               {song.Comments && <Comments comments={song.Comments} />}
             </section>
           );
