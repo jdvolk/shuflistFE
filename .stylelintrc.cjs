@@ -6,8 +6,6 @@ module.exports ={
   defaultSeverity: 'warning',
   customSyntax: "postcss-styled-syntax",
   rules: {
-    "no-empty-source": null,
-    "length-zero-no-unit": null,
-    "media-feature-range-notation" : null
+
   }
 }

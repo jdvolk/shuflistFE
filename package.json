@@ -55,8 +55,7 @@
     "*.{js,css,ts,tsx,jsx}": [
       "prettier --write",
       "eslint --fix",
-      "npm run lint:css --fix",
-      "git add"
+      "npm run lint:css --fix"
     ]
   }
 }

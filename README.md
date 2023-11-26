@@ -4,7 +4,8 @@ Before proceeding, ensure you have `nvm` (Node Version Manager) installed global
 
 #### Installation Scripts
 
-`npm install`
+`nvm use`
+`npm install` || `npm ci` (clean install)
 `npm run prepare`
 
 Make sure to download the API and microservice repositories, ensuring all three repositories are stored within the same folder.
@@ -48,6 +49,12 @@ For the database service (ensure Docker is running):
 
 ### Additional Tools
 
-- Linting (ESLint)
 - Code Formatting (Prettier)
+- Linting (ESLint)
+- StyleLint
 - Git Hooks (Husky)
+
+### Scripts
+(StyleLint) `npm run lint:css`
+(ESLint) `npm run lint`
+

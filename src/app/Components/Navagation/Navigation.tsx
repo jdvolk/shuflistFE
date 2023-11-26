@@ -1,4 +1,3 @@
-import React from 'react';
 // app imports
 import { SongSearch } from '../SongInput/SongInput';
 
