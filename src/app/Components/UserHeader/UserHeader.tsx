@@ -1,8 +1,9 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import { Author } from '../../Store/storetypes';
 
-export function UserHeader(props: any) {
-  const { userName } = props;
+interface UserHeaderProps {
+  user: Author;
+}
+export function UserHeader({ user }: UserHeaderProps) {
   return (
     <div className="user">
       <img
@@ -10,7 +11,7 @@ export function UserHeader(props: any) {
         alt="User avatar"
         draggable="false"
       />
-      <span>{userName}</span>
+      <span>{user?.AuthorHandle}</span>
     </div>
   );
 }

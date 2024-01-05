@@ -1,11 +1,11 @@
 .song-container {
   padding: 2%;
   display: flex;
-  max-width: 80vw;
   min-height: 30vmin;
-  max-height: 45vh;
   margin: 10px;
-  box-shadow: 4px 7px 13px 0px #00000061, inset -2px -2px 4px 0px #8f8f8f1c;
+  box-shadow:
+    4px 7px 13px 0px #00000061,
+    inset -2px -2px 4px 0px #8f8f8f1c;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -13,7 +13,6 @@
 .album-cover {
   width: 100%;
   object-fit: contain;
-  max-width: 95%;
   box-shadow: 0px 0px 5px 1px #00000033;
 }
 
@@ -32,7 +31,9 @@
       rgba(255, 255, 255, 0)
     ),
     linear-gradient(63deg, #e309ff, #436bfd);
-  box-shadow: inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929,
+  box-shadow:
+    inset 3px 3px 6px 0px #4c4c4c,
+    inset -4px -4px 4px 0px #292929,
     2px 1000px 1px #282d34 inset;
   background-origin: border-box;
   background-clip: content-box, border-box;
@@ -42,7 +43,6 @@
 .song-default {
   display: flex;
   flex-direction: column;
-  max-width: 40vmin;
 }
 .song-description {
   display: flex;
@@ -54,12 +54,14 @@ p {
   margin: 0;
 }
 .song-post {
-  display: grid;
-  grid-template-rows: 25% 25% 25% 25%;
-  grid-template-columns: 50% 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 .poster-info {
-  grid-row-start: 1;
+  flex-flow: row;
+  padding: 0.5rem;
 }
 /* .header {
   transition: opacity var(--transition) 0.2s;
@@ -89,13 +91,16 @@ p {
 
 .song:hover {
   color: white;
-  box-shadow: inset 4px 7px 13px 0px #000000c2,
+  box-shadow:
+    inset 4px 7px 13px 0px #000000c2,
     inset -4px -2px 13px 0px #000000c2;
 }
 .song:active {
   color: white;
-  box-shadow: inset 4px 7px 13px 0px #000000c2,
-    inset -4px -2px 13px 0px #000000c2, inset 0px 0px 13px 0px #000000c2;
+  box-shadow:
+    inset 4px 7px 13px 0px #000000c2,
+    inset -4px -2px 13px 0px #000000c2,
+    inset 0px 0px 13px 0px #000000c2;
 }
 p {
   font-size: 0.5em;

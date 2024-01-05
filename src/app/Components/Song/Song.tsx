@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -89,23 +89,35 @@ export const SongRender = ({
     if (isInFavorites) setFavorite(passedSong, setSong);
   };
 
-  if (passedSong) {
-    const songDetails = passedSong;
-    if (!songDetails.isFavorite) checkFavorite(songDetails.Song_ID);
+  const defaultRender = useCallback(() => {
+    return renderDefault(passedSong);
+  }, [passedSong]);
+
+  const renderPaths = useMemo(() => {
     return (
-      <section className="song-container">
-        {renderDefault(songDetails)}
+      <>
         {pathname === '/SearchResults' &&
-          renderSearchResults(songDetails, handleSearchClick)}
+          renderSearchResults(passedSong, handleSearchClick)}
         {pathname === '/' &&
-          renderPosts(props, post, songDetails, handleFavClick)}
+          renderPosts(post, handleFavClick, defaultRender, passedSong)}
         {pathname === '/Favorites' &&
           renderFavorites(passedSong, handleFavClick)}
         {pathname === '/PostSong' && renderPostSong(handlePostClick)}
-      </section>
+      </>
     );
-    // eslint-disable-next-line no-else-return
-  } else {
-    return <section>Loading...</section>;
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, passedSong, handleSearchClick, props, post, handlePostClick]);
+  if (passedSong && !passedSong?.isFavorite) checkFavorite(passedSong.Song_ID);
+  return (
+    <section className="song-container">
+      {passedSong ? (
+        <>
+          {/* {renderDefault(passedSong)} */}
+          {renderPaths}
+        </>
+      ) : (
+        <section>Loading...</section>
+      )}
+    </section>
+  );
 };

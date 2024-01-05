@@ -26,8 +26,8 @@ const store = configureStore({
       .prepend(
         userListenerMiddleware.middleware,
         searchListenerMiddleware.middleware
-      )
-      .concat(userApi.middleware, searchApi.middleware),
+      ) // listener middleware
+      .concat(userApi.middleware, searchApi.middleware), // api slice middleware
 });
 
 setupListeners(store.dispatch);

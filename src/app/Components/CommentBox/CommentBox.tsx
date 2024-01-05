@@ -11,7 +11,12 @@ import { UserHeader } from '../UserHeader/UserHeader';
 import { useDynamicHeightField } from './useDynamicHeightField';
 // UI
 import './CommentBox.css';
-import { RootState, useAppDispatch, Comment } from '../../Store/storetypes';
+import {
+  RootState,
+  useAppDispatch,
+  Comment,
+  Author,
+} from '../../Store/storetypes';
 
 const INITIAL_HEIGHT = 40;
 
@@ -54,7 +59,7 @@ export const CommentBox = (props: any) => {
       Comment_ID: Math.floor(Math.random()),
       Author: {
         AuthorHandle: user.handle,
-        Author_ID: Number(user.id),
+        Author_ID: user.id,
       },
       Body: commentValue,
       Post_ID: props.Post.Post_ID,
@@ -74,6 +79,10 @@ export const CommentBox = (props: any) => {
       dispatch(addComment(commentData));
       postComment(commentData);
     }
+  };
+  const author: Author = {
+    AuthorHandle: user.displayName,
+    Author_ID: user.id,
   };
 
   return (
@@ -100,16 +109,14 @@ export const CommentBox = (props: any) => {
             <span>
               {user.User_Name}
             </span> */}
-            <UserHeader userName={user.displayName} />
+            <UserHeader user={author} />
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label
           // name="comment"
           htmlFor="comment"
-        >
-          What are your thoughts?
-        </label>
+        />
         <textarea
           ref={textRef}
           onClick={onExpand}

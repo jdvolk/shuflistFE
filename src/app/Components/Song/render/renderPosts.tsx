@@ -1,34 +1,30 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { CommentBox } from '../../CommentBox/CommentBox';
+import { Post, Song } from '../../../Store/storetypes';
+import { Comments } from '../../Comments/Comments';
+import { FavoriteIcon } from '../../Icons/index';
 import { UserHeader } from '../../UserHeader/UserHeader';
 
 export const renderPosts = (
-  props: any,
-  post: any,
-  songDetails: any,
-  onClick: () => void
+  post: Post,
+  onClick: () => void,
+  defaultRender: () => JSX.Element,
+  song?: Song
 ) => {
+  const { Author, Body } = post;
   return (
     <section className="song-post">
-      <section
-        className={`song favorite ${songDetails.isFavorite}`}
-        // label="check"
-        onClick={onClick}
-      />
       <section className="poster-info">
         <div className="post-header">
           <div className="user">
-            <UserHeader user={post.Author} />
-            {/* <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg" alt="User avatar" draggable="false" /> */}
-            <span>{post.Author && post.Author.Author}</span>
+            <UserHeader user={Author} />
           </div>
         </div>
-        <p>{post.Body}</p>
+        <p>{Body}</p>
       </section>
-      <section className="post-comment-box">
-        <CommentBox location="timeline" Post={post} />
-      </section>
+      {defaultRender()}
+      <FavoriteIcon onClick={onClick} isActive={song?.isFavorite} />
+      {/* {post.Comments && <Comments comments={post.Comments} post={post} />} */}
     </section>
   );
 };

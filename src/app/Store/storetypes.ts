@@ -1,9 +1,19 @@
 import { useDispatch } from 'react-redux';
 import store from './store';
 
+// dispatch
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export type RootState = ReturnType<typeof store.getState>;
+// middleware (dependancy cycle if here)
+// export const listenerMiddleware = createListenerMiddleware();
+// export type AppStartListening = TypedStartListening<RootState, AppDispatch>;
+// export const startAppListening =
+//   listenerMiddleware.startListening as AppStartListening;
+// export const addAppListener = addListener as TypedAddListener<
+//   RootState,
+//   AppDispatch
+// >;
 
 export interface UserInfoState {
   id: string;
@@ -33,8 +43,8 @@ export interface Song {
   Type: string;
   // comments: Array<Comment>;
 }
-interface Author {
-  Author_ID: number;
+export interface Author {
+  Author_ID: string;
   AuthorHandle: string;
 }
 
@@ -50,6 +60,8 @@ export interface Post {
   Song: Song;
   Comments: Comment[];
   isFavorite?: boolean;
+  Author: Author;
+  Body: string;
 }
 
 export interface UserPostState {

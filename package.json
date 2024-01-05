@@ -11,8 +11,7 @@
     "db-api": "cd .. && cd shuflist-api && make",
     "microservice": "cd .. && cd song-share-api && go run main.go",
     "lint": "npx eslint --ext .jsx,.js,.tsx,.ts src/",
-    "lint:css": "stylelint \"./src/**/*.tsx\"",
-    "stylelint-check": "stylelint-config-prettier-check"
+    "lint:css": "stylelint \"./src/**/*.tsx\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { createPostRequest } from '../networkReqHooks/NetworkUtils';
 
 import type { RootState, UserState } from '../storetypes';
-import { getSongIndex } from './UserUtils/utils';
+import { getSongIndex } from './utils';
 import { userApi } from '../../Api/UserApiSlice';
 
 export enum UserStatus {

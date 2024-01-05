@@ -1,6 +1,5 @@
-/* eslint-disable import/prefer-default-export */
 import { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState, UserState, Post } from '../../storetypes';
+import type { RootState, UserState, Post, UserPostState } from '../storetypes';
 
 interface Song {
   Song_ID: number;
@@ -12,16 +11,18 @@ export const getSongIndex = (state: UserState, action: PayloadAction<Song>) => {
   });
 };
 
-export const getFindPost = (state: RootState, action: PayloadAction<Post>) => {
+export const getFindPost = (
+  state: UserPostState,
+  action: PayloadAction<Post>
+) => {
   const found =
-    state.posts.posts.find(
-      (post: Post) => post.Post_ID === action.payload.Post_ID
-    ) || null;
+    state.posts.find((post: Post) => post.Post_ID === action.payload.Post_ID) ||
+    null;
   return found;
 };
 
 export const getFavoritesActions = (
-  state: RootState,
+  state: UserPostState,
   action: PayloadAction<any>
 ) => {
   const foundPost = getFindPost(state, action);

@@ -1,16 +1,9 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-return-assign */
-/* eslint-disable quote-props */
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-// eslint-disable-next-line no-unused-vars
 import { addToFavorites, removeFromFavorites } from './getUserSlice';
 import {
   createFetchDispatch,
   createPostRequest,
 } from '../networkReqHooks/NetworkUtils';
-// import { useFindPost } from './UserHooks/useFindPost';
-// import { useFavoritesActions } from './UserHooks/useFavoritesActions';
 
 import type {
   AppDispatch,
@@ -21,8 +14,7 @@ import type {
   Comment,
 } from '../storetypes';
 import { url } from '../ApiUrl';
-
-// const url = 'http://localhost:10000/';
+import { getFavoritesActions, getFindPost } from './utils';
 
 const initialState: UserPostState = {
   isLoading: false,
@@ -72,17 +64,17 @@ export const userPosts = createSlice({
       state.posts.unshift(action.payload);
     },
     favoritePosts: (state, action) => {
-      //   useFavoritesActions(store.getState(), action);
+      getFavoritesActions(state, action);
     },
     unFavoritePosts: (state, action) => {
-      // useFavoritesActions(store.getState(), action);
+      getFavoritesActions(state, action);
     },
     addComment: (state, action) => {
       if (action.payload !== undefined) {
-        // const foundPost = useFindPost(store.getState(), action);
-        // if (foundPost !== null) {
-        //   foundPost.Comments.push(action.payload);
-        // }
+        const foundPost = getFindPost(state, action);
+        if (foundPost !== null) {
+          foundPost.Comments.push(action.payload);
+        }
       }
     },
   },
@@ -115,11 +107,13 @@ export const switchFavorite = (foundPost: Post) => (dispatch: AppDispatch) => {
   }
 };
 
+// convert to api slice/listener
 export const createPost = async (post: Post) => {
   const fullUrl = `${url}searchResults`;
   await createPostRequest(fullUrl, post);
 };
 
+// convert to api slice/listener
 export const postComment = async (comment: Comment) => {
   const fullUrl = `${url}Home/${comment.Post_ID}`;
   await createPostRequest(fullUrl, comment);

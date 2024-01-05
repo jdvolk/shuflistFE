@@ -26,15 +26,17 @@ export const TimeLine = () => {
 
   const renderPosts =
     isLoggedIn && userTimeLine
-      ? userTimeLine?.map((song) => {
+      ? userTimeLine?.map((item) => {
           return (
             <section key={Math.random()}>
               <SongRender
-                song={song.Song}
-                post={song}
+                song={item.Song}
+                post={item}
                 // isSearchResult={false}
               />
-              {song.Comments && <Comments comments={song.Comments} />}
+              {item.Comments && (
+                <Comments comments={item.Comments} post={item} />
+              )}
             </section>
           );
         })
